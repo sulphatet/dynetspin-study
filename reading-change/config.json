@@ -603,7 +603,8 @@
         "task": "wedge",
         "condition": "overview",
         "stimulus": "un_voting@1981–85@US-aligned",
-        "correctAnswer": "0"
+        "correctAnswer": "0",
+        "correctSlice": "1981–85"
       },
       "description": "C/wedge — overview on un_voting@1981–85@US-aligned",
       "instruction": "The overview shows every period at once, oldest in the middle. Find the ring for **1981–85**, then **click the **US-aligned** bloc**.",
@@ -638,7 +639,8 @@
         "task": "wedge",
         "condition": "no-overview",
         "stimulus": "un_voting@1981–85@Russia/USSR-aligned",
-        "correctAnswer": "6"
+        "correctAnswer": "6",
+        "correctSlice": "1981–85"
       },
       "description": "C/wedge — no-overview on un_voting@1981–85@Russia/USSR-aligned",
       "instruction": "Use the time rail to reach **1981–85**, then **click the **Russia/USSR-aligned** bloc**.",
