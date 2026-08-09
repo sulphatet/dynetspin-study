@@ -243,55 +243,16 @@
         }
       ]
     },
-    "A2-degree": {
-      "baseComponent": "dynetspin",
-      "meta": {
-        "block": "A",
-        "task": "howmuch",
-        "condition": "degree",
-        "stimulus": "planted_c",
-        "correctAnswer": "Team_02"
-      },
-      "description": "A/howmuch — degree on planted_c",
-      "instruction": "Looking at the whole six weeks, **which team had the most member turnover overall** (the most people joining and leaving in total)?",
-      "parameters": {
-        "labels": true,
-        "widgets": {
-          "overview": false,
-          "cohort": false,
-          "ego": false,
-          "inspector": false
-        },
-        "dataset": "planted_c",
-        "slice": "s02",
-        "encoding": "degree"
-      },
-      "response": [
-        {
-          "id": "answer",
-          "prompt": "Your answer:",
-          "location": "sidebar",
-          "type": "radio",
-          "required": true,
-          "options": [
-            "Team_02",
-            "Team_03",
-            "Team_05",
-            "Team_10"
-          ]
-        }
-      ]
-    },
-    "B-track-slider": {
+    "B-track-blended": {
       "baseComponent": "dynetspin",
       "meta": {
         "block": "B",
         "task": "track",
-        "condition": "slider",
+        "condition": "blended",
         "stimulus": "track_a",
         "correctAnswer": "0"
       },
-      "description": "B/track — slider on track_a",
+      "description": "B/track — blended on track_a",
       "instruction": "The outlined group is shown in **W2**. Move to **W4** and **click the group that holds most of the same people.**",
       "parameters": {
         "labels": false,
@@ -305,8 +266,8 @@
         "slice": "s01",
         "encoding": "local",
         "alpha": {
-          "mode": "slider",
-          "start": 0.5
+          "mode": "pinned",
+          "value": 0.5
         },
         "highlightCommunity": 0,
         "answerMode": "community"
@@ -315,44 +276,6 @@
         {
           "id": "answer",
           "prompt": "Click a group in the visualization",
-          "location": "sidebar",
-          "type": "reactive",
-          "required": true
-        }
-      ]
-    },
-    "B-size-slider": {
-      "baseComponent": "dynetspin",
-      "meta": {
-        "block": "B",
-        "task": "size",
-        "condition": "slider",
-        "stimulus": "track_a",
-        "correctAnswer": "5"
-      },
-      "description": "B/size — slider on track_a",
-      "instruction": "**Which group is the largest** in the week shown?",
-      "parameters": {
-        "labels": false,
-        "widgets": {
-          "overview": false,
-          "cohort": false,
-          "ego": false,
-          "inspector": false
-        },
-        "dataset": "track_a",
-        "slice": "s02",
-        "encoding": "local",
-        "alpha": {
-          "mode": "slider",
-          "start": 0.5
-        },
-        "answerMode": "community"
-      },
-      "response": [
-        {
-          "id": "answer",
-          "prompt": "Click the largest group",
           "location": "sidebar",
           "type": "reactive",
           "required": true
@@ -398,6 +321,83 @@
         }
       ]
     },
+    "B-track-slider": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "B",
+        "task": "track",
+        "condition": "slider",
+        "stimulus": "track_c",
+        "correctAnswer": "0"
+      },
+      "description": "B/track — slider on track_c",
+      "instruction": "The outlined group is shown in **W2**. Move to **W4** and **click the group that holds most of the same people.**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "track_c",
+        "slice": "s01",
+        "encoding": "local",
+        "alpha": {
+          "mode": "slider",
+          "start": 0.5
+        },
+        "highlightCommunity": 0,
+        "answerMode": "community"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Click a group in the visualization",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": true
+        }
+      ]
+    },
+    "B-size-blended": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "B",
+        "task": "size",
+        "condition": "blended",
+        "stimulus": "track_a",
+        "correctAnswer": "5"
+      },
+      "description": "B/size — blended on track_a",
+      "instruction": "**Which group is the largest** in the week shown?",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "track_a",
+        "slice": "s02",
+        "encoding": "local",
+        "alpha": {
+          "mode": "pinned",
+          "value": 0.5
+        },
+        "answerMode": "community"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Click the largest group",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": true
+        }
+      ]
+    },
     "B-size-size-only": {
       "baseComponent": "dynetspin",
       "meta": {
@@ -436,16 +436,16 @@
         }
       ]
     },
-    "B-real-slider": {
+    "B-real-blended": {
       "baseComponent": "dynetspin",
       "meta": {
         "block": "B",
         "task": "track-real",
-        "condition": "slider",
+        "condition": "blended",
         "stimulus": "un_voting@1976–80",
         "correctAnswer": "3"
       },
-      "description": "B/track-real — slider on un_voting@1976–80",
+      "description": "B/track-real — blended on un_voting@1976–80",
       "instruction": "The outlined group is a voting bloc in **1976–80**. Move to **1986–90** and **click the bloc that holds most of the same countries.**",
       "parameters": {
         "labels": false,
@@ -459,8 +459,8 @@
         "slice": "1976–80",
         "encoding": "local",
         "alpha": {
-          "mode": "slider",
-          "start": 0.5
+          "mode": "pinned",
+          "value": 0.5
         },
         "highlightCommunity": 7,
         "answerMode": "community"
@@ -531,7 +531,7 @@
           "overview": true,
           "cohort": false,
           "ego": false,
-          "inspector": true
+          "inspector": false
         },
         "dataset": "struct_a",
         "slice": "s00",
@@ -613,7 +613,7 @@
           "overview": true,
           "cohort": false,
           "ego": false,
-          "inspector": true
+          "inspector": false
         },
         "dataset": "un_voting",
         "slice": "1981–85",
@@ -755,10 +755,10 @@
         "task": "survive",
         "condition": "cohort",
         "stimulus": "planted_a",
-        "correctAnswer": "Only a few"
+        "correctAnswer": "15–29 of 58"
       },
       "description": "E/survive — cohort on planted_a",
-      "instruction": "The outlined group is shown in **W3**. Move to **W4**. **How many of its members are still there?**",
+      "instruction": "The outlined group has **58 members** in **W3**. Move to **W4**. **How many of them are still present?**",
       "parameters": {
         "labels": false,
         "widgets": {
@@ -781,9 +781,10 @@
           "type": "radio",
           "required": true,
           "options": [
-            "Most of them",
-            "About half",
-            "Only a few"
+            "0–14 of 58",
+            "15–29 of 58",
+            "30–44 of 58",
+            "45–58 of 58"
           ]
         }
       ]
@@ -795,10 +796,10 @@
         "task": "survive",
         "condition": "no-cohort",
         "stimulus": "planted_b",
-        "correctAnswer": "Only a few"
+        "correctAnswer": "17–32 of 65"
       },
       "description": "E/survive — no-cohort on planted_b",
-      "instruction": "The outlined group is shown in **W4**. Move to **W5**. **How many of its members are still there?**",
+      "instruction": "The outlined group has **65 members** in **W4**. Move to **W5**. **How many of them are still present?**",
       "parameters": {
         "labels": false,
         "widgets": {
@@ -821,9 +822,10 @@
           "type": "radio",
           "required": true,
           "options": [
-            "Most of them",
-            "About half",
-            "Only a few"
+            "0–16 of 65",
+            "17–32 of 65",
+            "33–49 of 65",
+            "50–65 of 65"
           ]
         }
       ]
@@ -1132,18 +1134,18 @@
               "A1-global",
               "A1-degree",
               "A2-local",
-              "A2-global",
-              "A2-degree"
+              "A2-global"
             ]
           },
           {
             "order": "latinSquare",
             "components": [
-              "B-track-slider",
-              "B-size-slider",
+              "B-track-blended",
               "B-track-size-only",
+              "B-track-slider",
+              "B-size-blended",
               "B-size-size-only",
-              "B-real-slider",
+              "B-real-blended",
               "B-real-size-only"
             ]
           },

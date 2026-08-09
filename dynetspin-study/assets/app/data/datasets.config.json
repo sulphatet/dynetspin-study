@@ -287,6 +287,42 @@
       }
     ]
   },
+  "track_c": {
+    "label": "Study H",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "W1",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "W2",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "W3",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
+        "enabled": true
+      }
+    ]
+  },
   "data_vispub": {
     "label": "VisPub",
     "enabled": true,

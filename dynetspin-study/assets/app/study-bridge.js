@@ -185,6 +185,12 @@
         if (s) s.value = String(alpha.start);
         window.updateAlpha(alpha.start);
       }
+    } else if (alpha.mode === "auto") {
+      /* Leave the ordering the tool itself proposes (findBestAlpha ran at
+         load) and hide the control. This is the "our layout" arm of the
+         comparison, and it deliberately names no number — the claim is about
+         the ordering DyNetSpin offers, not about a magic constant. */
+      return;
     } else if (typeof alpha.value === "number" && typeof window.updateAlpha === "function") {
       var sl = document.getElementById("AlphaSlider");
       if (sl) sl.value = String(alpha.value);
@@ -202,7 +208,10 @@
     }
     if (w.cohort)    root.classList.add("study-cohort");
     if (w.ego)       root.classList.add("study-ego");
-    if (w.inspector || w.ego || w.overview) root.classList.add("study-inspector");
+    // Only when explicitly asked for. Deriving it from `overview` meant a
+    // trial that set inspector:false still got the panel, because the overview
+    // has its own section in there.
+    if (w.inspector) root.classList.add("study-inspector");
 
     // Hidden is not the same as unreachable, and Block C's result depends on
     // the difference. Stub the entry point too.
@@ -237,6 +246,9 @@
       try {
         window.CommunityEvolution.open();
         evt("overview_open", "auto");
+        var n = highlightInOverview();
+        window.__studyEvoHighlighted = n;
+        if (!n) console.warn("[study] overview opened but no member dots marked");
       } catch (e) { console.error("[study] could not open overview", e); }
     }
 
@@ -250,6 +262,13 @@
           try {
             snap(null, { nodeIds: ids, id: cfg.highlightCommunity,
                          label: "Tracked group" });
+            // snapshotCommunityCohort expands the panel itself, but only if it
+            // is present when it runs; assert the end state rather than trust it
+            var cf = document.getElementById("cohortFloat");
+            if (cf) cf.classList.remove("collapsed");
+            document.body.classList.add("cohorts-active");
+            window.__studyCohortSeeded =
+              document.querySelectorAll("#communitySideContainer > *").length;
             evt("cohort_add", "auto:" + cfg.highlightCommunity);
           } catch (e) { console.error("[study] could not seed cohort", e); }
         }
@@ -274,6 +293,27 @@
       if (cfg.dimOthers) this.classList.toggle("study-highlight-dim", !hit);
     });
   }
+  /* The overview draws its own dots, so the stroke put on `circle.happy` never
+     reaches it — a participant told to follow "the outlined group" opened the
+     overview and found nothing outlined. Mark the SAME member ids on every
+     ring, which is also the overview's whole point: where these people are in
+     each period. */
+  function highlightInOverview() {
+    if (!cfg || cfg.highlightCommunity === undefined) return 0;
+    if (typeof global_data === "undefined") return 0;
+    var members = {};
+    global_data.forEach(function (d) {
+      if (d && +d.community === +cfg.highlightCommunity) members[+d.node] = 1;
+    });
+    var dots = document.querySelectorAll("#communityEvolution .evo-dot");
+    var n = 0;
+    for (var i = 0; i < dots.length; i++) {
+      var id = +dots[i].getAttribute("data-node");
+      if (members[id]) { dots[i].classList.add("study-evo-highlight"); n++; }
+    }
+    return n;
+  }
+
   function clearHighlight() {
     d3.selectAll("circle.happy").each(function () {
       this.classList.remove("study-highlight", "study-highlight-dim");
