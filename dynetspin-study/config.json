@@ -17,7 +17,7 @@
     "helpTextPath": "dynetspin-study/assets/help.md",
     "logoPath": "revisitAssets/revisitLogoSquare.svg",
     "withProgressBar": true,
-    "autoDownloadStudy": false,
+    "autoDownloadStudy": true,
     "withSidebar": true,
     "sidebarWidth": 330,
     "urlParticipantIdParam": "PROLIFIC_PID",
