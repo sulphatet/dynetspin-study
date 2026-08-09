@@ -223,7 +223,30 @@
     // would hand over the answer, so neutralise it rather than just hide it.
     if (!w.cohort && typeof window.snapshotCommunityCohort === "function") {
       window.__realSnapshotCommunityCohort = window.snapshotCommunityCohort;
-      window.snapshotCommunityCohort = function () {};
+      // Suppress the tracker's SIDE EFFECT, not the event. The overview routes
+      // every pick through here, so a bare no-op also swallowed the answer.
+      window.snapshotCommunityCohort = function (d, opts) {
+        handleCommunityPick(d, opts);
+      };
+    }
+  }
+
+  /* A community pick, from the chart or from the overview. Extracted because
+     the Cohort Tracker stub below must still record the answer: replacing
+     snapshotCommunityCohort with a bare no-op silently threw away every pick in
+     any trial that had the tracker off, which is every overview trial. */
+  function handleCommunityPick(d, opts) {
+    if (!applied) return;
+    var id = (opts && opts.id) || (d && d.community);
+    evt("cohort_add", id);
+    if (cfg && cfg.answerMode === "overviewCommunity" &&
+        typeof id === "string" && id.indexOf("evo") === 0) {
+      // communityEvolution.js labels overview picks "evo<sliceLabel>#<community>"
+      var m = /^evo(.*)#(\d+)$/.exec(id);
+      if (m) {
+        evt("answer_submit", id);
+        postAnswer({ answer: m[2], answerSlice: m[1] });
+      }
     }
   }
 
@@ -381,21 +404,7 @@
     if (typeof window.snapshotCommunityCohort === "function") {
       var realSnap = window.snapshotCommunityCohort;
       window.snapshotCommunityCohort = function (d, opts) {
-        var id = (opts && opts.id) || (d && d.community);
-        if (applied) evt("cohort_add", id);
-        /* Picking a community INSIDE the overview does not go through the
-           chart's click handler — communityEvolution.js routes it to
-           snapshotCommunityCohort with id "evo<sliceLabel>#<community>"
-           (and, when the pick is on another ring, only after it has switched
-           slices). Wrapping here therefore catches both paths. */
-        if (applied && cfg && cfg.answerMode === "overviewCommunity" &&
-            typeof id === "string" && id.indexOf("evo") === 0) {
-          var m = /^evo(.*)#(\d+)$/.exec(id);
-          if (m) {
-            evt("answer_submit", id);
-            postAnswer({ answer: m[2], answerSlice: m[1] });
-          }
-        }
+        handleCommunityPick(d, opts);
         return realSnap.apply(this, arguments);
       };
     }
