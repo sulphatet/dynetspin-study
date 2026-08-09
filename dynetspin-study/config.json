@@ -1,0 +1,1192 @@
+{
+  "$schema": "https://raw.githubusercontent.com/revisit-studies/study/v2.4.3/src/parser/StudyConfigSchema.json",
+  "studyMetadata": {
+    "title": "Reading change in evolving networks",
+    "version": "pilot",
+    "authors": [
+      "DyNetSpin authors"
+    ],
+    "date": "2026-08-09",
+    "description": "How different visual encodings and interface features support tracking groups and individuals through change in a network that evolves over time.",
+    "organizations": [
+      "DyNetSpin"
+    ]
+  },
+  "uiConfig": {
+    "contactEmail": "saffand03@gmail.com",
+    "helpTextPath": "dynetspin-study/assets/help.md",
+    "logoPath": "revisitAssets/revisitLogoSquare.svg",
+    "withProgressBar": true,
+    "autoDownloadStudy": false,
+    "withSidebar": true,
+    "sidebarWidth": 330,
+    "urlParticipantIdParam": "PROLIFIC_PID",
+    "trainingAttempts": 2
+  },
+  "studyRules": {
+    "display": {
+      "minWidth": 1100,
+      "minHeight": 620
+    },
+    "devices": {
+      "allowed": [
+        "desktop"
+      ],
+      "blockedMessage": "This study needs a desktop or laptop browser — the visualization does not fit on a phone or tablet screen."
+    }
+  },
+  "importedLibraries": [
+    "smeq"
+  ],
+  "baseComponents": {
+    "dynetspin": {
+      "type": "website",
+      "path": "dynetspin-study/assets/app/index.html",
+      "instructionLocation": "sidebar",
+      "nextButtonLocation": "sidebar",
+      "response": []
+    }
+  },
+  "components": {
+    "A1-local": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "A",
+        "task": "when",
+        "condition": "local",
+        "stimulus": "planted_a",
+        "correctAnswer": "W3 → W4"
+      },
+      "description": "A/when — local on planted_a",
+      "instruction": "Step through the weeks using the time rail on the left. **Between which two consecutive weeks did the largest number of people arrive and leave?**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "planted_a",
+        "slice": "s00",
+        "encoding": "local"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "W1 → W2",
+            "W2 → W3",
+            "W3 → W4",
+            "W4 → W5",
+            "W5 → W6"
+          ]
+        }
+      ]
+    },
+    "A1-global": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "A",
+        "task": "when",
+        "condition": "global",
+        "stimulus": "planted_b",
+        "correctAnswer": "W4 → W5"
+      },
+      "description": "A/when — global on planted_b",
+      "instruction": "Step through the weeks using the time rail on the left. **Between which two consecutive weeks did the largest number of people arrive and leave?**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "planted_b",
+        "slice": "s00",
+        "encoding": "global"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "W1 → W2",
+            "W2 → W3",
+            "W3 → W4",
+            "W4 → W5",
+            "W5 → W6"
+          ]
+        }
+      ]
+    },
+    "A1-degree": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "A",
+        "task": "when",
+        "condition": "degree",
+        "stimulus": "planted_c",
+        "correctAnswer": "W2 → W3"
+      },
+      "description": "A/when — degree on planted_c",
+      "instruction": "Step through the weeks using the time rail on the left. **Between which two consecutive weeks did the largest number of people arrive and leave?**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "planted_c",
+        "slice": "s00",
+        "encoding": "degree"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "W1 → W2",
+            "W2 → W3",
+            "W3 → W4",
+            "W4 → W5",
+            "W5 → W6"
+          ]
+        }
+      ]
+    },
+    "A2-local": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "A",
+        "task": "howmuch",
+        "condition": "local",
+        "stimulus": "planted_a",
+        "correctAnswer": "Team_05"
+      },
+      "description": "A/howmuch — local on planted_a",
+      "instruction": "Looking at the whole six weeks, **which team had the most member turnover overall** (the most people joining and leaving in total)?",
+      "parameters": {
+        "labels": true,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "planted_a",
+        "slice": "s02",
+        "encoding": "local"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "Team_02",
+            "Team_05",
+            "Team_09",
+            "Team_10"
+          ]
+        }
+      ]
+    },
+    "A2-global": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "A",
+        "task": "howmuch",
+        "condition": "global",
+        "stimulus": "planted_b",
+        "correctAnswer": "Team_02"
+      },
+      "description": "A/howmuch — global on planted_b",
+      "instruction": "Looking at the whole six weeks, **which team had the most member turnover overall** (the most people joining and leaving in total)?",
+      "parameters": {
+        "labels": true,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "planted_b",
+        "slice": "s02",
+        "encoding": "global"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "Team_01",
+            "Team_02",
+            "Team_05",
+            "Team_10"
+          ]
+        }
+      ]
+    },
+    "A2-degree": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "A",
+        "task": "howmuch",
+        "condition": "degree",
+        "stimulus": "planted_c",
+        "correctAnswer": "Team_02"
+      },
+      "description": "A/howmuch — degree on planted_c",
+      "instruction": "Looking at the whole six weeks, **which team had the most member turnover overall** (the most people joining and leaving in total)?",
+      "parameters": {
+        "labels": true,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "planted_c",
+        "slice": "s02",
+        "encoding": "degree"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "Team_02",
+            "Team_03",
+            "Team_05",
+            "Team_10"
+          ]
+        }
+      ]
+    },
+    "B-track-slider": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "B",
+        "task": "track",
+        "condition": "slider",
+        "stimulus": "track_a",
+        "correctAnswer": "0"
+      },
+      "description": "B/track — slider on track_a",
+      "instruction": "The outlined group is shown in **W2**. Move to **W4** and **click the group that holds most of the same people.**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "track_a",
+        "slice": "s01",
+        "encoding": "local",
+        "alpha": {
+          "mode": "slider",
+          "start": 0.5
+        },
+        "highlightCommunity": 0,
+        "answerMode": "community"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Click a group in the visualization",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": true
+        }
+      ]
+    },
+    "B-size-slider": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "B",
+        "task": "size",
+        "condition": "slider",
+        "stimulus": "track_a",
+        "correctAnswer": "5"
+      },
+      "description": "B/size — slider on track_a",
+      "instruction": "**Which group is the largest** in the week shown?",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "track_a",
+        "slice": "s02",
+        "encoding": "local",
+        "alpha": {
+          "mode": "slider",
+          "start": 0.5
+        },
+        "answerMode": "community"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Click the largest group",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": true
+        }
+      ]
+    },
+    "B-track-size-only": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "B",
+        "task": "track",
+        "condition": "size-only",
+        "stimulus": "track_b",
+        "correctAnswer": "0"
+      },
+      "description": "B/track — size-only on track_b",
+      "instruction": "The outlined group is shown in **W2**. Move to **W4** and **click the group that holds most of the same people.**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "track_b",
+        "slice": "s01",
+        "encoding": "local",
+        "alpha": {
+          "mode": "pinned",
+          "value": 1.0
+        },
+        "highlightCommunity": 0,
+        "answerMode": "community"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Click a group in the visualization",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": true
+        }
+      ]
+    },
+    "B-size-size-only": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "B",
+        "task": "size",
+        "condition": "size-only",
+        "stimulus": "track_b",
+        "correctAnswer": "3"
+      },
+      "description": "B/size — size-only on track_b",
+      "instruction": "**Which group is the largest** in the week shown?",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "track_b",
+        "slice": "s02",
+        "encoding": "local",
+        "alpha": {
+          "mode": "pinned",
+          "value": 1.0
+        },
+        "answerMode": "community"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Click the largest group",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": true
+        }
+      ]
+    },
+    "B-real-slider": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "B",
+        "task": "track-real",
+        "condition": "slider",
+        "stimulus": "un_voting@1976–80",
+        "correctAnswer": "3"
+      },
+      "description": "B/track-real — slider on un_voting@1976–80",
+      "instruction": "The outlined group is a voting bloc in **1976–80**. Move to **1986–90** and **click the bloc that holds most of the same countries.**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "un_voting",
+        "slice": "1976–80",
+        "encoding": "local",
+        "alpha": {
+          "mode": "slider",
+          "start": 0.5
+        },
+        "highlightCommunity": 7,
+        "answerMode": "community"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Click a bloc in the visualization",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": true
+        }
+      ]
+    },
+    "B-real-size-only": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "B",
+        "task": "track-real",
+        "condition": "size-only",
+        "stimulus": "un_voting@1981–85",
+        "correctAnswer": "0"
+      },
+      "description": "B/track-real — size-only on un_voting@1981–85",
+      "instruction": "The outlined group is a voting bloc in **1981–85**. Move to **1991–95** and **click the bloc that holds most of the same countries.**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "un_voting",
+        "slice": "1981–85",
+        "encoding": "local",
+        "alpha": {
+          "mode": "pinned",
+          "value": 1.0
+        },
+        "highlightCommunity": 6,
+        "answerMode": "community"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Click a bloc in the visualization",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": true
+        }
+      ]
+    },
+    "C-fate-overview": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "C",
+        "task": "fate",
+        "condition": "overview",
+        "stimulus": "struct_a",
+        "correctAnswer": "merged"
+      },
+      "description": "C/fate — overview on struct_a",
+      "instruction": "The outlined group is shown in **W1**. By **W6**, what happened to it?",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": true,
+          "cohort": false,
+          "ego": false,
+          "inspector": true
+        },
+        "dataset": "struct_a",
+        "slice": "s00",
+        "encoding": "local",
+        "highlightCommunity": 4
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "persisted",
+            "split",
+            "merged",
+            "dissolved"
+          ]
+        }
+      ]
+    },
+    "C-fate-no-overview": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "C",
+        "task": "fate",
+        "condition": "no-overview",
+        "stimulus": "struct_b",
+        "correctAnswer": "split"
+      },
+      "description": "C/fate — no-overview on struct_b",
+      "instruction": "The outlined group is shown in **W1**. By **W6**, what happened to it?",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "struct_b",
+        "slice": "s00",
+        "encoding": "local",
+        "highlightCommunity": 1
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "persisted",
+            "split",
+            "merged",
+            "dissolved"
+          ]
+        }
+      ]
+    },
+    "D-bridge-ego-0": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "D",
+        "task": "bridge",
+        "condition": "ego",
+        "stimulus": "data_vispub@2000-2004",
+        "correctAnswer": "Spread across several other groups"
+      },
+      "description": "D/bridge — ego on data_vispub@2000-2004",
+      "instruction": "The outlined researcher is highlighted. **Are most of the people they work with inside their own group, or spread across other groups?**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": true,
+          "inspector": true
+        },
+        "dataset": "data_vispub",
+        "slice": "2000-2004",
+        "encoding": "local",
+        "highlightNodes": [
+          992
+        ],
+        "dimOthers": true
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "Mostly inside their own group",
+            "Spread across several other groups"
+          ]
+        }
+      ]
+    },
+    "D-internal-no-ego-1": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "D",
+        "task": "bridge",
+        "condition": "no-ego",
+        "stimulus": "data_vispub@2005-2009",
+        "correctAnswer": "Mostly inside their own group"
+      },
+      "description": "D/bridge — no-ego on data_vispub@2005-2009",
+      "instruction": "The outlined researcher is highlighted. **Are most of the people they work with inside their own group, or spread across other groups?**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "data_vispub",
+        "slice": "2005-2009",
+        "encoding": "local",
+        "highlightNodes": [
+          4571
+        ],
+        "dimOthers": true
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "Mostly inside their own group",
+            "Spread across several other groups"
+          ]
+        }
+      ]
+    },
+    "D-bridge-no-ego-2": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "D",
+        "task": "bridge",
+        "condition": "no-ego",
+        "stimulus": "data_vispub@2010-2014",
+        "correctAnswer": "Spread across several other groups"
+      },
+      "description": "D/bridge — no-ego on data_vispub@2010-2014",
+      "instruction": "The outlined researcher is highlighted. **Are most of the people they work with inside their own group, or spread across other groups?**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "data_vispub",
+        "slice": "2010-2014",
+        "encoding": "local",
+        "highlightNodes": [
+          3787
+        ],
+        "dimOthers": true
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "Mostly inside their own group",
+            "Spread across several other groups"
+          ]
+        }
+      ]
+    },
+    "D-internal-ego-3": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "D",
+        "task": "bridge",
+        "condition": "ego",
+        "stimulus": "data_vispub@2015-2019",
+        "correctAnswer": "Mostly inside their own group"
+      },
+      "description": "D/bridge — ego on data_vispub@2015-2019",
+      "instruction": "The outlined researcher is highlighted. **Are most of the people they work with inside their own group, or spread across other groups?**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": true,
+          "inspector": true
+        },
+        "dataset": "data_vispub",
+        "slice": "2015-2019",
+        "encoding": "local",
+        "highlightNodes": [
+          2346
+        ],
+        "dimOthers": true
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "Mostly inside their own group",
+            "Spread across several other groups"
+          ]
+        }
+      ]
+    },
+    "E-survive-cohort": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "E",
+        "task": "survive",
+        "condition": "cohort",
+        "stimulus": "planted_a",
+        "correctAnswer": "Only a few"
+      },
+      "description": "E/survive — cohort on planted_a",
+      "instruction": "The outlined group is shown in **W3**. Move to **W4**. **How many of its members are still there?**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": true,
+          "ego": false,
+          "inspector": true
+        },
+        "dataset": "planted_a",
+        "slice": "s02",
+        "encoding": "local",
+        "highlightCommunity": 2
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "Most of them",
+            "About half",
+            "Only a few"
+          ]
+        }
+      ]
+    },
+    "E-survive-no-cohort": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "E",
+        "task": "survive",
+        "condition": "no-cohort",
+        "stimulus": "planted_b",
+        "correctAnswer": "Only a few"
+      },
+      "description": "E/survive — no-cohort on planted_b",
+      "instruction": "The outlined group is shown in **W4**. Move to **W5**. **How many of its members are still there?**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "planted_b",
+        "slice": "s03",
+        "encoding": "local",
+        "highlightCommunity": 2
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "Most of them",
+            "About half",
+            "Only a few"
+          ]
+        }
+      ]
+    },
+    "introduction": {
+      "type": "markdown",
+      "path": "dynetspin-study/assets/introduction.md",
+      "response": []
+    },
+    "consent": {
+      "type": "markdown",
+      "path": "dynetspin-study/assets/consent.md",
+      "nextButtonText": "I agree",
+      "response": [
+        {
+          "id": "participantId",
+          "prompt": "Participant ID",
+          "secondaryText": "The code from your invitation. If you arrived from Prolific this is filled in for you.",
+          "location": "belowStimulus",
+          "type": "shortText",
+          "required": true
+        },
+        {
+          "id": "consent",
+          "prompt": "Do you consent to take part?",
+          "location": "belowStimulus",
+          "type": "radio",
+          "options": [
+            "I consent",
+            "I do not consent"
+          ],
+          "required": true,
+          "requiredValue": "I consent"
+        }
+      ]
+    },
+    "background": {
+      "type": "questionnaire",
+      "response": [
+        {
+          "id": "yearsData",
+          "prompt": "How long have you worked with data analysis?",
+          "location": "aboveStimulus",
+          "type": "dropdown",
+          "required": true,
+          "options": [
+            "Less than 1 year",
+            "1–2 years",
+            "3–5 years",
+            "6–10 years",
+            "More than 10 years"
+          ]
+        },
+        {
+          "id": "dsProficiency",
+          "prompt": "How would you rate your own data-science skills?",
+          "location": "aboveStimulus",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "No experience",
+          "rightLabel": "Expert",
+          "required": true
+        },
+        {
+          "id": "networkFamiliarity",
+          "prompt": "How familiar are you with network (graph) data?",
+          "location": "aboveStimulus",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very familiar",
+          "required": true
+        },
+        {
+          "id": "networkVisUsed",
+          "prompt": "Which of these have you used before?",
+          "secondaryText": "Select all that apply.",
+          "location": "aboveStimulus",
+          "type": "checkbox",
+          "required": false,
+          "options": [
+            "Node-link diagrams",
+            "Adjacency matrices",
+            "Sankey / alluvial diagrams",
+            "Arc diagrams",
+            "None of these"
+          ]
+        },
+        {
+          "id": "communityDetection",
+          "prompt": "How familiar are you with community detection or clustering?",
+          "location": "aboveStimulus",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very familiar",
+          "required": true
+        },
+        {
+          "id": "colourVision",
+          "prompt": "Do you have any form of colour-vision deficiency?",
+          "secondaryText": "The colours used are chosen to be colour-blind safe; this is only so we can check.",
+          "location": "aboveStimulus",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "No",
+            "Yes",
+            "Prefer not to say"
+          ]
+        }
+      ]
+    },
+    "training-spiral": {
+      "type": "markdown",
+      "path": "dynetspin-study/assets/training-spiral.md",
+      "response": []
+    },
+    "training-time": {
+      "type": "markdown",
+      "path": "dynetspin-study/assets/training-time.md",
+      "response": []
+    },
+    "training-colour": {
+      "type": "markdown",
+      "path": "dynetspin-study/assets/training-colour.md",
+      "response": []
+    },
+    "training-check": {
+      "type": "website",
+      "path": "dynetspin-study/assets/app/index.html",
+      "instruction": "Before we start: **which week is currently shown?** Use the time rail on the left.",
+      "instructionLocation": "sidebar",
+      "nextButtonLocation": "sidebar",
+      "parameters": {
+        "dataset": "harry_potter",
+        "slice": "Book_3",
+        "encoding": "local",
+        "labels": true,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        }
+      },
+      "correctAnswer": [
+        {
+          "id": "answer",
+          "answer": "Book_3"
+        }
+      ],
+      "provideFeedback": true,
+      "allowFailedTraining": true,
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Which week is shown?",
+          "location": "sidebar",
+          "type": "dropdown",
+          "required": true,
+          "options": [
+            "Book_1",
+            "Book_2",
+            "Book_3",
+            "Book_4",
+            "Book_5",
+            "Book_6"
+          ]
+        }
+      ]
+    },
+    "insight-intro": {
+      "type": "markdown",
+      "path": "dynetspin-study/assets/insight-intro.md",
+      "response": []
+    },
+    "insight": {
+      "type": "website",
+      "path": "dynetspin-study/assets/app/index.html",
+      "description": "Open-ended sensemaking on real data; scored by insight coding, not by a key.",
+      "meta": {
+        "block": "INSIGHT",
+        "task": "open",
+        "condition": "full-tool",
+        "stimulus": "un_voting",
+        "scoring": "insight-coding"
+      },
+      "instruction": "**Explore freely for about five minutes.** Write down everything you notice about how the groups change over time. Anything counts — a country that moves, a group that forms or disappears, a period where a lot happens. There is no right answer and nothing is being scored as correct.",
+      "instructionLocation": "sidebar",
+      "nextButtonLocation": "sidebar",
+      "nextButtonText": "I have finished exploring",
+      "parameters": {
+        "dataset": "un_voting",
+        "slice": "1946–50",
+        "encoding": "local",
+        "labels": true,
+        "alpha": {
+          "mode": "slider",
+          "start": 0.5
+        },
+        "widgets": {
+          "overview": true,
+          "cohort": true,
+          "ego": true,
+          "inspector": true
+        }
+      },
+      "response": [
+        {
+          "id": "observations",
+          "prompt": "What did you notice?",
+          "secondaryText": "One observation per line. Rough notes are fine — we care about what you saw, not how it is worded.",
+          "location": "sidebar",
+          "type": "longText",
+          "required": true
+        },
+        {
+          "id": "mostInteresting",
+          "prompt": "Which single thing was most interesting or surprising?",
+          "location": "sidebar",
+          "type": "longText",
+          "required": false
+        },
+        {
+          "id": "insightConfidence",
+          "prompt": "How confident are you that what you described is really in the data?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
+        }
+      ]
+    },
+    "preference": {
+      "type": "questionnaire",
+      "response": [
+        {
+          "id": "prefWhen",
+          "prompt": "Which colour scheme made it easiest to tell WHEN a change happened?",
+          "location": "aboveStimulus",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "The four-colour scheme (grey / blue / orange / purple)",
+            "The single-colour intensity scale",
+            "The connection-count scale",
+            "No difference"
+          ]
+        },
+        {
+          "id": "prefHowMuch",
+          "prompt": "And which made it easiest to tell HOW MUCH a group changed overall?",
+          "location": "aboveStimulus",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "The four-colour scheme (grey / blue / orange / purple)",
+            "The single-colour intensity scale",
+            "The connection-count scale",
+            "No difference"
+          ]
+        },
+        {
+          "id": "hardest",
+          "prompt": "Which task did you find hardest, and why?",
+          "location": "aboveStimulus",
+          "type": "longText",
+          "required": false
+        },
+        {
+          "id": "confusing",
+          "prompt": "Was anything in the visualization confusing or misleading? Please be blunt — this is the most useful thing you can tell us.",
+          "location": "aboveStimulus",
+          "type": "longText",
+          "required": false
+        }
+      ]
+    },
+    "debrief": {
+      "type": "markdown",
+      "path": "dynetspin-study/assets/debrief.md",
+      "response": []
+    }
+  },
+  "sequence": {
+    "order": "fixed",
+    "components": [
+      "introduction",
+      "consent",
+      "background",
+      "training-spiral",
+      "training-time",
+      "training-colour",
+      "training-check",
+      {
+        "order": "latinSquare",
+        "components": [
+          {
+            "order": "latinSquare",
+            "components": [
+              "A1-local",
+              "A1-global",
+              "A1-degree",
+              "A2-local",
+              "A2-global",
+              "A2-degree"
+            ]
+          },
+          {
+            "order": "latinSquare",
+            "components": [
+              "B-track-slider",
+              "B-size-slider",
+              "B-track-size-only",
+              "B-size-size-only",
+              "B-real-slider",
+              "B-real-size-only"
+            ]
+          },
+          {
+            "order": "latinSquare",
+            "components": [
+              "C-fate-overview",
+              "C-fate-no-overview"
+            ]
+          },
+          {
+            "order": "latinSquare",
+            "components": [
+              "D-bridge-ego-0",
+              "D-internal-no-ego-1",
+              "D-bridge-no-ego-2",
+              "D-internal-ego-3"
+            ]
+          },
+          {
+            "order": "latinSquare",
+            "components": [
+              "E-survive-cohort",
+              "E-survive-no-cohort"
+            ]
+          }
+        ]
+      },
+      "$smeq.components.smeq",
+      "insight-intro",
+      "insight",
+      "preference",
+      "debrief"
+    ]
+  }
+}

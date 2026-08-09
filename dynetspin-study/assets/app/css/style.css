@@ -1,0 +1,8 @@
+/* ───────────────────────────────────────────────────────────────────────────
+   Legacy stylesheet.
+   Layout, chrome, panels, legend, tooltips and controls now live in
+   css/design-system.css (loaded after this file). Only the web-font import is
+   kept here to avoid duplicating the network request.
+   ─────────────────────────────────────────────────────────────────────────── */
+/* Google Fonts import removed for offline/self-contained operation;
+   Inter falls back to the -apple-system / Segoe UI stack. */

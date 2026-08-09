@@ -1,0 +1,392 @@
+{
+  "harry_potter": {
+    "label": "Harry Potter",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "Book_1",
+        "dir": "Book_1",
+        "enabled": true
+      },
+      {
+        "label": "Book_2",
+        "dir": "Book_2",
+        "enabled": true
+      },
+      {
+        "label": "Book_3",
+        "dir": "Book_3",
+        "enabled": true
+      },
+      {
+        "label": "Book_4",
+        "dir": "Book_4",
+        "enabled": true
+      },
+      {
+        "label": "Book_5",
+        "dir": "Book_5",
+        "enabled": true
+      },
+      {
+        "label": "Book_6",
+        "dir": "Book_6",
+        "enabled": true
+      }
+    ]
+  },
+  "planted_a": {
+    "label": "Study A",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "W1",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "W2",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "W3",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
+        "enabled": true
+      }
+    ]
+  },
+  "planted_b": {
+    "label": "Study B",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "W1",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "W2",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "W3",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
+        "enabled": true
+      }
+    ]
+  },
+  "planted_c": {
+    "label": "Study C",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "W1",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "W2",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "W3",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
+        "enabled": true
+      }
+    ]
+  },
+  "struct_a": {
+    "label": "Study D",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "W1",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "W2",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "W3",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
+        "enabled": true
+      }
+    ]
+  },
+  "struct_b": {
+    "label": "Study E",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "W1",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "W2",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "W3",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
+        "enabled": true
+      }
+    ]
+  },
+  "track_a": {
+    "label": "Study F",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "W1",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "W2",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "W3",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
+        "enabled": true
+      }
+    ]
+  },
+  "track_b": {
+    "label": "Study G",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "W1",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "W2",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "W3",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
+        "enabled": true
+      }
+    ]
+  },
+  "data_vispub": {
+    "label": "VisPub",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "2000-2004",
+        "dir": "2000-2004",
+        "enabled": true
+      },
+      {
+        "label": "2005-2009",
+        "dir": "2005-2009",
+        "enabled": true
+      },
+      {
+        "label": "2010-2014",
+        "dir": "2010-2014",
+        "enabled": true
+      },
+      {
+        "label": "2015-2019",
+        "dir": "2015-2019",
+        "enabled": true
+      }
+    ]
+  },
+  "un_voting": {
+    "label": "UN Voting (blocs)",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "1946\u201350",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "1951\u201355",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "1956\u201360",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "1961\u201365",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "1966\u201370",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "1971\u201375",
+        "dir": "s05",
+        "enabled": true
+      },
+      {
+        "label": "1976\u201380",
+        "dir": "s06",
+        "enabled": true
+      },
+      {
+        "label": "1981\u201385",
+        "dir": "s07",
+        "enabled": true
+      },
+      {
+        "label": "1986\u201390",
+        "dir": "s08",
+        "enabled": true
+      },
+      {
+        "label": "1991\u201395",
+        "dir": "s09",
+        "enabled": true
+      },
+      {
+        "label": "1996\u201300",
+        "dir": "s10",
+        "enabled": true
+      },
+      {
+        "label": "2001\u201305",
+        "dir": "s11",
+        "enabled": true
+      },
+      {
+        "label": "2006\u201310",
+        "dir": "s12",
+        "enabled": true
+      },
+      {
+        "label": "2011\u201315",
+        "dir": "s13",
+        "enabled": true
+      }
+    ]
+  }
+}
