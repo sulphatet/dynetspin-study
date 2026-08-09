@@ -536,7 +536,8 @@
         "dataset": "struct_a",
         "slice": "s00",
         "encoding": "local",
-        "highlightCommunity": 4
+        "highlightCommunity": 4,
+        "openOverview": true
       },
       "response": [
         {
@@ -576,7 +577,8 @@
         "dataset": "struct_b",
         "slice": "s00",
         "encoding": "local",
-        "highlightCommunity": 1
+        "highlightCommunity": 1,
+        "openOverview": false
       },
       "response": [
         {
@@ -780,7 +782,8 @@
         "dataset": "planted_a",
         "slice": "s02",
         "encoding": "local",
-        "highlightCommunity": 2
+        "highlightCommunity": 2,
+        "seedCohort": true
       },
       "response": [
         {
@@ -819,7 +822,8 @@
         "dataset": "planted_b",
         "slice": "s03",
         "encoding": "local",
-        "highlightCommunity": 2
+        "highlightCommunity": 2,
+        "seedCohort": false
       },
       "response": [
         {
