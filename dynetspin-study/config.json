@@ -17,6 +17,7 @@
     "helpTextPath": "dynetspin-study/assets/help.md",
     "logoPath": "revisitAssets/revisitLogoSquare.svg",
     "withProgressBar": true,
+    "showTitleBar": false,
     "autoDownloadStudy": true,
     "withSidebar": true,
     "sidebarWidth": 330,
@@ -24,10 +25,6 @@
     "trainingAttempts": 2
   },
   "studyRules": {
-    "display": {
-      "minWidth": 1100,
-      "minHeight": 620
-    },
     "devices": {
       "allowed": [
         "desktop"

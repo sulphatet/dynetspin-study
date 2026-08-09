@@ -30,7 +30,12 @@
   var root = document.documentElement;
   root.classList.add("study", "study-booting");
 
-  var MIN_W = 1100, MIN_H = 620;   // below this the 700x1200 hard-coded layout degrades
+  /* Advisory only — see study-mode.css. These are measured on the IFRAME, which
+     is already narrower than the browser window by reVISit's sidebar, so they
+     must be well below any window-level figure. Set low enough that a normal
+     laptop never sees the hint, and high enough that a genuinely cramped pane
+     still gets one. */
+  var HINT_W = 760, HINT_H = 480;
   var SETTLE_MS = 120;             // let a render finish before we touch it again
 
   var cfg = null;                  // the trial's `parameters` block
@@ -331,10 +336,29 @@
 
   /* ── viewport guard ────────────────────────────────────────────────────── */
 
+  var hintDismissed = false;
+
   function checkViewport() {
-    var small = window.innerWidth < MIN_W || window.innerHeight < MIN_H;
-    root.classList.toggle("study-viewport-too-small", small);
-    return !small;
+    if (hintDismissed) return true;
+    var tight = window.innerWidth < HINT_W || window.innerHeight < HINT_H;
+    root.classList.toggle("study-viewport-tight", tight);
+    return true;                       // never blocks: the layout scales
+  }
+
+  function wireViewportHint() {
+    var el = document.querySelector(".study-toosmall");
+    if (!el) return;
+    var btn = el.querySelector(".study-toosmall__close");
+    if (btn) {
+      btn.addEventListener("click", function () {
+        hintDismissed = true;
+        el.classList.add("study-dismissed");
+        evt("viewport_hint_dismissed", window.innerWidth + "x" + window.innerHeight);
+      });
+    }
+    // Record the pane size once per trial regardless — if a result turns out to
+    // depend on how much room people had, we want to be able to see that.
+    evt("viewport", window.innerWidth + "x" + window.innerHeight);
   }
 
   /* ── apply the condition ───────────────────────────────────────────────── */
@@ -363,6 +387,7 @@
     }
 
     checkViewport();
+    wireViewportHint();
     root.classList.remove("study-booting");
     t0 = Date.now();                                  // time on task starts now
     log = [];
