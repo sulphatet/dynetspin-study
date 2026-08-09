@@ -1,4 +1,30 @@
 {
+  "data_vispub": {
+    "label": "VisPub",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "2000-2004",
+        "dir": "2000-2004",
+        "enabled": true
+      },
+      {
+        "label": "2005-2009",
+        "dir": "2005-2009",
+        "enabled": true
+      },
+      {
+        "label": "2010-2014",
+        "dir": "2010-2014",
+        "enabled": true
+      },
+      {
+        "label": "2015-2019",
+        "dir": "2015-2019",
+        "enabled": true
+      }
+    ]
+  },
   "harry_potter": {
     "label": "Harry Potter",
     "enabled": true,
@@ -36,7 +62,7 @@
     ]
   },
   "planted_a": {
-    "label": "Study A",
+    "label": "Study planted-A",
     "enabled": true,
     "slices": [
       {
@@ -72,7 +98,7 @@
     ]
   },
   "planted_b": {
-    "label": "Study B",
+    "label": "Study planted-B",
     "enabled": true,
     "slices": [
       {
@@ -108,7 +134,331 @@
     ]
   },
   "planted_c": {
-    "label": "Study C",
+    "label": "Study planted-C",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "W1",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "W2",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "W3",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
+        "enabled": true
+      }
+    ]
+  },
+  "planted_d": {
+    "label": "Study planted-D",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "W1",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "W2",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "W3",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
+        "enabled": true
+      }
+    ]
+  },
+  "planted_e": {
+    "label": "Study planted-E",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "W1",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "W2",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "W3",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
+        "enabled": true
+      }
+    ]
+  },
+  "planted_f": {
+    "label": "Study planted-F",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "W1",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "W2",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "W3",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
+        "enabled": true
+      }
+    ]
+  },
+  "planted_g": {
+    "label": "Study planted-G",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "W1",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "W2",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "W3",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
+        "enabled": true
+      }
+    ]
+  },
+  "planted_h": {
+    "label": "Study planted-H",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "W1",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "W2",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "W3",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
+        "enabled": true
+      }
+    ]
+  },
+  "planted_i": {
+    "label": "Study planted-I",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "W1",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "W2",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "W3",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
+        "enabled": true
+      }
+    ]
+  },
+  "planted_j": {
+    "label": "Study planted-J",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "W1",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "W2",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "W3",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
+        "enabled": true
+      }
+    ]
+  },
+  "planted_k": {
+    "label": "Study planted-K",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "W1",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "W2",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "W3",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
+        "enabled": true
+      }
+    ]
+  },
+  "planted_l": {
+    "label": "Study planted-L",
     "enabled": true,
     "slices": [
       {
@@ -144,7 +494,7 @@
     ]
   },
   "struct_a": {
-    "label": "Study D",
+    "label": "Study struct-A",
     "enabled": true,
     "slices": [
       {
@@ -180,7 +530,79 @@
     ]
   },
   "struct_b": {
-    "label": "Study E",
+    "label": "Study struct-B",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "W1",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "W2",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "W3",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
+        "enabled": true
+      }
+    ]
+  },
+  "struct_c": {
+    "label": "Study struct-C",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "W1",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "W2",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "W3",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
+        "enabled": true
+      }
+    ]
+  },
+  "struct_d": {
+    "label": "Study struct-D",
     "enabled": true,
     "slices": [
       {
@@ -216,7 +638,7 @@
     ]
   },
   "track_a": {
-    "label": "Study F",
+    "label": "Study track-A",
     "enabled": true,
     "slices": [
       {
@@ -252,7 +674,7 @@
     ]
   },
   "track_b": {
-    "label": "Study G",
+    "label": "Study track-B",
     "enabled": true,
     "slices": [
       {
@@ -288,7 +710,7 @@
     ]
   },
   "track_c": {
-    "label": "Study H",
+    "label": "Study track-C",
     "enabled": true,
     "slices": [
       {
@@ -323,28 +745,182 @@
       }
     ]
   },
-  "data_vispub": {
-    "label": "VisPub",
+  "track_d": {
+    "label": "Study track-D",
     "enabled": true,
     "slices": [
       {
-        "label": "2000-2004",
-        "dir": "2000-2004",
+        "label": "W1",
+        "dir": "s00",
         "enabled": true
       },
       {
-        "label": "2005-2009",
-        "dir": "2005-2009",
+        "label": "W2",
+        "dir": "s01",
         "enabled": true
       },
       {
-        "label": "2010-2014",
-        "dir": "2010-2014",
+        "label": "W3",
+        "dir": "s02",
         "enabled": true
       },
       {
-        "label": "2015-2019",
-        "dir": "2015-2019",
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
+        "enabled": true
+      }
+    ]
+  },
+  "track_e": {
+    "label": "Study track-E",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "W1",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "W2",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "W3",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
+        "enabled": true
+      }
+    ]
+  },
+  "track_f": {
+    "label": "Study track-F",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "W1",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "W2",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "W3",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
+        "enabled": true
+      }
+    ]
+  },
+  "track_g": {
+    "label": "Study track-G",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "W1",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "W2",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "W3",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
+        "enabled": true
+      }
+    ]
+  },
+  "track_h": {
+    "label": "Study track-H",
+    "enabled": true,
+    "slices": [
+      {
+        "label": "W1",
+        "dir": "s00",
+        "enabled": true
+      },
+      {
+        "label": "W2",
+        "dir": "s01",
+        "enabled": true
+      },
+      {
+        "label": "W3",
+        "dir": "s02",
+        "enabled": true
+      },
+      {
+        "label": "W4",
+        "dir": "s03",
+        "enabled": true
+      },
+      {
+        "label": "W5",
+        "dir": "s04",
+        "enabled": true
+      },
+      {
+        "label": "W6",
+        "dir": "s05",
         "enabled": true
       }
     ]

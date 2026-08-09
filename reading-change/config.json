@@ -45,14 +45,14 @@
     }
   },
   "components": {
-    "A1-local": {
+    "A1-local-1": {
       "baseComponent": "dynetspin",
       "meta": {
         "block": "A",
         "task": "when",
         "condition": "local",
         "stimulus": "planted_a",
-        "correctAnswer": "W3 → W4"
+        "correctAnswer": "W2 → W3"
       },
       "description": "A/when — local on planted_a",
       "instruction": "Step through the weeks using the time rail on the left. **Between which two consecutive weeks did the largest number of people arrive and leave?**",
@@ -85,16 +85,16 @@
         }
       ]
     },
-    "A1-global": {
+    "A1-local-2": {
       "baseComponent": "dynetspin",
       "meta": {
         "block": "A",
         "task": "when",
-        "condition": "global",
+        "condition": "local",
         "stimulus": "planted_b",
-        "correctAnswer": "W4 → W5"
+        "correctAnswer": "W3 → W4"
       },
-      "description": "A/when — global on planted_b",
+      "description": "A/when — local on planted_b",
       "instruction": "Step through the weeks using the time rail on the left. **Between which two consecutive weeks did the largest number of people arrive and leave?**",
       "parameters": {
         "labels": false,
@@ -105,6 +105,46 @@
           "inspector": false
         },
         "dataset": "planted_b",
+        "slice": "s00",
+        "encoding": "local"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "W1 → W2",
+            "W2 → W3",
+            "W3 → W4",
+            "W4 → W5",
+            "W5 → W6"
+          ]
+        }
+      ]
+    },
+    "A1-global-1": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "A",
+        "task": "when",
+        "condition": "global",
+        "stimulus": "planted_c",
+        "correctAnswer": "W4 → W5"
+      },
+      "description": "A/when — global on planted_c",
+      "instruction": "Step through the weeks using the time rail on the left. **Between which two consecutive weeks did the largest number of people arrive and leave?**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "planted_c",
         "slice": "s00",
         "encoding": "global"
       },
@@ -125,16 +165,16 @@
         }
       ]
     },
-    "A1-degree": {
+    "A1-global-2": {
       "baseComponent": "dynetspin",
       "meta": {
         "block": "A",
         "task": "when",
-        "condition": "degree",
-        "stimulus": "planted_c",
-        "correctAnswer": "W2 → W3"
+        "condition": "global",
+        "stimulus": "planted_d",
+        "correctAnswer": "W5 → W6"
       },
-      "description": "A/when — degree on planted_c",
+      "description": "A/when — global on planted_d",
       "instruction": "Step through the weeks using the time rail on the left. **Between which two consecutive weeks did the largest number of people arrive and leave?**",
       "parameters": {
         "labels": false,
@@ -144,7 +184,47 @@
           "ego": false,
           "inspector": false
         },
-        "dataset": "planted_c",
+        "dataset": "planted_d",
+        "slice": "s00",
+        "encoding": "global"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "W1 → W2",
+            "W2 → W3",
+            "W3 → W4",
+            "W4 → W5",
+            "W5 → W6"
+          ]
+        }
+      ]
+    },
+    "A1-degree-1": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "A",
+        "task": "when",
+        "condition": "degree",
+        "stimulus": "planted_e",
+        "correctAnswer": "W2 → W3"
+      },
+      "description": "A/when — degree on planted_e",
+      "instruction": "Step through the weeks using the time rail on the left. **Between which two consecutive weeks did the largest number of people arrive and leave?**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "planted_e",
         "slice": "s00",
         "encoding": "degree"
       },
@@ -165,16 +245,56 @@
         }
       ]
     },
-    "A2-local": {
+    "A1-degree-2": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "A",
+        "task": "when",
+        "condition": "degree",
+        "stimulus": "planted_f",
+        "correctAnswer": "W3 → W4"
+      },
+      "description": "A/when — degree on planted_f",
+      "instruction": "Step through the weeks using the time rail on the left. **Between which two consecutive weeks did the largest number of people arrive and leave?**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "planted_f",
+        "slice": "s00",
+        "encoding": "degree"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "W1 → W2",
+            "W2 → W3",
+            "W3 → W4",
+            "W4 → W5",
+            "W5 → W6"
+          ]
+        }
+      ]
+    },
+    "A2-local-1": {
       "baseComponent": "dynetspin",
       "meta": {
         "block": "A",
         "task": "howmuch",
         "condition": "local",
-        "stimulus": "planted_a",
-        "correctAnswer": "Team_05"
+        "stimulus": "planted_g",
+        "correctAnswer": "Team_02"
       },
-      "description": "A/howmuch — local on planted_a",
+      "description": "A/howmuch — local on planted_g",
       "instruction": "Looking at the whole six weeks, **which team had the most member turnover overall** (the most people joining and leaving in total)?",
       "parameters": {
         "labels": true,
@@ -184,9 +304,87 @@
           "ego": false,
           "inspector": false
         },
-        "dataset": "planted_a",
+        "dataset": "planted_g",
         "slice": "s02",
         "encoding": "local"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "Team_02",
+            "Team_04",
+            "Team_05",
+            "Team_10"
+          ]
+        }
+      ]
+    },
+    "A2-local-2": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "A",
+        "task": "howmuch",
+        "condition": "local",
+        "stimulus": "planted_h",
+        "correctAnswer": "Team_05"
+      },
+      "description": "A/howmuch — local on planted_h",
+      "instruction": "Looking at the whole six weeks, **which team had the most member turnover overall** (the most people joining and leaving in total)?",
+      "parameters": {
+        "labels": true,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "planted_h",
+        "slice": "s02",
+        "encoding": "local"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "Team_00",
+            "Team_02",
+            "Team_05",
+            "Team_10"
+          ]
+        }
+      ]
+    },
+    "A2-global-1": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "A",
+        "task": "howmuch",
+        "condition": "global",
+        "stimulus": "planted_i",
+        "correctAnswer": "Team_02"
+      },
+      "description": "A/howmuch — global on planted_i",
+      "instruction": "Looking at the whole six weeks, **which team had the most member turnover overall** (the most people joining and leaving in total)?",
+      "parameters": {
+        "labels": true,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "planted_i",
+        "slice": "s02",
+        "encoding": "global"
       },
       "response": [
         {
@@ -204,16 +402,16 @@
         }
       ]
     },
-    "A2-global": {
+    "A2-global-2": {
       "baseComponent": "dynetspin",
       "meta": {
         "block": "A",
         "task": "howmuch",
         "condition": "global",
-        "stimulus": "planted_b",
+        "stimulus": "planted_j",
         "correctAnswer": "Team_02"
       },
-      "description": "A/howmuch — global on planted_b",
+      "description": "A/howmuch — global on planted_j",
       "instruction": "Looking at the whole six weeks, **which team had the most member turnover overall** (the most people joining and leaving in total)?",
       "parameters": {
         "labels": true,
@@ -223,7 +421,7 @@
           "ego": false,
           "inspector": false
         },
-        "dataset": "planted_b",
+        "dataset": "planted_j",
         "slice": "s02",
         "encoding": "global"
       },
@@ -235,15 +433,15 @@
           "type": "radio",
           "required": true,
           "options": [
-            "Team_01",
             "Team_02",
             "Team_05",
+            "Team_07",
             "Team_10"
           ]
         }
       ]
     },
-    "B-track-blended": {
+    "B-track-blended-1": {
       "baseComponent": "dynetspin",
       "meta": {
         "block": "B",
@@ -282,16 +480,16 @@
         }
       ]
     },
-    "B-track-size-only": {
+    "B-track-blended-2": {
       "baseComponent": "dynetspin",
       "meta": {
         "block": "B",
         "task": "track",
-        "condition": "size-only",
+        "condition": "blended",
         "stimulus": "track_b",
         "correctAnswer": "0"
       },
-      "description": "B/track — size-only on track_b",
+      "description": "B/track — blended on track_b",
       "instruction": "The outlined group is shown in **W2**. Move to **W4** and **click the group that holds most of the same people.**",
       "parameters": {
         "labels": false,
@@ -302,6 +500,45 @@
           "inspector": false
         },
         "dataset": "track_b",
+        "slice": "s01",
+        "encoding": "local",
+        "alpha": {
+          "mode": "pinned",
+          "value": 0.5
+        },
+        "highlightCommunity": 0,
+        "answerMode": "community"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Click a group in the visualization",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": true
+        }
+      ]
+    },
+    "B-track-size-only-1": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "B",
+        "task": "track",
+        "condition": "size-only",
+        "stimulus": "track_c",
+        "correctAnswer": "0"
+      },
+      "description": "B/track — size-only on track_c",
+      "instruction": "The outlined group is shown in **W2**. Move to **W4** and **click the group that holds most of the same people.**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "track_c",
         "slice": "s01",
         "encoding": "local",
         "alpha": {
@@ -321,16 +558,16 @@
         }
       ]
     },
-    "B-track-slider": {
+    "B-track-size-only-2": {
       "baseComponent": "dynetspin",
       "meta": {
         "block": "B",
         "task": "track",
-        "condition": "slider",
-        "stimulus": "track_c",
+        "condition": "size-only",
+        "stimulus": "track_d",
         "correctAnswer": "0"
       },
-      "description": "B/track — slider on track_c",
+      "description": "B/track — size-only on track_d",
       "instruction": "The outlined group is shown in **W2**. Move to **W4** and **click the group that holds most of the same people.**",
       "parameters": {
         "labels": false,
@@ -340,7 +577,85 @@
           "ego": false,
           "inspector": false
         },
-        "dataset": "track_c",
+        "dataset": "track_d",
+        "slice": "s01",
+        "encoding": "local",
+        "alpha": {
+          "mode": "pinned",
+          "value": 1.0
+        },
+        "highlightCommunity": 0,
+        "answerMode": "community"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Click a group in the visualization",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": true
+        }
+      ]
+    },
+    "B-track-slider-1": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "B",
+        "task": "track",
+        "condition": "slider",
+        "stimulus": "track_e",
+        "correctAnswer": "0"
+      },
+      "description": "B/track — slider on track_e",
+      "instruction": "The outlined group is shown in **W2**. Move to **W4** and **click the group that holds most of the same people.**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "track_e",
+        "slice": "s01",
+        "encoding": "local",
+        "alpha": {
+          "mode": "slider",
+          "start": 0.5
+        },
+        "highlightCommunity": 0,
+        "answerMode": "community"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Click a group in the visualization",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": true
+        }
+      ]
+    },
+    "B-track-slider-2": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "B",
+        "task": "track",
+        "condition": "slider",
+        "stimulus": "track_f",
+        "correctAnswer": "0"
+      },
+      "description": "B/track — slider on track_f",
+      "instruction": "The outlined group is shown in **W2**. Move to **W4** and **click the group that holds most of the same people.**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "track_f",
         "slice": "s01",
         "encoding": "local",
         "alpha": {
@@ -366,10 +681,10 @@
         "block": "B",
         "task": "size",
         "condition": "blended",
-        "stimulus": "track_a",
+        "stimulus": "track_g",
         "correctAnswer": "5"
       },
-      "description": "B/size — blended on track_a",
+      "description": "B/size — blended on track_g",
       "instruction": "**Which group is the largest** in the week shown?",
       "parameters": {
         "labels": false,
@@ -379,7 +694,7 @@
           "ego": false,
           "inspector": false
         },
-        "dataset": "track_a",
+        "dataset": "track_g",
         "slice": "s02",
         "encoding": "local",
         "alpha": {
@@ -404,10 +719,10 @@
         "block": "B",
         "task": "size",
         "condition": "size-only",
-        "stimulus": "track_b",
-        "correctAnswer": "3"
+        "stimulus": "track_h",
+        "correctAnswer": "1"
       },
-      "description": "B/size — size-only on track_b",
+      "description": "B/size — size-only on track_h",
       "instruction": "**Which group is the largest** in the week shown?",
       "parameters": {
         "labels": false,
@@ -417,7 +732,7 @@
           "ego": false,
           "inspector": false
         },
-        "dataset": "track_b",
+        "dataset": "track_h",
         "slice": "s02",
         "encoding": "local",
         "alpha": {
@@ -514,7 +829,7 @@
         }
       ]
     },
-    "C-fate-overview": {
+    "C-fate-overview-1": {
       "baseComponent": "dynetspin",
       "meta": {
         "block": "C",
@@ -555,7 +870,48 @@
         }
       ]
     },
-    "C-fate-no-overview": {
+    "C-fate-overview-2": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "C",
+        "task": "fate",
+        "condition": "overview",
+        "stimulus": "struct_c",
+        "correctAnswer": "merged"
+      },
+      "description": "C/fate — overview on struct_c",
+      "instruction": "The outlined group is shown in **W1**. By **W6**, what happened to it?",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": true,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "struct_c",
+        "slice": "s00",
+        "encoding": "local",
+        "highlightCommunity": 5,
+        "openOverview": true
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "persisted",
+            "split",
+            "merged",
+            "dissolved"
+          ]
+        }
+      ]
+    },
+    "C-fate-no-overview-1": {
       "baseComponent": "dynetspin",
       "meta": {
         "block": "C",
@@ -578,6 +934,47 @@
         "slice": "s00",
         "encoding": "local",
         "highlightCommunity": 1,
+        "openOverview": false
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "persisted",
+            "split",
+            "merged",
+            "dissolved"
+          ]
+        }
+      ]
+    },
+    "C-fate-no-overview-2": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "C",
+        "task": "fate",
+        "condition": "no-overview",
+        "stimulus": "struct_d",
+        "correctAnswer": "merged"
+      },
+      "description": "C/fate — no-overview on struct_d",
+      "instruction": "The outlined group is shown in **W1**. By **W6**, what happened to it?",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "struct_d",
+        "slice": "s00",
+        "encoding": "local",
+        "highlightCommunity": 4,
         "openOverview": false
       },
       "response": [
@@ -756,11 +1153,11 @@
         "block": "E",
         "task": "survive",
         "condition": "cohort",
-        "stimulus": "planted_a",
-        "correctAnswer": "15–29 of 58"
+        "stimulus": "planted_k",
+        "correctAnswer": "17–32 of 64"
       },
-      "description": "E/survive — cohort on planted_a",
-      "instruction": "The outlined group has **58 members** in **W3**. Move to **W4**. **How many of them are still present?**",
+      "description": "E/survive — cohort on planted_k",
+      "instruction": "The outlined group has **64 members** in **W4**. Move to **W5**. **How many of them are still present?**",
       "parameters": {
         "labels": false,
         "widgets": {
@@ -769,8 +1166,8 @@
           "ego": false,
           "inspector": true
         },
-        "dataset": "planted_a",
-        "slice": "s02",
+        "dataset": "planted_k",
+        "slice": "s03",
         "encoding": "local",
         "highlightCommunity": 2,
         "seedCohort": true
@@ -783,10 +1180,10 @@
           "type": "radio",
           "required": true,
           "options": [
-            "0–14 of 58",
-            "15–29 of 58",
-            "30–44 of 58",
-            "45–58 of 58"
+            "0–16 of 64",
+            "17–32 of 64",
+            "33–48 of 64",
+            "49–64 of 64"
           ]
         }
       ]
@@ -797,11 +1194,11 @@
         "block": "E",
         "task": "survive",
         "condition": "no-cohort",
-        "stimulus": "planted_b",
-        "correctAnswer": "17–32 of 65"
+        "stimulus": "planted_l",
+        "correctAnswer": "13–23 of 46"
       },
-      "description": "E/survive — no-cohort on planted_b",
-      "instruction": "The outlined group has **65 members** in **W4**. Move to **W5**. **How many of them are still present?**",
+      "description": "E/survive — no-cohort on planted_l",
+      "instruction": "The outlined group has **46 members** in **W5**. Move to **W6**. **How many of them are still present?**",
       "parameters": {
         "labels": false,
         "widgets": {
@@ -810,8 +1207,8 @@
           "ego": false,
           "inspector": false
         },
-        "dataset": "planted_b",
-        "slice": "s03",
+        "dataset": "planted_l",
+        "slice": "s04",
         "encoding": "local",
         "highlightCommunity": 2,
         "seedCohort": false
@@ -824,10 +1221,10 @@
           "type": "radio",
           "required": true,
           "options": [
-            "0–16 of 65",
-            "17–32 of 65",
-            "33–49 of 65",
-            "50–65 of 65"
+            "0–12 of 46",
+            "13–23 of 46",
+            "24–34 of 46",
+            "35–46 of 46"
           ]
         }
       ]
@@ -1132,19 +1529,27 @@
           {
             "order": "latinSquare",
             "components": [
-              "A1-local",
-              "A1-global",
-              "A1-degree",
-              "A2-local",
-              "A2-global"
+              "A1-local-1",
+              "A1-local-2",
+              "A1-global-1",
+              "A1-global-2",
+              "A1-degree-1",
+              "A1-degree-2",
+              "A2-local-1",
+              "A2-local-2",
+              "A2-global-1",
+              "A2-global-2"
             ]
           },
           {
             "order": "latinSquare",
             "components": [
-              "B-track-blended",
-              "B-track-size-only",
-              "B-track-slider",
+              "B-track-blended-1",
+              "B-track-blended-2",
+              "B-track-size-only-1",
+              "B-track-size-only-2",
+              "B-track-slider-1",
+              "B-track-slider-2",
               "B-size-blended",
               "B-size-size-only",
               "B-real-blended",
@@ -1154,8 +1559,10 @@
           {
             "order": "latinSquare",
             "components": [
-              "C-fate-overview",
-              "C-fate-no-overview",
+              "C-fate-overview-1",
+              "C-fate-overview-2",
+              "C-fate-no-overview-1",
+              "C-fate-no-overview-2",
               "C-wedge-overview",
               "C-wedge-no-overview"
             ]
