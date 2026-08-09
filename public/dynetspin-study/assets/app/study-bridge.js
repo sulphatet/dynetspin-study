@@ -218,6 +218,45 @@
     }
   }
 
+  /* Put the condition's widget into its ACTIVE state, not merely its available
+     one.
+
+     Both of these are toggles: the overview opens on a button press, and the
+     Cohort Tracker fills only once a community is clicked. Leaving them idle
+     makes the manipulation "was the control discoverable", not "does the
+     control help" — a participant who never presses the button experiences the
+     withheld condition, and a null result becomes uninterpretable. Since the
+     claim under test is about the view itself, the view is opened for them.
+     `overview_close` and `cohort_add` stay instrumented, so opting back out is
+     still visible in the trace. */
+  function activateWidgets() {
+    if (!cfg) return;
+
+    if (cfg.openOverview && window.CommunityEvolution &&
+        typeof window.CommunityEvolution.open === "function") {
+      try {
+        window.CommunityEvolution.open();
+        evt("overview_open", "auto");
+      } catch (e) { console.error("[study] could not open overview", e); }
+    }
+
+    if (cfg.seedCohort && cfg.highlightCommunity !== undefined) {
+      var snap = window.__realSnapshotCommunityCohort || window.snapshotCommunityCohort;
+      if (typeof snap === "function" && typeof global_data !== "undefined") {
+        var ids = global_data
+          .filter(function (d) { return d && +d.community === +cfg.highlightCommunity; })
+          .map(function (d) { return +d.node; });
+        if (ids.length) {
+          try {
+            snap(null, { nodeIds: ids, id: cfg.highlightCommunity,
+                         label: "Tracked group" });
+            evt("cohort_add", "auto:" + cfg.highlightCommunity);
+          } catch (e) { console.error("[study] could not seed cohort", e); }
+        }
+      }
+    }
+  }
+
   /* Highlight the prompt's target. Deliberately NOT the Cohort Tracker — this
      is a plain stroke that dies on the next slice change, so "which group holds
      these people now" stays a question the participant has to answer. */
@@ -378,6 +417,7 @@
 
       await sleep(SETTLE_MS);
       applyHighlight();
+      activateWidgets();
 
       if (window.SpinTrixMainZoom && window.SpinTrixMainZoom.fitAll) {
         window.SpinTrixMainZoom.fitAll(0);
