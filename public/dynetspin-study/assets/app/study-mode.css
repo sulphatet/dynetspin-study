@@ -1,0 +1,126 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   study-mode.css — chrome suppression for the controlled study.
+
+   Everything here is driven by classes that study-bridge.js puts on <html>.
+   The dashboard's own stylesheets are untouched, so removing this file (and
+   the bridge) restores the normal tool exactly.
+
+   The principle: a participant must not be able to change the independent
+   variable. Anything that alters encoding, ordering, dataset, or filtering is
+   removed from the DOM's flow (display:none, not visibility:hidden) so it
+   cannot be tabbed to, clicked, or read by a screen reader either.
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* Held until the bridge has applied the condition, so the participant never
+   sees the default dataset flash past before the real stimulus loads. */
+html.study-booting .stage { visibility: hidden; }
+
+html.study-booting::after {
+  content: "Loading…";
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 500 14px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #6b7280;
+  background: #fff;
+  z-index: 9999;
+}
+
+/* ── always hidden in a study trial ──────────────────────────────────────── */
+/* Sidebar carries the dataset picker, the three ranking buttons, the degree
+   and volatility filters, and find-node. Every one of them is an IV. */
+html.study #sidebar,
+html.study .chrome-toggle,
+html.study .chrome-brand,
+html.study #statusFloat {
+  display: none !important;
+}
+
+/* The encoding bar holds four groups: colour, alpha, labels, overview toggle.
+   Two of them are legitimate per-condition controls (alpha in Block B, the
+   overview toggle in Block C), so the bar cannot simply be hidden — doing that
+   also hid #evoToggle and made Block C's "overview available" condition
+   unusable. Hide the GROUPS instead and let the bridge re-tag the ones a
+   condition allows. */
+html.study #encodingBar > * { display: none !important; }
+html.study #encodingBar {
+  display: flex !important;
+  justify-content: center;
+  gap: 0.75rem;
+  pointer-events: none;          /* the bar itself is not a target ... */
+}
+html.study #encodingBar > .study-allow {
+  display: flex !important;
+  pointer-events: auto;          /* ... only the groups we re-enable */
+}
+/* Nothing allowed => an empty strip; collapse it so it takes no space. */
+html.study #encodingBar:not(:has(> .study-allow)) { display: none !important; }
+
+/* Reclaim the space the sidebar occupied. design-system.css offsets .stage for
+   it via body.sidebar-collapsed; we go further and zero the offset outright. */
+html.study body { padding-left: 0 !important; }
+html.study .stage { left: 0 !important; width: 100% !important; }
+
+/* ── per-condition widgets ───────────────────────────────────────────────── */
+html.study:not(.study-inspector) #inspectorFloat { display: none !important; }
+html.study:not(.study-cohort)    #cohortFloat    { display: none !important; }
+
+/* The overview must be genuinely unreachable when withheld, not merely
+   invisible — Block C's whole result depends on it. The bridge additionally
+   stubs CommunityEvolution.open(); this is the visual half. */
+html.study:not(.study-overview) #evoToggle,
+html.study:not(.study-overview) #communityEvolution {
+  display: none !important;
+}
+
+/* Inspector sections are shown one at a time: Block D needs the Ego Spiral
+   without the node-history and micro-topology panels competing for attention. */
+html.study.study-inspector .inspector-section { display: none !important; }
+html.study.study-inspector.study-ego     #egoSpiralSection,
+html.study.study-inspector.study-overview #overviewInspectorSection {
+  display: block !important;
+}
+
+/* ── Block B: the alpha slider ───────────────────────────────────────────── */
+/* The Pareto badge names our auto-selected value. Showing it would anchor the
+   participant to our suggestion, which is precisely the thing Block B must not
+   do — the question is which alpha THEY choose. */
+html.study.study-alpha #paretoLabel,
+html.study.study-alpha #paretoInfo,
+html.study.study-alpha #alphaHint,
+html.study.study-alpha .info-tooltip {
+  display: none !important;
+}
+
+/* ── labels ──────────────────────────────────────────────────────────────── */
+/* Community labels are ground truth in the planted datasets ("Team_02"), so
+   they are off unless a trial explicitly asks for them. */
+html.study:not(.study-labels) .community-label { display: none !important; }
+
+/* ── highlight for "this group" / "this person" prompts ──────────────────── */
+/* Deliberately NOT the Cohort Tracker: that persists across slices and would
+   hand Block B its answer. This is a plain stroke, cleared on slice change. */
+html.study circle.study-highlight {
+  stroke: #111 !important;
+  stroke-width: 2px !important;
+  paint-order: stroke;
+}
+html.study circle.study-highlight-dim { opacity: 0.25 !important; }
+
+/* ── keep the canvas usable inside a reVISit iframe ──────────────────────── */
+html.study, html.study body { overflow: hidden; margin: 0; }
+html.study .stage { height: 100vh !important; }
+
+/* Too-small viewport: the layout hard-codes 700x1200 in the ranking functions,
+   so a narrow window silently degrades rather than failing loudly. */
+html.study .study-toosmall {
+  position: fixed; inset: 0; z-index: 10000;
+  display: none; align-items: center; justify-content: center;
+  padding: 2rem; text-align: center; background: #fff;
+  font: 500 15px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #b91c1c;
+}
+html.study.study-viewport-too-small .study-toosmall { display: flex; }
+html.study.study-viewport-too-small .stage { visibility: hidden; }
