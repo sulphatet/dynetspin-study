@@ -1,11 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/revisit-studies/study/v2.4.3/src/parser/GlobalConfigSchema.json",
   "configsList": [
-    "dynetspin-study"
+    "reading-change"
   ],
   "configs": {
-    "dynetspin-study": {
-      "path": "dynetspin-study/config.json"
+    "reading-change": {
+      "path": "reading-change/config.json"
     }
   }
 }

@@ -14,7 +14,7 @@
   },
   "uiConfig": {
     "contactEmail": "saffand03@gmail.com",
-    "helpTextPath": "dynetspin-study/assets/help.md",
+    "helpTextPath": "reading-change/assets/help.md",
     "logoPath": "revisitAssets/revisitLogoSquare.svg",
     "withProgressBar": true,
     "showTitleBar": false,
@@ -38,7 +38,7 @@
   "baseComponents": {
     "dynetspin": {
       "type": "website",
-      "path": "dynetspin-study/assets/app/index.html",
+      "path": "reading-change/assets/app/index.html",
       "instructionLocation": "sidebar",
       "nextButtonLocation": "sidebar",
       "response": []
@@ -832,12 +832,12 @@
     },
     "introduction": {
       "type": "markdown",
-      "path": "dynetspin-study/assets/introduction.md",
+      "path": "reading-change/assets/introduction.md",
       "response": []
     },
     "consent": {
       "type": "markdown",
-      "path": "dynetspin-study/assets/consent.md",
+      "path": "reading-change/assets/consent.md",
       "nextButtonText": "I agree",
       "response": [
         {
@@ -941,22 +941,22 @@
     },
     "training-spiral": {
       "type": "markdown",
-      "path": "dynetspin-study/assets/training-spiral.md",
+      "path": "reading-change/assets/training-spiral.md",
       "response": []
     },
     "training-time": {
       "type": "markdown",
-      "path": "dynetspin-study/assets/training-time.md",
+      "path": "reading-change/assets/training-time.md",
       "response": []
     },
     "training-colour": {
       "type": "markdown",
-      "path": "dynetspin-study/assets/training-colour.md",
+      "path": "reading-change/assets/training-colour.md",
       "response": []
     },
     "training-check": {
       "type": "website",
-      "path": "dynetspin-study/assets/app/index.html",
+      "path": "reading-change/assets/app/index.html",
       "instruction": "Before we start: **which week is currently shown?** Use the time rail on the left.",
       "instructionLocation": "sidebar",
       "nextButtonLocation": "sidebar",
@@ -1000,12 +1000,12 @@
     },
     "insight-intro": {
       "type": "markdown",
-      "path": "dynetspin-study/assets/insight-intro.md",
+      "path": "reading-change/assets/insight-intro.md",
       "response": []
     },
     "insight": {
       "type": "website",
-      "path": "dynetspin-study/assets/app/index.html",
+      "path": "reading-change/assets/app/index.html",
       "description": "Open-ended sensemaking on real data; scored by insight coding, not by a key.",
       "meta": {
         "block": "INSIGHT",
@@ -1110,7 +1110,7 @@
     },
     "debrief": {
       "type": "markdown",
-      "path": "dynetspin-study/assets/debrief.md",
+      "path": "reading-change/assets/debrief.md",
       "response": []
     }
   },
