@@ -31,12 +31,26 @@ html.study-booting::after {
 /* ── always hidden in a study trial ──────────────────────────────────────── */
 /* Sidebar carries the dataset picker, the three ranking buttons, the degree
    and volatility filters, and find-node. Every one of them is an IV. */
-html.study #sidebar,
 html.study .chrome-toggle,
-html.study .chrome-brand,
-html.study #statusFloat {
+html.study .chrome-brand {
   display: none !important;
 }
+
+/* The dashboard sidebar carries the dataset picker, the ranking buttons and the
+   filters — every one of them an independent variable. Hidden unless a trial
+   explicitly asks for it, which only the open-ended insight step does. */
+html.study:not(.study-dashboard) #sidebar { display: none !important; }
+html.study.study-dashboard main { left: var(--sidebar-width) !important; }
+
+/* Even when the sidebar is allowed, the DATASET picker stays out: the insight
+   task asks about one specific dataset, and wandering to another would leave
+   the written observations unattributable. */
+html.study.study-dashboard #dataset-options { display: none !important; }
+
+/* Legend + colour key. Hidden by default so a trial cannot accidentally show a
+   key that names the encoding under test, shown when `legend` is set — which
+   every stimulus needs, because a colour ramp with no key is unreadable. */
+html.study:not(.study-legend) #statusFloat { display: none !important; }
 
 /* The encoding bar holds four groups: colour, alpha, labels, overview toggle.
    Two of them are legitimate per-condition controls (alpha in Block B, the
@@ -58,9 +72,12 @@ html.study #encodingBar > .study-allow {
 /* Nothing allowed => an empty strip; collapse it so it takes no space. */
 html.study #encodingBar:not(:has(> .study-allow)) { display: none !important; }
 
-/* Reclaim the space the sidebar occupied. design-system.css offsets .stage for
-   it via body.sidebar-collapsed; we go further and zero the offset outright. */
-html.study body { padding-left: 0 !important; }
+/* Reclaim the space the sidebar occupied. The offset lives on MAIN
+   (design-system.css:199 `main { left: var(--sidebar-width) }`), not on body or
+   .stage — zeroing only those left a 244px grey gutter where the hidden sidebar
+   used to be. */
+html.study body  { padding-left: 0 !important; }
+html.study main  { left: 0 !important; }
 html.study .stage { left: 0 !important; width: 100% !important; }
 
 /* ── per-condition widgets ───────────────────────────────────────────────── */

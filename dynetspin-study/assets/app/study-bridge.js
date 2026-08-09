@@ -341,7 +341,21 @@
     if (typeof window.snapshotCommunityCohort === "function") {
       var realSnap = window.snapshotCommunityCohort;
       window.snapshotCommunityCohort = function (d, opts) {
-        if (applied) evt("cohort_add", (opts && opts.id) || (d && d.community));
+        var id = (opts && opts.id) || (d && d.community);
+        if (applied) evt("cohort_add", id);
+        /* Picking a community INSIDE the overview does not go through the
+           chart's click handler — communityEvolution.js routes it to
+           snapshotCommunityCohort with id "evo<sliceLabel>#<community>"
+           (and, when the pick is on another ring, only after it has switched
+           slices). Wrapping here therefore catches both paths. */
+        if (applied && cfg && cfg.answerMode === "overviewCommunity" &&
+            typeof id === "string" && id.indexOf("evo") === 0) {
+          var m = /^evo(.*)#(\d+)$/.exec(id);
+          if (m) {
+            evt("answer_submit", id);
+            postAnswer({ answer: m[2], answerSlice: m[1] });
+          }
+        }
         return realSnap.apply(this, arguments);
       };
     }
@@ -411,6 +425,12 @@
       await selectSlice(cfg.slice);
 
       if (cfg.labels) root.classList.add("study-labels");
+    // A colour ramp with no key is unreadable, and even the categorical scheme
+    // needs naming. On by default: a trial must opt OUT, not remember to opt in.
+    if (cfg.legend !== false) root.classList.add("study-legend");
+    // The dashboard's own sidebar (datasets, ranking, filters) — every control
+    // in it is an IV, so only the open-ended insight step asks for it.
+    if (cfg.dashboardSidebar) root.classList.add("study-dashboard");
       applyWidgets(cfg.widgets);
       if (cfg.encoding) applyEncoding(cfg.encoding);
       applyAlpha(cfg.alpha);
