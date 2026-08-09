@@ -126,6 +126,14 @@ html.study circle.study-highlight {
 }
 html.study circle.study-highlight-dim { opacity: 0.25 !important; }
 
+/* The same group, marked inside the overview on every ring. Uses a ring rather
+   than a fill change so the node's temporal-state colour still reads. */
+html.study .evo-dot.study-evo-highlight {
+  stroke: #111 !important;
+  stroke-width: 1.2px !important;
+  paint-order: stroke;
+}
+
 /* ── keep the canvas usable inside a reVISit iframe ──────────────────────── */
 html.study, html.study body { overflow: hidden; margin: 0; }
 html.study .stage { height: 100vh !important; }
