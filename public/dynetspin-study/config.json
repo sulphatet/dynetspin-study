@@ -596,6 +596,76 @@
         }
       ]
     },
+    "C-wedge-overview": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "C",
+        "task": "wedge",
+        "condition": "overview",
+        "stimulus": "un_voting@1981–85@US-aligned",
+        "correctAnswer": "0"
+      },
+      "description": "C/wedge — overview on un_voting@1981–85@US-aligned",
+      "instruction": "The overview shows every period at once, oldest in the middle. Find the ring for **1981–85**, then **click the **US-aligned** bloc**.",
+      "parameters": {
+        "labels": true,
+        "widgets": {
+          "overview": true,
+          "cohort": false,
+          "ego": false,
+          "inspector": true
+        },
+        "dataset": "un_voting",
+        "slice": "1981–85",
+        "encoding": "local",
+        "openOverview": true,
+        "answerMode": "overviewCommunity"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Click a bloc",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": true
+        }
+      ]
+    },
+    "C-wedge-no-overview": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "C",
+        "task": "wedge",
+        "condition": "no-overview",
+        "stimulus": "un_voting@1981–85@Russia/USSR-aligned",
+        "correctAnswer": "6"
+      },
+      "description": "C/wedge — no-overview on un_voting@1981–85@Russia/USSR-aligned",
+      "instruction": "Use the time rail to reach **1981–85**, then **click the **Russia/USSR-aligned** bloc**.",
+      "parameters": {
+        "labels": true,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "un_voting",
+        "slice": "1981–85",
+        "encoding": "local",
+        "openOverview": false,
+        "answerMode": "community"
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Click a bloc",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": true
+        }
+      ]
+    },
     "D-bridge-ego-0": {
       "baseComponent": "dynetspin",
       "meta": {
@@ -637,48 +707,7 @@
         }
       ]
     },
-    "D-internal-no-ego-1": {
-      "baseComponent": "dynetspin",
-      "meta": {
-        "block": "D",
-        "task": "bridge",
-        "condition": "no-ego",
-        "stimulus": "data_vispub@2005-2009",
-        "correctAnswer": "Mostly inside their own group"
-      },
-      "description": "D/bridge — no-ego on data_vispub@2005-2009",
-      "instruction": "The outlined researcher is highlighted. **Are most of the people they work with inside their own group, or spread across other groups?**",
-      "parameters": {
-        "labels": false,
-        "widgets": {
-          "overview": false,
-          "cohort": false,
-          "ego": false,
-          "inspector": false
-        },
-        "dataset": "data_vispub",
-        "slice": "2005-2009",
-        "encoding": "local",
-        "highlightNodes": [
-          4571
-        ],
-        "dimOthers": true
-      },
-      "response": [
-        {
-          "id": "answer",
-          "prompt": "Your answer:",
-          "location": "sidebar",
-          "type": "radio",
-          "required": true,
-          "options": [
-            "Mostly inside their own group",
-            "Spread across several other groups"
-          ]
-        }
-      ]
-    },
-    "D-bridge-no-ego-2": {
+    "D-bridge-no-ego-1": {
       "baseComponent": "dynetspin",
       "meta": {
         "block": "D",
@@ -702,47 +731,6 @@
         "encoding": "local",
         "highlightNodes": [
           3787
-        ],
-        "dimOthers": true
-      },
-      "response": [
-        {
-          "id": "answer",
-          "prompt": "Your answer:",
-          "location": "sidebar",
-          "type": "radio",
-          "required": true,
-          "options": [
-            "Mostly inside their own group",
-            "Spread across several other groups"
-          ]
-        }
-      ]
-    },
-    "D-internal-ego-3": {
-      "baseComponent": "dynetspin",
-      "meta": {
-        "block": "D",
-        "task": "bridge",
-        "condition": "ego",
-        "stimulus": "data_vispub@2015-2019",
-        "correctAnswer": "Mostly inside their own group"
-      },
-      "description": "D/bridge — ego on data_vispub@2015-2019",
-      "instruction": "The outlined researcher is highlighted. **Are most of the people they work with inside their own group, or spread across other groups?**",
-      "parameters": {
-        "labels": false,
-        "widgets": {
-          "overview": false,
-          "cohort": false,
-          "ego": true,
-          "inspector": true
-        },
-        "dataset": "data_vispub",
-        "slice": "2015-2019",
-        "encoding": "local",
-        "highlightNodes": [
-          2346
         ],
         "dimOthers": true
       },
@@ -1037,6 +1025,7 @@
           "mode": "slider",
           "start": 0.5
         },
+        "dashboardSidebar": true,
         "widgets": {
           "overview": true,
           "cohort": true,
@@ -1162,16 +1151,16 @@
             "order": "latinSquare",
             "components": [
               "C-fate-overview",
-              "C-fate-no-overview"
+              "C-fate-no-overview",
+              "C-wedge-overview",
+              "C-wedge-no-overview"
             ]
           },
           {
             "order": "latinSquare",
             "components": [
               "D-bridge-ego-0",
-              "D-internal-no-ego-1",
-              "D-bridge-no-ego-2",
-              "D-internal-ego-3"
+              "D-bridge-no-ego-1"
             ]
           },
           {
