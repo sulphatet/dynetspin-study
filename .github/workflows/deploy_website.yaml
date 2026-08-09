@@ -1,0 +1,45 @@
+name: Deploy To GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy-main:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
+    if: ${{ github.ref == 'refs/heads/main' }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          cache: 'yarn'
+
+      - run: yarn install --immutable
+
+      # If on main without env vars, build with .env file
+      - name: Build with .env file
+        if: ${{ vars.VITE_STORAGE_ENGINE == '' }}
+        run: yarn build
+
+      # If on main with env vars, build with github environment variables
+      - name: Build with github environment variables
+        if: ${{ vars.VITE_STORAGE_ENGINE != '' }}
+        run: VITE_STORAGE_ENGINE=$VITE_STORAGE_ENGINE yarn build
+        env:
+          VITE_STORAGE_ENGINE: ${{ vars.VITE_STORAGE_ENGINE }}
+
+      - uses: peaceiris/actions-gh-pages@v3
+        name: Deploy
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist

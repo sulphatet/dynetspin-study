@@ -1,0 +1,19 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "src/parser/types.ts"
+  ],
+  "plugin": [
+    "typedoc-plugin-markdown",
+  ],
+  "name": "Modules",
+  "githubPages": false,
+  "readme": "typedocReadMe.md",
+  "entryFileName": "index.md",
+  "hideBreadcrumbs": true,
+  "textContentMappings": {
+    "title.memberPage": "{name}"
+  },
+  "hidePageHeader": true,
+  "propertiesFormat": "table"
+}
