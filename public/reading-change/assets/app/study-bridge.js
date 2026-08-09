@@ -38,6 +38,18 @@
   var HINT_W = 760, HINT_H = 480;
   var SETTLE_MS = 120;             // let a render finish before we touch it again
 
+  /* Pointer track. reVISit records mousemove itself (StepRenderer.tsx attaches
+     the listener to `window`), but the stimulus is an IFRAME and pointer events
+     do not cross that boundary — so its track covers the sidebar and buttons
+     and stops at the edge of the visualization, which is the only region worth
+     having. We record inside the frame and ship it with the answer.
+
+     Sampled, not raw: at 120 ms a 90-second trial is ~750 points, a few KB.
+     CAP bounds the worst case so one long trial cannot bloat a participant's
+     record. */
+  var POINTER_MS = 120, POINTER_CAP = 2000;
+  var pointer = [];
+
   var cfg = null;                  // the trial's `parameters` block
   var appReady = false;            // the tool has rendered at least one slice
   var applied = false;             // guard: apply the condition exactly once
@@ -75,6 +87,10 @@
       alphaSettled: alphaVals.length ? alphaVals[alphaVals.length - 1] : null,
       alphaPath: alphaVals,
       durationMs: Date.now() - t0,
+      // [ms since trial start, x, y] inside the stimulus frame
+      pointerTrack: pointer,
+      pointerSamples: pointer.length,
+      pointerTruncated: pointer.length >= POINTER_CAP,
       trace: log
     };
   }
@@ -409,6 +425,17 @@
       };
     }
 
+    // Pointer position inside the frame — see POINTER_MS above for why this
+    // cannot be left to reVISit.
+    var lastPt = 0;
+    document.addEventListener("mousemove", function (e) {
+      if (!applied || pointer.length >= POINTER_CAP) return;
+      var now = Date.now();
+      if (now - lastPt < POINTER_MS) return;
+      lastPt = now;
+      pointer.push([now - t0, Math.round(e.clientX), Math.round(e.clientY)]);
+    }, { passive: true });
+
     // Shift-click a slice button enters presence-partition compare mode
     // (BarChartPopulator.js:301). That silently changes the visualization
     // mid-trial, so swallow it before it reaches the app's own listener.
@@ -500,6 +527,7 @@
     root.classList.remove("study-booting");
     t0 = Date.now();                                  // time on task starts now
     log = [];
+    pointer = [];
     evt("trial_start", cfg.dataset + "/" + (cfg.slice || "?"));
 
     if (window.Revisit && Revisit.postReady) Revisit.postReady();
