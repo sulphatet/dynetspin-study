@@ -18,7 +18,7 @@
     "logoPath": "revisitAssets/revisitLogoSquare.svg",
     "withProgressBar": true,
     "showTitleBar": false,
-    "autoDownloadStudy": true,
+    "autoDownloadStudy": false,
     "withSidebar": true,
     "sidebarWidth": 330,
     "urlParticipantIdParam": "PROLIFIC_PID",
@@ -51,50 +51,10 @@
         "block": "A",
         "task": "when",
         "condition": "local",
-        "stimulus": "planted_a",
-        "correctAnswer": "W2 → W3"
-      },
-      "description": "A/when — local on planted_a",
-      "instruction": "Step through the weeks using the time rail on the left. **Between which two consecutive weeks did the largest number of people arrive and leave?**",
-      "parameters": {
-        "labels": false,
-        "widgets": {
-          "overview": false,
-          "cohort": false,
-          "ego": false,
-          "inspector": false
-        },
-        "dataset": "planted_a",
-        "slice": "s00",
-        "encoding": "local"
-      },
-      "response": [
-        {
-          "id": "answer",
-          "prompt": "Your answer:",
-          "location": "sidebar",
-          "type": "radio",
-          "required": true,
-          "options": [
-            "W1 → W2",
-            "W2 → W3",
-            "W3 → W4",
-            "W4 → W5",
-            "W5 → W6"
-          ]
-        }
-      ]
-    },
-    "A1-local-2": {
-      "baseComponent": "dynetspin",
-      "meta": {
-        "block": "A",
-        "task": "when",
-        "condition": "local",
-        "stimulus": "planted_b",
+        "stimulus": "planted_k",
         "correctAnswer": "W3 → W4"
       },
-      "description": "A/when — local on planted_b",
+      "description": "A/when — local on planted_k",
       "instruction": "Step through the weeks using the time rail on the left. **Between which two consecutive weeks did the largest number of people arrive and leave?**",
       "parameters": {
         "labels": false,
@@ -104,7 +64,7 @@
           "ego": false,
           "inspector": false
         },
-        "dataset": "planted_b",
+        "dataset": "planted_k",
         "slice": "s00",
         "encoding": "local"
       },
@@ -122,6 +82,16 @@
             "W4 → W5",
             "W5 → W6"
           ]
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
         }
       ]
     },
@@ -131,10 +101,10 @@
         "block": "A",
         "task": "when",
         "condition": "global",
-        "stimulus": "planted_c",
-        "correctAnswer": "W4 → W5"
+        "stimulus": "planted_g",
+        "correctAnswer": "W2 → W3"
       },
-      "description": "A/when — global on planted_c",
+      "description": "A/when — global on planted_g",
       "instruction": "Step through the weeks using the time rail on the left. **Between which two consecutive weeks did the largest number of people arrive and leave?**",
       "parameters": {
         "labels": false,
@@ -144,7 +114,7 @@
           "ego": false,
           "inspector": false
         },
-        "dataset": "planted_c",
+        "dataset": "planted_g",
         "slice": "s00",
         "encoding": "global"
       },
@@ -162,46 +132,16 @@
             "W4 → W5",
             "W5 → W6"
           ]
-        }
-      ]
-    },
-    "A1-global-2": {
-      "baseComponent": "dynetspin",
-      "meta": {
-        "block": "A",
-        "task": "when",
-        "condition": "global",
-        "stimulus": "planted_d",
-        "correctAnswer": "W5 → W6"
-      },
-      "description": "A/when — global on planted_d",
-      "instruction": "Step through the weeks using the time rail on the left. **Between which two consecutive weeks did the largest number of people arrive and leave?**",
-      "parameters": {
-        "labels": false,
-        "widgets": {
-          "overview": false,
-          "cohort": false,
-          "ego": false,
-          "inspector": false
         },
-        "dataset": "planted_d",
-        "slice": "s00",
-        "encoding": "global"
-      },
-      "response": [
         {
-          "id": "answer",
-          "prompt": "Your answer:",
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
           "location": "sidebar",
-          "type": "radio",
-          "required": true,
-          "options": [
-            "W1 → W2",
-            "W2 → W3",
-            "W3 → W4",
-            "W4 → W5",
-            "W5 → W6"
-          ]
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
         }
       ]
     },
@@ -211,48 +151,8 @@
         "block": "A",
         "task": "when",
         "condition": "degree",
-        "stimulus": "planted_e",
-        "correctAnswer": "W2 → W3"
-      },
-      "description": "A/when — degree on planted_e",
-      "instruction": "Step through the weeks using the time rail on the left. **Between which two consecutive weeks did the largest number of people arrive and leave?**",
-      "parameters": {
-        "labels": false,
-        "widgets": {
-          "overview": false,
-          "cohort": false,
-          "ego": false,
-          "inspector": false
-        },
-        "dataset": "planted_e",
-        "slice": "s00",
-        "encoding": "degree"
-      },
-      "response": [
-        {
-          "id": "answer",
-          "prompt": "Your answer:",
-          "location": "sidebar",
-          "type": "radio",
-          "required": true,
-          "options": [
-            "W1 → W2",
-            "W2 → W3",
-            "W3 → W4",
-            "W4 → W5",
-            "W5 → W6"
-          ]
-        }
-      ]
-    },
-    "A1-degree-2": {
-      "baseComponent": "dynetspin",
-      "meta": {
-        "block": "A",
-        "task": "when",
-        "condition": "degree",
         "stimulus": "planted_f",
-        "correctAnswer": "W3 → W4"
+        "correctAnswer": "W4 → W5"
       },
       "description": "A/when — degree on planted_f",
       "instruction": "Step through the weeks using the time rail on the left. **Between which two consecutive weeks did the largest number of people arrive and leave?**",
@@ -282,6 +182,16 @@
             "W4 → W5",
             "W5 → W6"
           ]
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
         }
       ]
     },
@@ -291,10 +201,10 @@
         "block": "A",
         "task": "howmuch",
         "condition": "local",
-        "stimulus": "planted_g",
-        "correctAnswer": "Team_02"
+        "stimulus": "planted_l",
+        "correctAnswer": "Team_05"
       },
-      "description": "A/howmuch — local on planted_g",
+      "description": "A/howmuch — local on planted_l",
       "instruction": "Looking at the whole six weeks, **which team had the most member turnover overall** (the most people joining and leaving in total)?",
       "parameters": {
         "labels": true,
@@ -304,7 +214,7 @@
           "ego": false,
           "inspector": false
         },
-        "dataset": "planted_g",
+        "dataset": "planted_l",
         "slice": "s02",
         "encoding": "local"
       },
@@ -321,45 +231,16 @@
             "Team_05",
             "Team_10"
           ]
-        }
-      ]
-    },
-    "A2-local-2": {
-      "baseComponent": "dynetspin",
-      "meta": {
-        "block": "A",
-        "task": "howmuch",
-        "condition": "local",
-        "stimulus": "planted_h",
-        "correctAnswer": "Team_05"
-      },
-      "description": "A/howmuch — local on planted_h",
-      "instruction": "Looking at the whole six weeks, **which team had the most member turnover overall** (the most people joining and leaving in total)?",
-      "parameters": {
-        "labels": true,
-        "widgets": {
-          "overview": false,
-          "cohort": false,
-          "ego": false,
-          "inspector": false
         },
-        "dataset": "planted_h",
-        "slice": "s02",
-        "encoding": "local"
-      },
-      "response": [
         {
-          "id": "answer",
-          "prompt": "Your answer:",
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
           "location": "sidebar",
-          "type": "radio",
-          "required": true,
-          "options": [
-            "Team_00",
-            "Team_02",
-            "Team_05",
-            "Team_10"
-          ]
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
         }
       ]
     },
@@ -369,10 +250,10 @@
         "block": "A",
         "task": "howmuch",
         "condition": "global",
-        "stimulus": "planted_i",
+        "stimulus": "planted_e",
         "correctAnswer": "Team_02"
       },
-      "description": "A/howmuch — global on planted_i",
+      "description": "A/howmuch — global on planted_e",
       "instruction": "Looking at the whole six weeks, **which team had the most member turnover overall** (the most people joining and leaving in total)?",
       "parameters": {
         "labels": true,
@@ -382,46 +263,7 @@
           "ego": false,
           "inspector": false
         },
-        "dataset": "planted_i",
-        "slice": "s02",
-        "encoding": "global"
-      },
-      "response": [
-        {
-          "id": "answer",
-          "prompt": "Your answer:",
-          "location": "sidebar",
-          "type": "radio",
-          "required": true,
-          "options": [
-            "Team_02",
-            "Team_05",
-            "Team_09",
-            "Team_10"
-          ]
-        }
-      ]
-    },
-    "A2-global-2": {
-      "baseComponent": "dynetspin",
-      "meta": {
-        "block": "A",
-        "task": "howmuch",
-        "condition": "global",
-        "stimulus": "planted_j",
-        "correctAnswer": "Team_02"
-      },
-      "description": "A/howmuch — global on planted_j",
-      "instruction": "Looking at the whole six weeks, **which team had the most member turnover overall** (the most people joining and leaving in total)?",
-      "parameters": {
-        "labels": true,
-        "widgets": {
-          "overview": false,
-          "cohort": false,
-          "ego": false,
-          "inspector": false
-        },
-        "dataset": "planted_j",
+        "dataset": "planted_e",
         "slice": "s02",
         "encoding": "global"
       },
@@ -438,6 +280,16 @@
             "Team_07",
             "Team_10"
           ]
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
         }
       ]
     },
@@ -476,6 +328,16 @@
           "prompt": "Click a group in the visualization",
           "location": "sidebar",
           "type": "reactive",
+          "required": true
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
           "required": true
         }
       ]
@@ -516,6 +378,16 @@
           "location": "sidebar",
           "type": "reactive",
           "required": true
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
         }
       ]
     },
@@ -554,6 +426,16 @@
           "prompt": "Click a group in the visualization",
           "location": "sidebar",
           "type": "reactive",
+          "required": true
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
           "required": true
         }
       ]
@@ -594,6 +476,16 @@
           "location": "sidebar",
           "type": "reactive",
           "required": true
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
         }
       ]
     },
@@ -632,6 +524,16 @@
           "prompt": "Click a group in the visualization",
           "location": "sidebar",
           "type": "reactive",
+          "required": true
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
           "required": true
         }
       ]
@@ -672,6 +574,16 @@
           "location": "sidebar",
           "type": "reactive",
           "required": true
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
         }
       ]
     },
@@ -710,6 +622,16 @@
           "location": "sidebar",
           "type": "reactive",
           "required": true
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
         }
       ]
     },
@@ -747,6 +669,16 @@
           "prompt": "Click the largest group",
           "location": "sidebar",
           "type": "reactive",
+          "required": true
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
           "required": true
         }
       ]
@@ -787,6 +719,16 @@
           "location": "sidebar",
           "type": "reactive",
           "required": true
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
         }
       ]
     },
@@ -825,6 +767,16 @@
           "prompt": "Click a bloc in the visualization",
           "location": "sidebar",
           "type": "reactive",
+          "required": true
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
           "required": true
         }
       ]
@@ -867,6 +819,16 @@
             "merged",
             "dissolved"
           ]
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
         }
       ]
     },
@@ -908,6 +870,16 @@
             "merged",
             "dissolved"
           ]
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
         }
       ]
     },
@@ -949,6 +921,16 @@
             "merged",
             "dissolved"
           ]
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
         }
       ]
     },
@@ -990,6 +972,16 @@
             "merged",
             "dissolved"
           ]
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
         }
       ]
     },
@@ -1026,6 +1018,16 @@
           "location": "sidebar",
           "type": "reactive",
           "required": true
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
         }
       ]
     },
@@ -1061,6 +1063,16 @@
           "prompt": "Click a bloc",
           "location": "sidebar",
           "type": "reactive",
+          "required": true
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
           "required": true
         }
       ]
@@ -1103,6 +1115,16 @@
             "Mostly inside their own group",
             "Spread across several other groups"
           ]
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
         }
       ]
     },
@@ -1144,6 +1166,16 @@
             "Mostly inside their own group",
             "Spread across several other groups"
           ]
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
         }
       ]
     },
@@ -1157,7 +1189,7 @@
         "correctAnswer": "17–32 of 64"
       },
       "description": "E/survive — cohort on planted_k",
-      "instruction": "The outlined group has **64 members** in **W4**. Move to **W5**. **How many of them are still present?**",
+      "instruction": "The outlined group has **64 members** in **W3**. Move to **W4**. **How many of them are still present?**",
       "parameters": {
         "labels": false,
         "widgets": {
@@ -1167,7 +1199,7 @@
           "inspector": true
         },
         "dataset": "planted_k",
-        "slice": "s03",
+        "slice": "s02",
         "encoding": "local",
         "highlightCommunity": 2,
         "seedCohort": true
@@ -1185,6 +1217,16 @@
             "33–48 of 64",
             "49–64 of 64"
           ]
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
         }
       ]
     },
@@ -1198,7 +1240,7 @@
         "correctAnswer": "13–23 of 46"
       },
       "description": "E/survive — no-cohort on planted_l",
-      "instruction": "The outlined group has **46 members** in **W5**. Move to **W6**. **How many of them are still present?**",
+      "instruction": "The outlined group has **46 members** in **W4**. Move to **W5**. **How many of them are still present?**",
       "parameters": {
         "labels": false,
         "widgets": {
@@ -1208,7 +1250,7 @@
           "inspector": false
         },
         "dataset": "planted_l",
-        "slice": "s04",
+        "slice": "s03",
         "encoding": "local",
         "highlightCommunity": 2,
         "seedCohort": false
@@ -1226,6 +1268,16 @@
             "24–34 of 46",
             "35–46 of 46"
           ]
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
         }
       ]
     },
@@ -1530,15 +1582,10 @@
             "order": "latinSquare",
             "components": [
               "A1-local-1",
-              "A1-local-2",
               "A1-global-1",
-              "A1-global-2",
               "A1-degree-1",
-              "A1-degree-2",
               "A2-local-1",
-              "A2-local-2",
-              "A2-global-1",
-              "A2-global-2"
+              "A2-global-1"
             ]
           },
           {
