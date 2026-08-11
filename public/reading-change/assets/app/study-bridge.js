@@ -118,10 +118,30 @@
     };
   }
 
+  /* The answer is STICKY and re-sent with every push. It has to be.
+     IframeController.tsx handles each ANSWERS message with
+
+         updateResponseBlockValidation({ location: 'stimulus', identifier,
+                                         status: true, values: data.message })
+
+     which REPLACES the stimulus block's values rather than merging into them.
+     A measures-only push therefore deletes the answer the participant just
+     gave — it appeared for a second and vanished — and because `status` stays
+     true, the trial could still be submitted, silently, with no answer in it.
+     (The sidebar block merges properly, via mergeReactiveAnswers; only this
+     one path overwrites.) */
+  var lastAnswer = {};
+
   function postAnswer(extra) {
     if (!window.Revisit || !Revisit.postAnswers) return;
+    var k;
+    for (k in extra) {
+      if (Object.prototype.hasOwnProperty.call(extra, k)) lastAnswer[k] = extra[k];
+    }
     var payload = { studyMeasures: measures() };
-    for (var k in extra) if (Object.prototype.hasOwnProperty.call(extra, k)) payload[k] = extra[k];
+    for (k in lastAnswer) {
+      if (Object.prototype.hasOwnProperty.call(lastAnswer, k)) payload[k] = lastAnswer[k];
+    }
     try { Revisit.postAnswers(payload); } catch (e) {}
   }
 
@@ -583,6 +603,7 @@
     t0 = Date.now();                                  // time on task starts now
     log = [];
     pointer = [];
+    lastAnswer = {};                                  // never carry across trials
     /* Everything above happened during setup and must not be counted as
        participant behaviour — hence the reset. But the analysis still has to
        know what state the trial STARTED in, or "overview never opened" is
@@ -649,5 +670,11 @@
     setTimeout(function () { pushMeasures(true); }, 0);
   }, true);
 
-  window.__studyBridge = { measures: measures, config: function () { return cfg; } };
+  window.__studyBridge = {
+    measures: measures,
+    config: function () { return cfg; },
+    // verify_bridge.js drives these to check the answer survives a later push
+    postAnswerForTest: postAnswer,
+    pushForTest: function () { pushMeasures(true); }
+  };
 })();
