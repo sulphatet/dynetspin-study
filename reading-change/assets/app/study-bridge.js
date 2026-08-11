@@ -129,7 +129,13 @@
      since the last push, so an idle trial costs one message and no re-renders.
      `answer` is never included, so a push can never overwrite a pick: the merge
      on reVISit's side copies only the keys present in the payload. */
-  var PUSH_STALE_MS = 10000;
+  /* Upper bound on how stale the stored durationMs can be. Every push that
+     changes the payload re-renders reVISit's response block, so this is not set
+     to zero: reVISit's own endTime-startTime is the authoritative response time
+     and durationMs is only the in-frame cross-check. Four seconds keeps the two
+     within noise of each other without churning the sidebar form while someone
+     is typing into it. */
+  var PUSH_STALE_MS = 4000;
   var pushedAt = 0, pushedLen = -1, pushedPts = -1;
   function pushMeasures(force) {
     if (!applied) return;
