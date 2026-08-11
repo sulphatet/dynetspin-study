@@ -50,10 +50,20 @@
   var POINTER_MS = 120, POINTER_CAP = 2000;
   var pointer = [];
 
+  /* How often the measures are pushed to reVISit while a trial is in progress.
+     They CANNOT be posted once at the end: reVISit saves the answer and unmounts
+     the iframe the moment the participant presses Next, and a `pagehide` handler
+     posts into a store that has already moved on. The 2026-08-09 pilot is the
+     evidence — every trial that did not post during the trial stored no measures
+     at all. So the store is kept continuously up to date instead, and whatever
+     it holds when Next is pressed is what gets saved. */
+  var PUSH_MS = 1500;
+
   var cfg = null;                  // the trial's `parameters` block
   var appReady = false;            // the tool has rendered at least one slice
   var applied = false;             // guard: apply the condition exactly once
   var log = [];                    // interaction trace, mirrored to reVISit
+  var setup = {};                  // what the BRIDGE did before the clock started
   var t0 = Date.now();
 
   /* ── logging ───────────────────────────────────────────────────────────── */
@@ -78,19 +88,32 @@
   function measures() {
     var alphaVals = log.filter(function (e) { return e.event === "alpha_change"; })
                        .map(function (e) { return parseFloat(e.id); });
+    /* The alpha IN FORCE, which is not the same as the last one the participant
+       chose: someone who never touches the slider still analysed the layout at
+       some alpha, and recording null there would drop them from the paired
+       comparison that is Block B's headline result. Read it off the control. */
+    var sl = document.getElementById("AlphaSlider");
+    var alphaNow = sl && sl.value !== "" ? parseFloat(sl.value) : null;
     return {
       sliceChanges: log.filter(function (e) { return e.event === "slice_change"; }).length,
-      overviewOpened: log.some(function (e) { return e.event === "overview_open"; }),
+      // USER opens only. The bridge's own auto-open happens before the clock
+      // starts and is reported separately as setup.overviewAutoOpened, so
+      // "did they reach for it" stays distinguishable from "it was already up".
+      overviewOpens: log.filter(function (e) { return e.event === "overview_open"; }).length,
+      overviewCloses: log.filter(function (e) { return e.event === "overview_close"; }).length,
       egoOpened: log.some(function (e) { return e.event === "ego_open"; }),
       cohortsAdded: log.filter(function (e) { return e.event === "cohort_add"; }).length,
+      communityPicks: log.filter(function (e) { return e.event === "community_pick"; }).length,
       alphaChanges: alphaVals.length,
-      alphaSettled: alphaVals.length ? alphaVals[alphaVals.length - 1] : null,
+      alphaSettled: alphaVals.length ? alphaVals[alphaVals.length - 1] : alphaNow,
+      alphaMoved: alphaVals.length > 0,
       alphaPath: alphaVals,
       durationMs: Date.now() - t0,
       // [ms since trial start, x, y] inside the stimulus frame
       pointerTrack: pointer,
       pointerSamples: pointer.length,
       pointerTruncated: pointer.length >= POINTER_CAP,
+      setup: setup,
       trace: log
     };
   }
@@ -100,6 +123,24 @@
     var payload = { studyMeasures: measures() };
     for (var k in extra) if (Object.prototype.hasOwnProperty.call(extra, k)) payload[k] = extra[k];
     try { Revisit.postAnswers(payload); } catch (e) {}
+  }
+
+  /* Keep the store current. Only posts when something has actually been logged
+     since the last push, so an idle trial costs one message and no re-renders.
+     `answer` is never included, so a push can never overwrite a pick: the merge
+     on reVISit's side copies only the keys present in the payload. */
+  var PUSH_STALE_MS = 10000;
+  var pushedAt = 0, pushedLen = -1, pushedPts = -1;
+  function pushMeasures(force) {
+    if (!applied) return;
+    // Refresh at least every PUSH_STALE_MS even when nothing was logged, or a
+    // participant who reads the frame without moving the pointer inside it
+    // records durationMs 0 — reVISit's own timing still covers them, but the
+    // in-frame clock should not disagree with it.
+    var stale = Date.now() - pushedAt > PUSH_STALE_MS;
+    if (!force && !stale && log.length === pushedLen && pointer.length === pushedPts) return;
+    pushedAt = Date.now(); pushedLen = log.length; pushedPts = pointer.length;
+    postAnswer({});
   }
 
   /* ── waiting on the app ────────────────────────────────────────────────── */
@@ -254,7 +295,11 @@
   function handleCommunityPick(d, opts) {
     if (!applied) return;
     var id = (opts && opts.id) || (d && d.community);
-    evt("cohort_add", id);
+    /* Two different things route through here: using the Cohort Tracker, and
+       ANSWERING by clicking a group. Logging both as `cohort_add` made
+       cohortsAdded read 1 on every Block B trial, where the tracker is off —
+       tracker usage confounded with the answer mechanism. Name them apart. */
+    evt((cfg && cfg.widgets && cfg.widgets.cohort) ? "cohort_add" : "community_pick", id);
     if (cfg && cfg.answerMode === "overviewCommunity" &&
         typeof id === "string" && id.indexOf("evo") === 0) {
       // communityEvolution.js labels overview picks "evo<sliceLabel>#<community>"
@@ -413,7 +458,11 @@
     if (window.EgoSpiral && typeof window.EgoSpiral.show === "function") {
       var realShow = window.EgoSpiral.show;
       window.EgoSpiral.show = function (nodeID) {
-        if (applied) evt("ego_open", nodeID);
+        /* The tool calls this on every node click regardless of the condition;
+           the widget is merely display:none when the trial says ego:false. Log
+           it only where it is visible, or egoOpened reads true in Block B where
+           the participant cannot have seen it. */
+        if (applied && cfg && cfg.widgets && cfg.widgets.ego) evt("ego_open", nodeID);
         return realShow.apply(this, arguments);
       };
     }
@@ -528,7 +577,30 @@
     t0 = Date.now();                                  // time on task starts now
     log = [];
     pointer = [];
+    /* Everything above happened during setup and must not be counted as
+       participant behaviour — hence the reset. But the analysis still has to
+       know what state the trial STARTED in, or "overview never opened" is
+       ambiguous between "withheld", "offered and ignored", and "already up". */
+    setup = {
+      overviewAutoOpened: !!cfg.openOverview,
+      overviewHighlighted: window.__studyEvoHighlighted || 0,
+      cohortSeeded: !!cfg.seedCohort,
+      cohortRows: window.__studyCohortSeeded || 0,
+      alphaStart: (function () {
+        var s = document.getElementById("AlphaSlider");
+        return s && s.value !== "" ? parseFloat(s.value) : null;
+      })(),
+      alphaMode: (cfg.alpha && cfg.alpha.mode) || "default",
+      widgets: cfg.widgets || {},
+      encoding: cfg.encoding || null,
+      viewport: [window.innerWidth, window.innerHeight]
+    };
     evt("trial_start", cfg.dataset + "/" + (cfg.slice || "?"));
+
+    // First push seeds the store, so even a trial answered instantly and with
+    // no interaction still records its duration, setup state and settled alpha.
+    pushMeasures(true);
+    setInterval(function () { pushMeasures(false); }, PUSH_MS);
 
     if (window.Revisit && Revisit.postReady) Revisit.postReady();
     window.__studyReady = true;                       // headless tests poll this
@@ -560,11 +632,16 @@
 
   window.addEventListener("resize", function () { if (applied) checkViewport(); });
 
-  // If a trial has no reactive answer, reVISit still needs the measures. Post
-  // them on unload so slice counts and the alpha path are never lost.
-  window.addEventListener("pagehide", function () {
-    if (applied && !cfg.answerMode) postAnswer({});
+  /* Belt and braces. The interval above is what actually keeps the store
+     current; these only shorten the window between the last push and the
+     participant pressing Next. `pagehide` on its own is NOT sufficient — by the
+     time it fires reVISit has already saved the answer for this trial. */
+  ["pagehide", "blur", "visibilitychange"].forEach(function (t) {
+    window.addEventListener(t, function () { pushMeasures(true); });
   });
+  document.addEventListener("click", function () {
+    setTimeout(function () { pushMeasures(true); }, 0);
+  }, true);
 
   window.__studyBridge = { measures: measures, config: function () { return cfg; } };
 })();
