@@ -851,10 +851,13 @@ function syncAlphaSliderUI() {
 
   if (slider) slider.value = window.currentBestAlpha;
   if (text)   text.value   = window.currentBestAlpha.toFixed(2);
+  // Wording matches the paper: this is where the slider OPENS, chosen by the
+  // constrained sweep, not an optimum. The analyst sets any alpha they want.
   if (hint)   hint.textContent =
-    'Optimal for this dataset: \u03b1 = ' + window.currentBestAlpha.toFixed(2);
+    'Suggested for this dataset: \u03b1 = ' + window.currentBestAlpha.toFixed(2) +
+    ' \u00b7 drag to explore';
   if (label) {
-    label.textContent = 'Auto \u2605';
+    label.textContent = 'Suggested \u2605';
     label.className   = 'badge bg-success';
   }
   if (rhoDisp) rhoDisp.textContent = window.currentRhoFloor.toFixed(2);
