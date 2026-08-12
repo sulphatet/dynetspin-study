@@ -293,6 +293,9 @@
       .attr("class", "evo-svg")
       .attr("viewBox", `${-VB / 2} ${-VB / 2} ${VB} ${VB}`)
       .attr("preserveAspectRatio", "xMidYMid meet");
+    // Retargeted by nameHovered() as the pointer moves — see there for why the
+    // title lives on the root rather than on each dot.
+    const titleEl = svg.append("title").node();
     // everything pannable/zoomable lives inside gZoom (like the main chart)
     const gZoom = svg.append("g").attr("class", "evo-zoom");
     const gRing = gZoom.append("g");
@@ -378,7 +381,7 @@
       .on("zoom", (e) => gZoom.attr("transform", e.transform));
     svg.call(zoom).on("dblclick.zoom", null);
     current = { model, cells, dotR, nodeIndex, cellMap, gDotEl: gDot.node(),
-                lit: null, hoverKey: null, svg, zoom };
+                lit: null, hoverKey: null, svg, zoom, titleEl };
     renderReadout(host, model);
     renderInspector(model);
   }
@@ -395,20 +398,45 @@
     const lit = [];
     cell.members.forEach(id => { const els = current.nodeIndex.get(id); if (els) for (const e of els) { e.classList.add("evo-dot--lit"); lit.push(e); } });
     current.lit = lit; current.hoverKey = key;
+    nameHovered(i, cell);
     describe(i, cell);
+  }
+
+  /* A community in the overview carries NO drawn text — the only labels are the
+     ring periods — and the dots are pointer-transparent, so a per-circle <title>
+     would never fire. Retarget one <title> on the SVG root as the hover moves:
+     a plain browser tooltip naming whatever is under the cursor, independent of
+     the Inspector. Without it, identifying a community requires the right-hand
+     panel, and with the panel closed the overview cannot name anything it
+     draws — which made "click the US-aligned bloc" unanswerable. */
+  function nameHovered(i, cell) {
+    if (!current || !current.titleEl) return;
+    const lab = current.model.labels[i];
+    current.titleEl.textContent =
+      `${lab} · ${commLabelOf(i, cell.c)} — ${cell.size} members`;
   }
   // the live hover readout lives in the Inspector (right panel) in overview mode;
   // fall back to the overlay caption if the inspector element isn't present.
+  /* Prefer the Inspector's readout, fall back to the overlay caption — but test
+     that the Inspector one is actually ON SCREEN, not merely in the document.
+     renderInspector() runs on every open and #overviewInspector lives in
+     index.html unconditionally, so `.empty()` was never true and the fallback
+     was dead code: with the Inspector panel hidden, every hover wrote into a
+     display:none element and the overview named nothing at all. */
   function detailEl() {
-    let el = d3.select("#overviewInspector .evo-hoverdetail");
-    if (el.empty()) el = container().select(".evo-caption");
-    return el;
+    const inspector = d3.select("#overviewInspector .evo-hoverdetail");
+    const node = inspector.node();
+    const shown = node && (node.checkVisibility
+      ? node.checkVisibility()
+      : node.getClientRects().length > 0);
+    return shown ? inspector : container().select(".evo-caption");
   }
   function clearHover() {
     if (!current || current.hoverKey === null) return;
     current.gDotEl && current.gDotEl.classList.remove("evo-dots--focus");
     if (current.lit) { for (const e of current.lit) e.classList.remove("evo-dot--lit"); current.lit = null; }
     current.hoverKey = null;
+    if (current.titleEl) current.titleEl.textContent = "";
     const el = detailEl();
     if (!el.empty()) el.html('<span class="evo-hoverdetail__hint">Hover a community to trace it.</span>');
   }

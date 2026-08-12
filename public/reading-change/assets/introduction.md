@@ -11,9 +11,9 @@ unclear or unreadable, that is a finding we want.
 
 **What to expect**
 
-- About **35 minutes**.
+- About **40 minutes**.
 - A few background questions first, then a short guided tour.
-- Then around 16 short tasks. Each one shows a picture and asks one question.
+- Then around 30 short tasks. Each one shows a picture and asks one question.
 - The picture changes between tasks. Please read each question carefully —
   they are not all the same.
 
