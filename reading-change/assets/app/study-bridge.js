@@ -64,6 +64,7 @@
   var applied = false;             // guard: apply the condition exactly once
   var log = [];                    // interaction trace, mirrored to reVISit
   var setup = {};                  // what the BRIDGE did before the clock started
+  var answerSurface = null;        // which view the last answer came from
   var t0 = Date.now();
 
   /* ── logging ───────────────────────────────────────────────────────────── */
@@ -113,6 +114,11 @@
       pointerTrack: pointer,
       pointerSamples: pointer.length,
       pointerTruncated: pointer.length >= POINTER_CAP,
+      // "overview" | "chart" | null. Only meaningful where both surfaces can
+      // answer (answerMode "overviewCommunity"). For a claim that the whole
+      // evolution is one image, whether they answered from the overview or
+      // went back to a single slice is a finding, not noise.
+      answerSurface: answerSurface,
       setup: setup,
       trace: log
     };
@@ -210,6 +216,37 @@
     var done = onSliceLoaded();
     btn.click();
     return done;
+  }
+
+  /* The time rail is navigation. It must not also be a readout.
+
+     BarChartPopulator.js:307-335 hangs a per-slice churn breakdown off every
+     `.ts-btn` — a `.ts-mini` stacked bar of Incoming/Outgoing/Transient/Stable,
+     a `.ts-hot-dot` on the highest-churn interior slice, and a `title` spelling
+     the counts out in words. That is exactly the quantity Block A asks about,
+     available identically in all three colour arms, so A/when could be answered
+     without ever looking at the visualization. Worse, checked against the
+     shipped CSVs the hot dot lands on the first week of the correct answer in
+     all three A1 stimuli.
+
+     study-mode.css hides the drawn marks; the titles are set from JS and have
+     to be rewritten here. Runs after every slice change, because
+     BarChartPopulator rebuilds the rail when the dataset or granularity
+     changes. Trials opt IN via `timeRailCues` — only the open-ended insight
+     step, which manipulates nothing, does. */
+  function stripTimeRailCues() {
+    if (cfg && cfg.timeRailCues) return;
+    var btns = document.querySelectorAll("#year-buttons .ts-btn, #ts-unfurl .ts-btn");
+    for (var i = 0; i < btns.length; i++) {
+      var lab = btns[i].dataset ? btns[i].dataset.sliceLabel : null;
+      btns[i].title = lab || btns[i].textContent.trim();
+      var dot = btns[i].querySelector(".ts-hot-dot");
+      if (dot) dot.title = "";
+    }
+    // The rail's own help bubble still advertises shift-click compare mode,
+    // which study-bridge blocks (see blockShiftCompare below).
+    var help = document.querySelector("#timeStrip .ts-help");
+    if (help) help.title = "";
   }
 
   var ENCODINGS = {
@@ -331,6 +368,7 @@
       // communityEvolution.js labels overview picks "evo<sliceLabel>#<community>"
       var m = /^evo(.*)#(\d+)$/.exec(id);
       if (m) {
+        answerSurface = "overview";
         evt("answer_submit", id);
         postAnswer({ answer: m[2], answerSlice: m[1] });
       }
@@ -360,6 +398,21 @@
         window.__studyEvoHighlighted = n;
         if (!n) console.warn("[study] overview opened but no member dots marked");
       } catch (e) { console.error("[study] could not open overview", e); }
+    }
+
+    /* Same argument as the overview and the tracker, and it was missing here.
+       EgoSpiral.show() is reached only by clicking a node on the chart, and the
+       study suppresses the `.info-tooltip` that explains the widget — so the
+       `ego` arm was "a panel you might discover", which measures
+       discoverability rather than whether the widget helps, and makes a null
+       result uninterpretable. Open it on the prompt's target. */
+    if (cfg.openEgo && cfg.highlightNodes && cfg.highlightNodes.length &&
+        window.EgoSpiral && typeof window.EgoSpiral.show === "function") {
+      try {
+        window.EgoSpiral.show(cfg.highlightNodes[0]);
+        window.__studyEgoOpened = document
+          .querySelectorAll("#egoSpiralSection .ego-dot, #egoSpiral circle").length;
+      } catch (e) { console.error("[study] could not open the ego spiral", e); }
     }
 
     if (cfg.seedCohort && cfg.highlightCommunity !== undefined) {
@@ -434,6 +487,9 @@
 
   function instrument() {
     document.addEventListener("dyn:slice-loaded", function (ev) {
+      // Outside `applied` too: the rail is rebuilt on every dataset/granularity
+      // change, which puts the churn titles straight back.
+      stripTimeRailCues();
       if (!applied) return;                       // ignore the boot sequence
       evt("slice_change", ev.detail && ev.detail.label);
       clearHighlight();                           // highlight is slice-local
@@ -524,9 +580,22 @@
     }, true);
   }
 
-  /* answerMode: "community" | "node" | undefined.
+  /* answerMode: "community" | "node" | "overviewCommunity" | undefined.
      Undefined means reVISit's own sidebar control carries the answer and the
-     tool is only a stimulus. */
+     tool is only a stimulus.
+
+     "overviewCommunity" used to be handled ONLY in handleCommunityPick, i.e.
+     only for a pick originating in the all-slices overview. But the overview
+     offers a legitimate drill-down — a ring's year pill calls enterSlice(),
+     which closes the overlay and opens that slice on the main chart — and
+     #evoToggle is live in that condition, so round-tripping is exactly the
+     behaviour the widget invites. A participant who took it, found the bloc on
+     the chart and clicked it got NOTHING recorded, and sat in front of a
+     required response that would not fill.
+
+     Both surfaces now answer. Which one they used is recorded rather than
+     suppressed: for a claim that the whole evolution is one image, "did they
+     answer from the overview or go back to the slices" is a result. */
   function captureReactiveAnswer(d) {
     if (!cfg || !cfg.answerMode) return;
     if (cfg.answerMode === "community") {
@@ -535,6 +604,18 @@
     } else if (cfg.answerMode === "node") {
       evt("answer_submit", d.node);
       postAnswer({ answer: String(d.node) });
+    } else if (cfg.answerMode === "overviewCommunity") {
+      // The chart only ever shows the slice the participant is on, so that is
+      // the ring this answer belongs to. export_results.py scores the pair.
+      answerSurface = "chart";
+      evt("answer_submit", "chart#" + d.community);
+      var here = window.currentYearRange;
+      // Only carry the slice if we actually know it. Writing "" would clobber a
+      // correct answerSlice from an earlier overview pick, and export_results
+      // scores the (answer, answerSlice) PAIR.
+      var payload = { answer: String(d.community) };
+      if (here) payload.answerSlice = String(here);
+      postAnswer(payload);
     }
   }
 
@@ -579,6 +660,13 @@
     // A colour ramp with no key is unreadable, and even the categorical scheme
     // needs naming. On by default: a trial must opt OUT, not remember to opt in.
     if (cfg.legend !== false) root.classList.add("study-legend");
+    /* Both OFF by default — a trial must opt in. The time rail's churn marks
+       answer Block A outright, and the widget help bubbles explain the very
+       widget a block is manipulating, so each is a side channel unless the
+       trial manipulates nothing. Only the insight step qualifies. */
+    if (cfg.timeRailCues)  root.classList.add("study-timerail-cues");
+    if (cfg.helpBubbles)   root.classList.add("study-help-bubbles");
+    stripTimeRailCues();
     // The dashboard's own sidebar (datasets, ranking, filters) — every control
     // in it is an IV, so only the open-ended insight step asks for it.
     if (cfg.dashboardSidebar) root.classList.add("study-dashboard");
@@ -593,6 +681,21 @@
       if (window.SpinTrixMainZoom && window.SpinTrixMainZoom.fitAll) {
         window.SpinTrixMainZoom.fitAll(0);
       }
+      /* A single-node prompt ("the outlined person") is one 2px stroke among
+         ~600 dots, and finding it is not the task being measured. Block D used
+         to solve that by dimming everything else, but the dim rule is
+         `opacity !important` while the chart's hover sets opacity INLINE — so
+         dimming also disabled the one affordance for seeing WHO the neighbours
+         are, which is exactly what Block D now counts.
+
+         Marked instead of dimmed, and NOT framed by the camera:
+         zoomToNodeIDs on one node has a zero-area bbox, so its scale clamps to
+         the maximum and the participant gets one dot filling the viewport with
+         no context at all. The halo is CSS, identical in both arms, and leaves
+         the whole picture visible. */
+      if (cfg.highlightNodes && cfg.highlightNodes.length) {
+        root.classList.add("study-single-target");
+      }
     } catch (err) {
       console.error("[study] failed to apply condition", err);
     }
@@ -604,6 +707,7 @@
     log = [];
     pointer = [];
     lastAnswer = {};                                  // never carry across trials
+    answerSurface = null;
     /* Everything above happened during setup and must not be counted as
        participant behaviour — hence the reset. But the analysis still has to
        know what state the trial STARTED in, or "overview never opened" is
@@ -612,6 +716,8 @@
       overviewAutoOpened: !!cfg.openOverview,
       overviewHighlighted: window.__studyEvoHighlighted || 0,
       cohortSeeded: !!cfg.seedCohort,
+      egoAutoOpened: !!cfg.openEgo,
+      egoMarksDrawn: window.__studyEgoOpened || 0,
       cohortRows: window.__studyCohortSeeded || 0,
       alphaStart: (function () {
         var s = document.getElementById("AlphaSlider");
@@ -675,6 +781,9 @@
     config: function () { return cfg; },
     // verify_bridge.js drives these to check the answer survives a later push
     postAnswerForTest: postAnswer,
-    pushForTest: function () { pushMeasures(true); }
+    pushForTest: function () { pushMeasures(true); },
+    // ...and that a main-chart click answers under every answerMode that
+    // should accept one, without synthesising a click on an SVG node
+    captureForTest: captureReactiveAnswer
   };
 })();

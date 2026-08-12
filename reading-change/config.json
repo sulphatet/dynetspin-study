@@ -52,10 +52,10 @@
         "task": "when",
         "condition": "local",
         "stimulus": "planted_k",
-        "correctAnswer": "W3 → W4"
+        "correctAnswer": "W3"
       },
       "description": "A/when — local on planted_k",
-      "instruction": "Step through the weeks using the time rail on the left. **Between which two consecutive weeks did the largest number of people arrive and leave?**",
+      "instruction": "Step through the weeks using the time rail on the left. **In which week did the largest number of people leave?**",
       "parameters": {
         "labels": false,
         "widgets": {
@@ -76,11 +76,12 @@
           "type": "radio",
           "required": true,
           "options": [
-            "W1 → W2",
-            "W2 → W3",
-            "W3 → W4",
-            "W4 → W5",
-            "W5 → W6"
+            "W1",
+            "W2",
+            "W3",
+            "W4",
+            "W5",
+            "W6"
           ]
         },
         {
@@ -110,10 +111,10 @@
         "task": "when",
         "condition": "global",
         "stimulus": "planted_g",
-        "correctAnswer": "W2 → W3"
+        "correctAnswer": "W2"
       },
       "description": "A/when — global on planted_g",
-      "instruction": "Step through the weeks using the time rail on the left. **Between which two consecutive weeks did the largest number of people arrive and leave?**",
+      "instruction": "Step through the weeks using the time rail on the left. **In which week did the largest number of people leave?**",
       "parameters": {
         "labels": false,
         "widgets": {
@@ -134,11 +135,12 @@
           "type": "radio",
           "required": true,
           "options": [
-            "W1 → W2",
-            "W2 → W3",
-            "W3 → W4",
-            "W4 → W5",
-            "W5 → W6"
+            "W1",
+            "W2",
+            "W3",
+            "W4",
+            "W5",
+            "W6"
           ]
         },
         {
@@ -168,10 +170,10 @@
         "task": "when",
         "condition": "degree",
         "stimulus": "planted_f",
-        "correctAnswer": "W4 → W5"
+        "correctAnswer": "W4"
       },
       "description": "A/when — degree on planted_f",
-      "instruction": "Step through the weeks using the time rail on the left. **Between which two consecutive weeks did the largest number of people arrive and leave?**",
+      "instruction": "Step through the weeks using the time rail on the left. **In which week did the largest number of people leave?**",
       "parameters": {
         "labels": false,
         "widgets": {
@@ -192,11 +194,12 @@
           "type": "radio",
           "required": true,
           "options": [
-            "W1 → W2",
-            "W2 → W3",
-            "W3 → W4",
-            "W4 → W5",
-            "W5 → W6"
+            "W1",
+            "W2",
+            "W3",
+            "W4",
+            "W5",
+            "W6"
           ]
         },
         {
@@ -908,7 +911,7 @@
         "task": "fate",
         "condition": "overview",
         "stimulus": "struct_a",
-        "correctAnswer": "merged"
+        "correctAnswer": "split"
       },
       "description": "C/fate — overview on struct_a",
       "instruction": "The outlined group is shown in **W1**. By **W6**, what happened to it?",
@@ -923,7 +926,7 @@
         "dataset": "struct_a",
         "slice": "s00",
         "encoding": "local",
-        "highlightCommunity": 4,
+        "highlightCommunity": 8,
         "openOverview": true
       },
       "response": [
@@ -933,6 +936,7 @@
           "location": "sidebar",
           "type": "radio",
           "required": true,
+          "secondaryText": "persisted = most of these people are still together in one group.   split = they are now spread across two or more groups, each with a fair share.   merged = they are now inside a bigger group, alongside people who were not with them before.   dissolved = most of these people are no longer in the data at all.",
           "options": [
             "persisted",
             "split",
@@ -992,6 +996,7 @@
           "location": "sidebar",
           "type": "radio",
           "required": true,
+          "secondaryText": "persisted = most of these people are still together in one group.   split = they are now spread across two or more groups, each with a fair share.   merged = they are now inside a bigger group, alongside people who were not with them before.   dissolved = most of these people are no longer in the data at all.",
           "options": [
             "persisted",
             "split",
@@ -1051,6 +1056,7 @@
           "location": "sidebar",
           "type": "radio",
           "required": true,
+          "secondaryText": "persisted = most of these people are still together in one group.   split = they are now spread across two or more groups, each with a fair share.   merged = they are now inside a bigger group, alongside people who were not with them before.   dissolved = most of these people are no longer in the data at all.",
           "options": [
             "persisted",
             "split",
@@ -1110,6 +1116,7 @@
           "location": "sidebar",
           "type": "radio",
           "required": true,
+          "secondaryText": "persisted = most of these people are still together in one group.   split = they are now spread across two or more groups, each with a fair share.   merged = they are now inside a bigger group, alongside people who were not with them before.   dissolved = most of these people are no longer in the data at all.",
           "options": [
             "persisted",
             "split",
@@ -1143,12 +1150,12 @@
         "block": "C",
         "task": "wedge",
         "condition": "overview",
-        "stimulus": "un_voting@1981–85@US-aligned",
-        "correctAnswer": "0",
+        "stimulus": "un_voting@1981–85@Russia/USSR-aligned",
+        "correctAnswer": "6",
         "correctSlice": "1981–85"
       },
-      "description": "C/wedge — overview on un_voting@1981–85@US-aligned",
-      "instruction": "The overview shows every period at once, oldest in the middle. Find the ring for **1981–85**, then **click the **US-aligned** bloc**.",
+      "description": "C/wedge — overview on un_voting@1981–85@Russia/USSR-aligned",
+      "instruction": "The overview shows every period at once, oldest in the middle. Find the ring for **1981–85**, then click the **Russia/USSR-aligned** bloc.",
       "parameters": {
         "labels": true,
         "widgets": {
@@ -1166,7 +1173,7 @@
       "response": [
         {
           "id": "answer",
-          "prompt": "Click a bloc",
+          "prompt": "Click the bloc — in the overview or on the chart",
           "location": "sidebar",
           "type": "reactive",
           "required": true
@@ -1197,12 +1204,12 @@
         "block": "C",
         "task": "wedge",
         "condition": "no-overview",
-        "stimulus": "un_voting@1981–85@Russia/USSR-aligned",
-        "correctAnswer": "6",
+        "stimulus": "un_voting@1981–85@US-aligned",
+        "correctAnswer": "0",
         "correctSlice": "1981–85"
       },
-      "description": "C/wedge — no-overview on un_voting@1981–85@Russia/USSR-aligned",
-      "instruction": "Use the time rail to reach **1981–85**, then **click the **Russia/USSR-aligned** bloc**.",
+      "description": "C/wedge — no-overview on un_voting@1981–85@US-aligned",
+      "instruction": "Use the time rail to reach **1981–85**, then click the **US-aligned** bloc.",
       "parameters": {
         "labels": true,
         "widgets": {
@@ -1220,7 +1227,7 @@
       "response": [
         {
           "id": "answer",
-          "prompt": "Click a bloc",
+          "prompt": "Click the bloc",
           "location": "sidebar",
           "type": "reactive",
           "required": true
@@ -1245,17 +1252,17 @@
         }
       ]
     },
-    "D-bridge-ego-0": {
+    "D-busiest-ego-1": {
       "baseComponent": "dynetspin",
       "meta": {
         "block": "D",
-        "task": "bridge",
+        "task": "busiest",
         "condition": "ego",
-        "stimulus": "data_vispub@2000-2004",
-        "correctAnswer": "Spread across several other groups"
+        "stimulus": "planted_a@463",
+        "correctAnswer": "W3"
       },
-      "description": "D/bridge — ego on data_vispub@2000-2004",
-      "instruction": "The outlined researcher is highlighted. **Are most of the people they work with inside their own group, or spread across other groups?**",
+      "description": "D/busiest — ego on planted_a@463",
+      "instruction": "The outlined person is highlighted. **In which week were they connected to the most people?**",
       "parameters": {
         "labels": false,
         "widgets": {
@@ -1264,13 +1271,13 @@
           "ego": true,
           "inspector": true
         },
-        "dataset": "data_vispub",
-        "slice": "2000-2004",
+        "dataset": "planted_a",
+        "slice": "s00",
         "encoding": "local",
         "highlightNodes": [
-          992
+          463
         ],
-        "dimOthers": true
+        "openEgo": true
       },
       "response": [
         {
@@ -1280,8 +1287,12 @@
           "type": "radio",
           "required": true,
           "options": [
-            "Mostly inside their own group",
-            "Spread across several other groups"
+            "W1",
+            "W2",
+            "W3",
+            "W4",
+            "W5",
+            "W6"
           ]
         },
         {
@@ -1304,17 +1315,80 @@
         }
       ]
     },
-    "D-bridge-no-ego-1": {
+    "D-busiest-ego-2": {
       "baseComponent": "dynetspin",
       "meta": {
         "block": "D",
-        "task": "bridge",
-        "condition": "no-ego",
-        "stimulus": "data_vispub@2010-2014",
-        "correctAnswer": "Spread across several other groups"
+        "task": "busiest",
+        "condition": "ego",
+        "stimulus": "planted_b@25",
+        "correctAnswer": "W5"
       },
-      "description": "D/bridge — no-ego on data_vispub@2010-2014",
-      "instruction": "The outlined researcher is highlighted. **Are most of the people they work with inside their own group, or spread across other groups?**",
+      "description": "D/busiest — ego on planted_b@25",
+      "instruction": "The outlined person is highlighted. **In which week were they connected to the most people?**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": true,
+          "inspector": true
+        },
+        "dataset": "planted_b",
+        "slice": "s00",
+        "encoding": "local",
+        "highlightNodes": [
+          25
+        ],
+        "openEgo": true
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "W1",
+            "W2",
+            "W3",
+            "W4",
+            "W5",
+            "W6"
+          ]
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
+        },
+        {
+          "id": "studyMeasures",
+          "prompt": "",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false,
+          "hidden": true
+        }
+      ]
+    },
+    "D-busiest-no-ego-1": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "D",
+        "task": "busiest",
+        "condition": "no-ego",
+        "stimulus": "planted_c@552",
+        "correctAnswer": "W3"
+      },
+      "description": "D/busiest — no-ego on planted_c@552",
+      "instruction": "The outlined person is highlighted. **In which week were they connected to the most people?**",
       "parameters": {
         "labels": false,
         "widgets": {
@@ -1323,13 +1397,13 @@
           "ego": false,
           "inspector": false
         },
-        "dataset": "data_vispub",
-        "slice": "2010-2014",
+        "dataset": "planted_c",
+        "slice": "s00",
         "encoding": "local",
         "highlightNodes": [
-          3787
+          552
         ],
-        "dimOthers": true
+        "openEgo": false
       },
       "response": [
         {
@@ -1339,8 +1413,12 @@
           "type": "radio",
           "required": true,
           "options": [
-            "Mostly inside their own group",
-            "Spread across several other groups"
+            "W1",
+            "W2",
+            "W3",
+            "W4",
+            "W5",
+            "W6"
           ]
         },
         {
@@ -1363,16 +1441,79 @@
         }
       ]
     },
-    "E-survive-cohort": {
+    "D-busiest-no-ego-2": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "D",
+        "task": "busiest",
+        "condition": "no-ego",
+        "stimulus": "planted_d@313",
+        "correctAnswer": "W5"
+      },
+      "description": "D/busiest — no-ego on planted_d@313",
+      "instruction": "The outlined person is highlighted. **In which week were they connected to the most people?**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "planted_d",
+        "slice": "s00",
+        "encoding": "local",
+        "highlightNodes": [
+          313
+        ],
+        "openEgo": false
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "W1",
+            "W2",
+            "W3",
+            "W4",
+            "W5",
+            "W6"
+          ]
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
+        },
+        {
+          "id": "studyMeasures",
+          "prompt": "",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false,
+          "hidden": true
+        }
+      ]
+    },
+    "E-survive-cohort-1": {
       "baseComponent": "dynetspin",
       "meta": {
         "block": "E",
         "task": "survive",
         "condition": "cohort",
-        "stimulus": "planted_k",
+        "stimulus": "planted_h@2",
         "correctAnswer": "17–32 of 64"
       },
-      "description": "E/survive — cohort on planted_k",
+      "description": "E/survive — cohort on planted_h@2",
       "instruction": "The outlined group has **64 members** in **W3**. Move to **W4**. **How many of them are still present?**",
       "parameters": {
         "labels": false,
@@ -1380,9 +1521,9 @@
           "overview": false,
           "cohort": true,
           "ego": false,
-          "inspector": true
+          "inspector": false
         },
-        "dataset": "planted_k",
+        "dataset": "planted_h",
         "slice": "s02",
         "encoding": "local",
         "highlightCommunity": 2,
@@ -1422,17 +1563,76 @@
         }
       ]
     },
-    "E-survive-no-cohort": {
+    "E-survive-cohort-2": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "E",
+        "task": "survive",
+        "condition": "cohort",
+        "stimulus": "planted_i@0",
+        "correctAnswer": "47–62 of 62"
+      },
+      "description": "E/survive — cohort on planted_i@0",
+      "instruction": "The outlined group has **62 members** in **W4**. Move to **W5**. **How many of them are still present?**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": true,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "planted_i",
+        "slice": "s03",
+        "encoding": "local",
+        "highlightCommunity": 0,
+        "seedCohort": true
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "0–16 of 62",
+            "17–31 of 62",
+            "32–46 of 62",
+            "47–62 of 62"
+          ]
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
+        },
+        {
+          "id": "studyMeasures",
+          "prompt": "",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false,
+          "hidden": true
+        }
+      ]
+    },
+    "E-survive-no-cohort-1": {
       "baseComponent": "dynetspin",
       "meta": {
         "block": "E",
         "task": "survive",
         "condition": "no-cohort",
-        "stimulus": "planted_l",
-        "correctAnswer": "13–23 of 46"
+        "stimulus": "planted_j@2",
+        "correctAnswer": "15–28 of 56"
       },
-      "description": "E/survive — no-cohort on planted_l",
-      "instruction": "The outlined group has **46 members** in **W4**. Move to **W5**. **How many of them are still present?**",
+      "description": "E/survive — no-cohort on planted_j@2",
+      "instruction": "The outlined group has **56 members** in **W2**. Move to **W3**. **How many of them are still present?**",
       "parameters": {
         "labels": false,
         "widgets": {
@@ -1441,8 +1641,8 @@
           "ego": false,
           "inspector": false
         },
-        "dataset": "planted_l",
-        "slice": "s03",
+        "dataset": "planted_j",
+        "slice": "s01",
         "encoding": "local",
         "highlightCommunity": 2,
         "seedCohort": false
@@ -1455,10 +1655,69 @@
           "type": "radio",
           "required": true,
           "options": [
-            "0–12 of 46",
-            "13–23 of 46",
-            "24–34 of 46",
-            "35–46 of 46"
+            "0–14 of 56",
+            "15–28 of 56",
+            "29–42 of 56",
+            "43–56 of 56"
+          ]
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident are you in that answer?",
+          "location": "sidebar",
+          "type": "likert",
+          "numItems": 5,
+          "leftLabel": "Not at all",
+          "rightLabel": "Very confident",
+          "required": true
+        },
+        {
+          "id": "studyMeasures",
+          "prompt": "",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false,
+          "hidden": true
+        }
+      ]
+    },
+    "E-survive-no-cohort-2": {
+      "baseComponent": "dynetspin",
+      "meta": {
+        "block": "E",
+        "task": "survive",
+        "condition": "no-cohort",
+        "stimulus": "planted_l@0",
+        "correctAnswer": "47–61 of 61"
+      },
+      "description": "E/survive — no-cohort on planted_l@0",
+      "instruction": "The outlined group has **61 members** in **W4**. Move to **W5**. **How many of them are still present?**",
+      "parameters": {
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "dataset": "planted_l",
+        "slice": "s03",
+        "encoding": "local",
+        "highlightCommunity": 0,
+        "seedCohort": false
+      },
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "0–15 of 61",
+            "16–30 of 61",
+            "31–46 of 61",
+            "47–61 of 61"
           ]
         },
         {
@@ -1679,6 +1938,8 @@
           "start": 0.5
         },
         "dashboardSidebar": true,
+        "timeRailCues": true,
+        "helpBubbles": true,
         "widgets": {
           "overview": true,
           "cohort": true,
@@ -1711,6 +1972,14 @@
           "leftLabel": "Not at all",
           "rightLabel": "Very confident",
           "required": true
+        },
+        {
+          "id": "studyMeasures",
+          "prompt": "",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false,
+          "hidden": true
         }
       ]
     },
@@ -1817,15 +2086,19 @@
           {
             "order": "latinSquare",
             "components": [
-              "D-bridge-ego-0",
-              "D-bridge-no-ego-1"
+              "D-busiest-ego-1",
+              "D-busiest-ego-2",
+              "D-busiest-no-ego-1",
+              "D-busiest-no-ego-2"
             ]
           },
           {
             "order": "latinSquare",
             "components": [
-              "E-survive-cohort",
-              "E-survive-no-cohort"
+              "E-survive-cohort-1",
+              "E-survive-cohort-2",
+              "E-survive-no-cohort-1",
+              "E-survive-no-cohort-2"
             ]
           }
         ]

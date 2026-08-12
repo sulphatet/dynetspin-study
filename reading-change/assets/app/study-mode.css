@@ -100,14 +100,56 @@ html.study.study-inspector.study-overview #overviewInspectorSection {
   display: block !important;
 }
 
+/* The overview names a community NOWHERE it is drawn — no text, and (before
+   this change) no <title> on the dots. The only surface that renders the name
+   is describe() → `#overviewInspector .evo-hoverdetail`, and detailEl() falls
+   back to `.evo-caption`, which design-system.css:1277 hides whenever the
+   overview is open ("its role moves to the Inspector"). With inspector:false
+   that left BOTH paths dead, so C-wedge-overview asked participants to click a
+   bloc that was named nowhere on screen — while the withheld arm simply read
+   the name off the chart. Restore the fallback: in study mode the encoding bar
+   is collapsed to a thin strip, so the reason the caption was hidden does not
+   apply, and this keeps chrome identical across the two C-wedge arms. */
+html.study.study-overview:not(.study-inspector) .evo-caption {
+  display: block !important;
+  /* clear the collapsed encoding strip, which still holds #evoToggle */
+  bottom: 64px;
+}
+
+/* ── the time rail is navigation ONLY ────────────────────────────────────── */
+/* BarChartPopulator.js decorates every .ts-btn with a per-slice readout of the
+   quantity Block A asks about: `.ts-mini` is a stacked bar of Incoming /
+   Outgoing / Transient / Stable counts in the encoding's own colours, and the
+   single highest-churn interior slice gets `.ts-btn--hot` plus a `.ts-hot-dot`.
+   Checked against the shipped CSVs, that dot sits on the FIRST WEEK OF THE
+   CORRECT ANSWER in all three A1 stimuli (planted_k s02→"W3", planted_g s01→"W2",
+   planted_f s03→"W4"). Left in, A/when is a one-click lookup that bypasses the
+   encoding under test, identically in all three arms — a ceiling null caused by
+   our own instrument, and visible to any reviewer who opens the study.
+
+   The `title` attribute carries the same numbers and is set from JS, so the
+   bridge has to strip it (stripTimeRailCues); CSS can only reach the drawn
+   marks. `.ts-btn.active` deliberately STAYS: which week you are on is
+   navigation feedback the training promises, and it says nothing about churn. */
+html.study:not(.study-timerail-cues) .ts-mini,
+html.study:not(.study-timerail-cues) .ts-hot-dot { display: none !important; }
+html.study:not(.study-timerail-cues) .ts-btn--hot { box-shadow: none !important; }
+
+/* ── help bubbles ────────────────────────────────────────────────────────── */
+/* Every `.info-tooltip` in the app explains a widget, at length. Two of them
+   are IVs: the alpha hint anchors Block B to our suggested value, and the Ego
+   Spiral bubble (index.html:199) explains the widget in the `ego` arm and
+   nowhere else — i.e. the explanation was part of Block D's manipulation.
+   Off in every scored trial; the insight step opts back in. */
+html.study:not(.study-help-bubbles) .info-tooltip { display: none !important; }
+
 /* ── Block B: the alpha slider ───────────────────────────────────────────── */
 /* The Pareto badge names our auto-selected value. Showing it would anchor the
    participant to our suggestion, which is precisely the thing Block B must not
    do — the question is which alpha THEY choose. */
 html.study.study-alpha #paretoLabel,
 html.study.study-alpha #paretoInfo,
-html.study.study-alpha #alphaHint,
-html.study.study-alpha .info-tooltip {
+html.study.study-alpha #alphaHint {
   display: none !important;
 }
 
@@ -125,6 +167,23 @@ html.study circle.study-highlight {
   paint-order: stroke;
 }
 html.study circle.study-highlight-dim { opacity: 0.25 !important; }
+
+/* One outlined PERSON among ~600 dots. A 2px stroke is enough to confirm a dot
+   once you are looking at it and not enough to find it, so a single-node prompt
+   gets a halo: a wide translucent ring that reads at a glance and still lets the
+   node's own state colour through.
+
+   Deliberately not `dimOthers` — that fades every other node with
+   `opacity !important`, which beats the chart hover's inline opacity and so
+   disables the only way to see who this person's neighbours are. In Block D
+   that is the question. Not the camera either: zoomToNodeIDs on one node has a
+   zero-area bounding box, so its scale clamps to the maximum. */
+html.study.study-single-target circle.study-highlight {
+  stroke: #111 !important;
+  stroke-width: 2px !important;
+  paint-order: stroke;
+  filter: drop-shadow(0 0 3px #111) drop-shadow(0 0 7px rgba(17, 17, 17, 0.55));
+}
 
 /* The same group, marked inside the overview on every ring. Uses a ring rather
    than a fill change so the node's temporal-state colour still reads. */

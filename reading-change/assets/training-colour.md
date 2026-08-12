@@ -4,7 +4,10 @@
 about which scheme you are seeing. You will meet three:
 
 - a **four-colour scheme** — grey, blue, orange and purple, where each colour is
-  a distinct category;
+  a distinct category. The categories describe when a person is in the data:
+  they have just **arrived**, they are about to **leave**, they are **passing
+  through** (both), or they are **staying** across the surrounding periods. The
+  legend on screen names them;
 - a **single-colour intensity scale**, where darker means more;
 - a **connection-count scale**, where colour shows how many connections a person
   has.
