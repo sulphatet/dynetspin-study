@@ -134,6 +134,14 @@ html.study.study-overview:not(.study-inspector) .evo-caption {
 html.study:not(.study-timerail-cues) .ts-mini,
 html.study:not(.study-timerail-cues) .ts-hot-dot { display: none !important; }
 html.study:not(.study-timerail-cues) .ts-btn--hot { box-shadow: none !important; }
+/* Third cue, added to the dashboard after the ones above: hovering a node fades
+   the slices that node is not present in (BarChartPopulator.markSlicePresence).
+   That is a real improvement to the tool and a leak here — it puts a node's
+   whole presence history on the rail for the price of one hover, in a study
+   whose Block A is about reading temporal structure and whose Block D was
+   already rebuilt once for keying on presence. Same gate as the rest, so it is
+   live for the insight step and off in every scored trial. */
+html.study:not(.study-timerail-cues) .ts-btn--nodeabsent { opacity: 1 !important; }
 
 /* ── help bubbles ────────────────────────────────────────────────────────── */
 /* Every `.info-tooltip` in the app explains a widget, at length. Two of them

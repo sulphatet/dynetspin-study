@@ -251,6 +251,40 @@ function sliceStateBreakdown(label){
   return c;
 }
 
+/* ── presence wash on the time rail ──────────────────────────────────────────
+   Hovering a node fades the slices that node is not in, so "when did this
+   person exist" is answerable without stepping through every week to find out.
+   The main chart is a snapshot and cannot say it; the rail is the only surface
+   in the layout that is already a timeline.
+
+   PRESENCE, deliberately, not adjacency — "is this person in the data that
+   week", read from the slice node tables. The Ego Spiral answers the adjacency
+   question ("who were they connected to, and when") and answering a different
+   question with the same mark in two places is how the two views end up
+   contradicting each other.
+
+   Passing null clears. Callers must clear on mouseout AND on slice load: the
+   rail is rebuilt from scratch on a dataset or granularity change, and a wash
+   left behind would then describe a node nobody is hovering. */
+function markSlicePresence(nodeID){
+  const btns = document.querySelectorAll("#year-buttons .ts-btn, #ts-unfurl .ts-btn");
+  if (!btns.length) return;
+  if (nodeID === null || nodeID === undefined
+      || typeof allYearsNodeData === "undefined") {
+    btns.forEach(b => b.classList.remove("ts-btn--nodeabsent"));
+    return;
+  }
+  const id = +nodeID;
+  btns.forEach(b => {
+    const label = b.dataset ? b.dataset.sliceLabel : null;
+    // A button with no slice label is a band chip in the coarse roll-up, which
+    // stands for several slices at once and so has no single answer here.
+    const dict = label ? allYearsNodeData[label] : null;
+    b.classList.toggle("ts-btn--nodeabsent", !!dict && !dict[id]);
+  });
+}
+window.markSlicePresence = markSlicePresence;
+
 function renderYearButtons(datasetKey, preferDir){
   const ds = DATASETS_CONFIG[datasetKey];
   const active = activeLevelSlices(datasetKey);
@@ -561,9 +595,14 @@ function loadData(datasetKey, yearDir){
 
     showdata_spiral_community_chart(dataArr);
     updateCommunitySpiralSideWidget();
-    // Ego wedges are grouped by community in the DISPLAYED slice, so they have
-    // to be rebuilt here or the widget would describe the slice you just left.
+    /* The ego bands span every slice, so this no longer rebuilds the widget —
+       refresh() only moves the "you are here" ring. It is still called here
+       rather than from the rail click, so the emphasis moves when the slice has
+       actually LOADED and the two views can never disagree. */
     if (window.EgoSpiral && window.EgoSpiral.refresh) window.EgoSpiral.refresh();
+    // The rail is rebuilt on dataset/granularity change, and a stale presence
+    // wash would survive that as a class on buttons for a different node.
+    markSlicePresence(null);
     autoZoomOnSliceChangeV2({ massThreshold: 0.95, maxGroups: 5, pad: 40, duration: 400 });
     // Single signal the all-slices views ride: the Community Evolution overview
     // rebuilds on it (dataset / granularity change) and uses it to fire a

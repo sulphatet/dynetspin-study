@@ -136,7 +136,16 @@ body {
   transition: background var(--dur) var(--ease);
 }
 .sidebar-link:hover { background: rgba(255,255,255,0.06); }
-.sidebar-link[aria-expanded="true"] { color: #fff !important; }
+/* The open section. This was `color: #fff !important`, which was right while the
+   sidebar was dark chrome and became white-on-white the moment the light
+   surface below redefined --chrome-bg to rgba(252,252,253,0.86): every other
+   rule in this block reads the token and re-themed itself, this one literal did
+   not, so opening a section made its own label vanish. Emphasis is carried by
+   weight instead, which survives both palettes. */
+.sidebar-link[aria-expanded="true"] {
+  color: var(--chrome-text) !important;
+  font-weight: 650;
+}
 .sidebar-link .right-icon { display: inline-flex; transition: transform var(--dur) var(--ease); }
 .sidebar-link[aria-expanded="true"] .right-icon { transform: rotate(180deg); }
 #sidebar hr { border-color: var(--chrome-border); opacity: 1; }
@@ -693,6 +702,17 @@ main { top: 0; }
   background: var(--accent); color: #fff; border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-soft);
 }
+/* Slices the hovered node is not present in. A wash rather than a colour: this
+   is a transient annotation on top of whatever the rail already encodes, and it
+   must not be mistaken for one of the rail's own states. The active slice keeps
+   its full-strength treatment either way — "you are here" outranks "they were
+   not here", and dimming the selected week would read as having lost the
+   selection. Transitioned so a fast sweep across the chart does not strobe. */
+.ts-btn--nodeabsent { opacity: 0.3; }
+.ts-btn--nodeabsent.active { opacity: 0.72; }
+.ts-btn { transition: background var(--dur) var(--ease),
+                      border-color var(--dur) var(--ease),
+                      opacity var(--dur) var(--ease); }
 .ts-chevron {
   position: absolute; right: -12px; top: 50%; transform: translateY(-50%);
   width: 14px; height: 40px; border: none; background: transparent;
@@ -1051,17 +1071,29 @@ body.sidebar-collapsed .floaty-col--left { top: 52px; }
   stroke-width: 2.5px;
   paint-order: stroke fill;
 }
-/* The slice the chart is showing. The wedges only speak for this ring. */
+/* The slice the chart is showing. This is the only mark in the view that means
+   anything about WHICH slice — the bands hold all of them — so it says "you are
+   here" and nothing more. EgoSpiral.refresh() moves it without re-rendering. */
 .ego-ring--active { stroke: #86868b; stroke-width: 1.6px; }
 .ego-ring-label--active { fill: #1d1d1f; font-weight: 700; }
-/* One wedge per community in the DISPLAYED slice — the same grouping the main
-   chart draws as separate spirals. Fill colour and opacity are set inline from
-   the data (which community, and whether it is the ego's own), so this rule
-   only owns the shared behaviour. */
-/* fill-opacity is driven from JS (markWedge) so the wedge and its legend entry
+/* Rings skipped by the label stride when they are too close together to read.
+   Still in the DOM, so becoming the active ring is enough to name one — which
+   is why refresh() can move the emphasis without knowing this rule exists. */
+.ego-ring-label--thin { display: none; }
+.ego-ring-label--thin.ego-ring-label--active { display: block; }
+/* One band per destination crowd, fixed across every slice. Fill colour and
+   opacity are set inline from the data (which crowd, and whether it is the
+   ego's own), so this rule only owns the shared behaviour. */
+/* fill-opacity is driven from JS (markWedge) so the band and its legend entry
    light up together; a CSS :hover rule here would be dead under the inline
    style anyway. */
 .ego-wedge { stroke: none; transition: fill-opacity 0.12s ease; }
+
+/* One cell per (neighbour, week) spent in that band's crowd. Deliberately
+   stronger than the band it sits in — the band is a container, the cells are
+   the reading. No stroke at any size: at un_voting's 14 rings a cell is about
+   4.9 x 5.4px, and a 1px outline would eat the fill it delimits. */
+.ego-cell { stroke: none; fill-opacity: 0.42; }
 
 /* Radial guides. Same weight as the time rings on purpose: together they read
    as one polar grid, i.e. as scaffold. NO data-bearing lines exist in this

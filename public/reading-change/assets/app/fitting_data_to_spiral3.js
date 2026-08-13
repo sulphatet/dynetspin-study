@@ -1104,9 +1104,23 @@ window.setEdgesHidden = (on) => { edgesHidden = !!on; resetEdgeOpacity(); };
 
    Returns true when an existing card absorbed the focus. */
 function focusTrackedEgo(egoID, focus) {
-  const yr = window.currentYearRange || "UnknownYear";
+  /* Matched on the EGO alone. This also required `s.yearRange` to equal the
+     slice on screen, which was right while a wedge meant "this person's
+     community in this week" — but a band spans the whole timeline, so after
+     stepping a week the same band click stopped finding the card and minted a
+     second one for the same person, eating a tracker slot that is meant to hold
+     someone else. A person is the same person in every slice. */
+  /* ...but the SLICE SET still has to match. The presence-partition compare
+     view freezes an ego over a two-slice subset; leaving that view and hovering
+     the same ego on the main chart rebuilds the widget over all 14, and a band
+     click then carried ids drawn from the 14-slice render into the 2-slice
+     card. Almost none of them are in that card's roster, so every member falls
+     outside the focus, the whole card greys uniformly and the click looks like
+     it did nothing. Not matching is the correct answer there: fall through and
+     let a card be built for the set actually on screen. */
+  const span = (window.currentSlices || []).join("|");
   const card = selectedCommunitySpirals.find(s =>
-    s.egoID != null && +s.egoID === +egoID && s.yearRange === yr);
+    s.egoID != null && +s.egoID === +egoID && (s.sliceSpan || span) === span);
   if (!card) return false;
   // Clicking the same wedge twice clears the emphasis rather than doing nothing.
   const same = card.focus && focus && card.focus.key === focus.key;
@@ -1119,6 +1133,11 @@ window.focusTrackedEgo = focusTrackedEgo;
 
 /* Freeze a community (or an arbitrary set, via opts) as a tracked cohort.
    Extracted from the node click handler so the Ego widget can call it too. */
+/* Fill for a roster member who was not in the slice the cohort was frozen in.
+   Deliberately not borrowed from another slice: `frozenColor` means "the colour
+   this node had when you froze it", and asserting one for someone who was not
+   there is the kind of small lie that later reads as data. */
+const COHORT_ABSENT_FILL = "#c7c9cc";
 let _cohortClickDown = null;
 /* `opts` lets a caller freeze an ARBITRARY set of people rather than a whole
    community — used by the Ego widget, where the unit is a travel-group.
@@ -1135,17 +1154,28 @@ function snapshotCommunityCohort(d, opts) {
   let clickedYearRange = window.currentYearRange || "UnknownYear";
   let commID = opts?.id ?? d.community;
 
-  // Check if this community from the current timeslice is already selected.
+  /* De-duplication. A COMMUNITY is an object of one slice — community 4 in 1975
+     and community 4 in 1995 are different groups — so it is keyed by slice. An
+     EGO is the same person in every slice and its card now holds the whole span,
+     so keying it by slice minted a second card for the same person every time
+     you froze them from a different week. */
+  const clickedSpan = (window.currentSlices || []).join("|");
   let alreadySelected = selectedCommunitySpirals.find(s =>
-    s.communityID === commID && s.yearRange === clickedYearRange
+    s.communityID === commID &&
+    (opts?.egoID != null
+      // An ego card is keyed by the span it covers, not by the week you froze
+      // it in. Without the span an ego frozen over a compare subset would block
+      // ever freezing that same person over the full timeline — the de-dup
+      // would match, return early, and the click would do nothing at all.
+      ? (s.sliceSpan || clickedSpan) === clickedSpan
+      : s.yearRange === clickedYearRange)
   );
   if (alreadySelected) {
     return;
   }
 
   // Build the *original* community’s data from this timeslice
-  // and freeze the colour each node has *right now*. Members that are absent
-  // from the current slice simply drop out of the filter.
+  // and freeze the colour each node has *right now*.
   const wanted = opts?.nodeIds ? new Set([...opts.nodeIds].map(Number)) : null;
   let originalCommData = global_data
     .filter(n => wanted ? wanted.has(n.node) : n.community === commID)
@@ -1153,6 +1183,36 @@ function snapshotCommunityCohort(d, opts) {
       ...n,
       frozenColor: getColorBasedOnFlags(n)
     }));
+
+  /* An explicit roster comes from the Ego Spiral, whose bands are built from
+     EVERY slice. Filtering it against the slice on screen silently threw away
+     most of what was just clicked: on un_voting it cut a 71-neighbour card to
+     26, and the band headed "Algeria, Eswatini +2" arrived holding one of its
+     four members. The card then dimmed the survivors as "outside the focus" and
+     the result was 24 ghosts around 2 solid dots.
+
+     So carry the absent members in. The tracker already has a mark for "in this
+     cohort, not here this week" — opacityFor's 0.25 — and using it is the whole
+     point of freezing a set and stepping through time. They get a neutral fill
+     rather than a borrowed one: frozenColor means "the colour this node had when
+     you froze it", and for someone who was not there, there is no such colour.
+
+     A community click still resolves against the current slice, because a
+     community IS a one-slice object and there is nothing to carry in. */
+  if (wanted) {
+    const have = new Set(originalCommData.map(n => n.node));
+    const labels = window.currentSlices || [];
+    wanted.forEach(id => {
+      if (have.has(id)) return;
+      for (const l of labels) {
+        const rec = (typeof allYearsNodeData !== "undefined" &&
+                     (allYearsNodeData[l] || {})[id]) || null;
+        if (!rec) continue;
+        originalCommData.push({ ...rec, node: id, frozenColor: COHORT_ABSENT_FILL });
+        break;
+      }
+    });
+  }
   if (!originalCommData.length) return;
 
   let originalCommLinks = node_to_node_link_data.filter(e => {
@@ -1163,6 +1223,9 @@ function snapshotCommunityCohort(d, opts) {
   // Create an object representing this selection.
   let selectionObj = {
     yearRange: clickedYearRange,
+    // The slice set this roster was built over, so a focus computed against a
+    // different one cannot be installed on it. See focusTrackedEgo.
+    sliceSpan: (window.currentSlices || []).join("|"),
     communityID: commID,
     label: opts?.label || null,     // used by the header when present
     egoID: opts?.egoID != null ? +opts.egoID : null,
@@ -1458,6 +1521,9 @@ if (false) { // set to true only if you really want both brush and zoom
                       drawNodeTimesliceChart(activeNodeId);
                       highlightMatrixNode(activeNodeId);
                       if (window.EgoSpiral) window.EgoSpiral.show(activeNodeId);
+                      // Fade the weeks this node is not in. Cleared on mouseout
+                      // and again on slice load — see markSlicePresence.
+                      if (window.markSlicePresence) window.markSlicePresence(activeNodeId);
 
                       // Cohort Tracker: mark this node wherever it is tracked
                       d3.selectAll(".sideCommEllipse")
@@ -1550,6 +1616,7 @@ if (false) { // set to true only if you really want both brush and zoom
                     div.transition().duration(300).style("opacity", 0);
                     clearHoverLabels();
                     d3.selectAll(".adjacent_edges").remove();
+                    if (window.markSlicePresence) window.markSlicePresence(null);
 
                     /* Restore the temporal filter's dimming rather than forcing
                        every node to full opacity — the old reset destroyed the
@@ -1561,13 +1628,29 @@ if (false) { // set to true only if you really want both brush and zoom
                     // broke the edge-visibility toggle's state read-back.
                     resetEdgeOpacity();
 
-                    /* Clear only the ellipse this hover highlighted. The old
-                       blanket reset to #333/1 clobbered the styling the Cohort
-                       Tracker side widget sets and owns. */
+                    /* Restore only the ellipse this hover highlighted, to the
+                       value the card computed for it — NOT to null. Nulling
+                       removes the inline property, and since nothing in css/ or
+                       index.html styles .sideCommEllipse it then falls back to
+                       the SVG initial `stroke: none` and the ring disappears
+                       outright. That silently stripped the ego's heavy black
+                       border — the only mark saying whose network a card is —
+                       after one hover of that node on the main chart, and now
+                       that focus is drawn as a ring too it stripped those as
+                       well, leaving a focused member indistinguishable from an
+                       unfocused one while still claiming stroke-opacity 0.95.
+                       The card's own mouseout gets this right by calling
+                       strokeFor(d); those live in the card's closure and cannot
+                       be reached from here, so the intended values are stashed
+                       on the element at render time and read back. */
                     d3.selectAll(".sideCommEllipse")
                       .filter(n => n && n.node === d.node)
-                      .style("stroke", null)
-                      .style("stroke-width", null);
+                      .style("stroke", function () {
+                        return this.getAttribute("data-stroke") || "#333";
+                      })
+                      .style("stroke-width", function () {
+                        return this.getAttribute("data-stroke-width") || 1;
+                      });
 
                   })
                   /* Cohort snapshot. Bound through a pointer pair rather than
@@ -2512,19 +2595,41 @@ function updateCommunitySpiralSideWidget() {
        hover/mouseout handlers below repaint stroke unconditionally — so the
        ego's border has to be derived from the datum every time it is set,
        never hardcoded, or the first mouseout strips it. */
-    const strokeFor = d => isEgo(d) ? "#000" : "#333";
-    const strokeWidthFor = d => isEgo(d) ? 3 : 1;
-    const radiusFor = d => isEgo(d) ? 6 : 4;
+    /* Two independent reasons to fade. They used to be an if/else, so the first
+       one answered and the second never ran: an unfocused member and an absent
+       member both came out at a flat 0.15, and a focused member who was NOT in
+       this slice was drawn at full strength — the card asserting someone was
+       present who was not. They COMPOSE now, one multiplying the other, so the
+       four combinations are four opacities and each still means one thing:
 
-    /* Two independent reasons to fade, and they must not cancel each other:
-       absent from the current slice (0.25), and outside the focused wedge
-       (0.15). The ego is never faded by focus — it is the card's identity. */
+         here + focused      1.00      here + unfocused      0.45
+         gone + focused      0.25      gone + unfocused      0.11
+
+       The floor also had to come up. At 0.15 a focus turned the rest of the
+       neighbourhood off rather than down, and the rest of the neighbourhood is
+       the context that makes a focus mean anything. The ego is never faded by
+       focus — it is the card's identity — but it IS faded by absence. */
     const focusIds = selObj.focus && selObj.focus.ids
       ? new Set([...selObj.focus.ids].map(Number)) : null;
+    const inFocus = d => !focusIds || isEgo(d) || focusIds.has(d.node);
     const opacityFor = d => {
-      if (focusIds && !isEgo(d) && !focusIds.has(d.node)) return 0.15;
-      return currentNodeMap.has(d.node) ? 1 : 0.25;
+      const here = currentNodeMap.has(d.node) ? 1 : 0.25;
+      return inFocus(d) ? here : here * 0.45;
     };
+    /* The ring stays legible for whatever the focus is, present or not — that
+       is the point of clicking a band whose members mostly left. Everything
+       else keeps a ring proportional to how visible its fill is, so unfocused
+       nodes do not acquire an outline they never had. */
+    const strokeOpacityFor = d =>
+      (focusIds && inFocus(d)) ? 0.95 : opacityFor(d);
+
+    /* Focus also gets a border, so it does not rest on opacity alone — opacity
+       is spoken for by presence, and one channel cannot carry two variables. */
+    const strokeFor = d =>
+      isEgo(d) ? "#000" : (focusIds && inFocus(d) ? "#1d1d1f" : "#333");
+    const strokeWidthFor = d =>
+      isEgo(d) ? 3 : (focusIds && inFocus(d) ? 2 : 1);
+    const radiusFor = d => isEgo(d) ? 6 : 4;
 
     /* ───── d) edge layers (current & original) ────────────────────────── */
     const edgesG = gRoot.append("g");
@@ -2563,7 +2668,18 @@ function updateCommunitySpiralSideWidget() {
       .attr("cy", d => d.new_y)
       .attr("rx", radiusFor).attr("ry", radiusFor)
       .style("stroke", strokeFor).style("stroke-width", strokeWidthFor)
-      .style("opacity", opacityFor)
+      /* The same two values as attributes, so a handler outside this closure
+         can restore them. The main-chart mouseout is the one that needs it. */
+      .attr("data-stroke", strokeFor).attr("data-stroke-width", strokeWidthFor)
+      /* fill-opacity, NOT opacity: `opacity` fades the whole element, ring
+         included, so a focused member who is not in this slice had its focus
+         ring faded to 0.25 along with everything else — three of the four
+         members of a clicked band were invisible, which is most of the way back
+         to the bug this is fixing. Splitting the two lets the FILL say "here
+         this week" and the RING say "this is what you clicked", which is one
+         variable each. */
+      .style("fill-opacity", opacityFor)
+      .style("stroke-opacity", strokeOpacityFor)
       .style("fill", d => {
         // --- FIXED LOGIC START ---
         // 1) Random mode: colour by CURRENT timeslice community
