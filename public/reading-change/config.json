@@ -1867,7 +1867,7 @@
     "training-check": {
       "type": "website",
       "path": "reading-change/assets/app/index.html",
-      "instruction": "Before we start: **which week is currently shown?** Use the time rail on the left.",
+      "instruction": "Before we start: **which timeslice is currently shown?** Use the time rail on the left. This dataset is the Harry Potter character network, so each timeslice is one book in the series.",
       "instructionLocation": "sidebar",
       "nextButtonLocation": "sidebar",
       "parameters": {
@@ -1893,7 +1893,7 @@
       "response": [
         {
           "id": "answer",
-          "prompt": "Which week is shown?",
+          "prompt": "Which timeslice is shown?",
           "location": "sidebar",
           "type": "dropdown",
           "required": true,
