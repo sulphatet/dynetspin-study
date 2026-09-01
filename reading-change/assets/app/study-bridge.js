@@ -630,6 +630,31 @@
       main.scrollTop += e.deltaY;
     }, { capture: true, passive: false });
 
+    /* Block E seeds the Cohort Tracker for the participant, precisely so the
+       trial measures whether tracking HELPS rather than whether they knew to
+       press the button. The card ships with an "Unselect" control that empties
+       it again, which can only turn a seeded trial into its own control --
+       silently, and with no way back inside the trial.
+
+       Blocked by text rather than by selector because the button is built by
+       d3 with `.text("Unselect")` and carries no class or id
+       (fitting_data_to_spiral3.js:2534). Delegated from the container and in
+       the capture phase, so it survives the card being rebuilt without needing
+       an observer. "Clear" (which only drops the focus) still works. */
+    /* Delegated from `document`, and the condition is checked at CLICK time,
+       not here: instrument() runs at boot, before Revisit.onDataReceive has
+       delivered the trial, so `cfg` is still null and #communitySideContainer
+       does not exist yet. */
+    document.addEventListener("click", function (e) {
+      if (!cfg || !cfg.seedCohort) return;
+      var b = e.target && e.target.closest && e.target.closest("button");
+      if (!b || !b.closest("#communitySideContainer")) return;
+      if (b.textContent.trim().toLowerCase() !== "unselect") return;
+      e.stopPropagation();
+      e.preventDefault();
+      evt("cohort_unselect_blocked");
+    }, true);
+
     // Shift-click a slice button enters presence-partition compare mode
     // (BarChartPopulator.js:301). That silently changes the visualization
     // mid-trial, so swallow it before it reaches the app's own listener.
