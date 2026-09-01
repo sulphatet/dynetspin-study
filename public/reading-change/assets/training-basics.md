@@ -20,5 +20,5 @@ deliberate: we want your answers to reflect the picture in front of you rather
 than an expectation we planted.
 
 Next you will meet the tool itself. Each of the three sections opens with one
-**practice question** that is **not scored** — you will be shown the answer and
-why, whether or not you got there.
+**practice question**, where you will be shown the answer and why, whether or
+not you got there.

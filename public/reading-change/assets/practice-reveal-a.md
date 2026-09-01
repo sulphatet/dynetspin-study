@@ -1,6 +1,6 @@
 # Practice — the answer
 
-**The answer was Book 5.**
+**Most characters left after Book 5.**
 
 Counting the characters who are present in one book and gone from the next:
 
@@ -8,17 +8,14 @@ Counting the characters who are present in one book and gone from the next:
 |---|---|---|---|---|---|---|
 | left after this book | 1 | 6 | 8 | 3 | **13** | 0 |
 
-Book 5 loses 13 — more than any other book, and well clear of Book 3's 8.
+Thirteen leave after Book 5, well ahead of Book 3's eight.
 
-**How you could see it without counting.** The colour of a dot tells you where
-that person sits in time around the book you are looking at. In the book where
-a lot of people leave, a lot of dots carry the "about to leave" colour at once,
-so the whole picture shifts. You are looking for the *frame that changes*, not
-for individual dots.
+You do not have to count. In the book where a lot of people leave, a lot of dots
+carry the "about to leave" colour at the same time, so the whole picture shifts.
+Look for the book that changes, not for individual dots.
 
-One thing to know: the **first and last** periods are special. Nothing can have
-left "before" the first, and nothing can be seen leaving "after" the last, so
-those two frames are not comparable with the ones in between.
+One thing worth knowing: the **first and last** periods are special. Nobody can
+be seen arriving before the first, and nobody can be seen leaving after the
+last, so those two are not comparable with the ones in between.
 
-If you picked something else, that is completely fine — **nothing here was
-scored, and nothing from this page counts.** The real questions start next.
+That was a practice question. The real ones start next.

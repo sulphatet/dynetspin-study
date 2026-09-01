@@ -19,5 +19,3 @@ delete it — no reason needed.
 
 Thank you for the time and the attention. The free-text comments are read, and
 they change the design more often than the numbers do.
-
-You may now close this tab (or follow the link back if you came from Prolific).
