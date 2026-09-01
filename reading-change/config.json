@@ -70,12 +70,17 @@
       },
       "response": [
         {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**The colour of a dot** means one of three things. The legend on screen names which one you have.\n\n**Four colours** — where that person sits in time around the period shown:\n\n- **blue** — just arrived\n- **orange** — about to leave\n- **purple** — passing through: in and out within this period\n- **grey** — staying\n\n**A red-to-blue ramp** — how much turnover that person had across all six weeks. Red is the most, blue the least.\n\n**The same ramp, labelled Degree** — how many connections that person has in the period shown. Red most, blue least."
+        },
+        {
           "id": "answer",
           "prompt": "Your answer:",
           "location": "sidebar",
           "type": "radio",
           "required": true,
-          "secondaryText": "The colour of a dot means one of three things. The legend on screen names which one you have.\n\n**Four colours** — where that person sits in time around the period shown:\n· blue = just arrived (*Incoming*)\n· orange = about to leave (*Outgoing*)\n· purple = passing through, in and out within this period (*Transient*)\n· grey = staying (*Stable*)\n\n**A red-to-blue ramp** labelled *Volatility* — how much turnover that person had across the whole six weeks. Red is the most, blue the least, yellow in between.\n\n**The same ramp labelled *Degree*** — how many connections that person has in the period shown, red most to blue least.",
           "options": [
             "W1",
             "W2",
@@ -130,12 +135,17 @@
       },
       "response": [
         {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**The colour of a dot** means one of three things. The legend on screen names which one you have.\n\n**Four colours** — where that person sits in time around the period shown:\n\n- **blue** — just arrived\n- **orange** — about to leave\n- **purple** — passing through: in and out within this period\n- **grey** — staying\n\n**A red-to-blue ramp** — how much turnover that person had across all six weeks. Red is the most, blue the least.\n\n**The same ramp, labelled Degree** — how many connections that person has in the period shown. Red most, blue least."
+        },
+        {
           "id": "answer",
           "prompt": "Your answer:",
           "location": "sidebar",
           "type": "radio",
           "required": true,
-          "secondaryText": "The colour of a dot means one of three things. The legend on screen names which one you have.\n\n**Four colours** — where that person sits in time around the period shown:\n· blue = just arrived (*Incoming*)\n· orange = about to leave (*Outgoing*)\n· purple = passing through, in and out within this period (*Transient*)\n· grey = staying (*Stable*)\n\n**A red-to-blue ramp** labelled *Volatility* — how much turnover that person had across the whole six weeks. Red is the most, blue the least, yellow in between.\n\n**The same ramp labelled *Degree*** — how many connections that person has in the period shown, red most to blue least.",
           "options": [
             "W1",
             "W2",
@@ -190,12 +200,17 @@
       },
       "response": [
         {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**The colour of a dot** means one of three things. The legend on screen names which one you have.\n\n**Four colours** — where that person sits in time around the period shown:\n\n- **blue** — just arrived\n- **orange** — about to leave\n- **purple** — passing through: in and out within this period\n- **grey** — staying\n\n**A red-to-blue ramp** — how much turnover that person had across all six weeks. Red is the most, blue the least.\n\n**The same ramp, labelled Degree** — how many connections that person has in the period shown. Red most, blue least."
+        },
+        {
           "id": "answer",
           "prompt": "Your answer:",
           "location": "sidebar",
           "type": "radio",
           "required": true,
-          "secondaryText": "The colour of a dot means one of three things. The legend on screen names which one you have.\n\n**Four colours** — where that person sits in time around the period shown:\n· blue = just arrived (*Incoming*)\n· orange = about to leave (*Outgoing*)\n· purple = passing through, in and out within this period (*Transient*)\n· grey = staying (*Stable*)\n\n**A red-to-blue ramp** labelled *Volatility* — how much turnover that person had across the whole six weeks. Red is the most, blue the least, yellow in between.\n\n**The same ramp labelled *Degree*** — how many connections that person has in the period shown, red most to blue least.",
           "options": [
             "W1",
             "W2",
@@ -250,12 +265,17 @@
       },
       "response": [
         {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**The colour of a dot** means one of three things. The legend on screen names which one you have.\n\n**Four colours** — where that person sits in time around the period shown:\n\n- **blue** — just arrived\n- **orange** — about to leave\n- **purple** — passing through: in and out within this period\n- **grey** — staying\n\n**A red-to-blue ramp** — how much turnover that person had across all six weeks. Red is the most, blue the least.\n\n**The same ramp, labelled Degree** — how many connections that person has in the period shown. Red most, blue least."
+        },
+        {
           "id": "answer",
           "prompt": "Your answer:",
           "location": "sidebar",
           "type": "radio",
           "required": true,
-          "secondaryText": "The colour of a dot means one of three things. The legend on screen names which one you have.\n\n**Four colours** — where that person sits in time around the period shown:\n· blue = just arrived (*Incoming*)\n· orange = about to leave (*Outgoing*)\n· purple = passing through, in and out within this period (*Transient*)\n· grey = staying (*Stable*)\n\n**A red-to-blue ramp** labelled *Volatility* — how much turnover that person had across the whole six weeks. Red is the most, blue the least, yellow in between.\n\n**The same ramp labelled *Degree*** — how many connections that person has in the period shown, red most to blue least.",
           "options": [
             "Team_02",
             "Team_04",
@@ -308,12 +328,17 @@
       },
       "response": [
         {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**The colour of a dot** means one of three things. The legend on screen names which one you have.\n\n**Four colours** — where that person sits in time around the period shown:\n\n- **blue** — just arrived\n- **orange** — about to leave\n- **purple** — passing through: in and out within this period\n- **grey** — staying\n\n**A red-to-blue ramp** — how much turnover that person had across all six weeks. Red is the most, blue the least.\n\n**The same ramp, labelled Degree** — how many connections that person has in the period shown. Red most, blue least."
+        },
+        {
           "id": "answer",
           "prompt": "Your answer:",
           "location": "sidebar",
           "type": "radio",
           "required": true,
-          "secondaryText": "The colour of a dot means one of three things. The legend on screen names which one you have.\n\n**Four colours** — where that person sits in time around the period shown:\n· blue = just arrived (*Incoming*)\n· orange = about to leave (*Outgoing*)\n· purple = passing through, in and out within this period (*Transient*)\n· grey = staying (*Stable*)\n\n**A red-to-blue ramp** labelled *Volatility* — how much turnover that person had across the whole six weeks. Red is the most, blue the least, yellow in between.\n\n**The same ramp labelled *Degree*** — how many connections that person has in the period shown, red most to blue least.",
           "options": [
             "Team_02",
             "Team_05",
@@ -348,7 +373,8 @@
         "task": "track",
         "condition": "blended",
         "stimulus": "track_a",
-        "correctAnswer": "0"
+        "correctAnswer": "0",
+        "correctSlice": "W4"
       },
       "description": "B/track — blended on track_a",
       "instruction": "The outlined group is shown in **W2**. Move to **W4** and **click the group that holds most of the same people.**",
@@ -371,6 +397,12 @@
         "answerMode": "community"
       },
       "response": [
+        {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**The dark ring marks the group in W2 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+        },
         {
           "id": "answer",
           "prompt": "Click a group in the picture",
@@ -405,7 +437,8 @@
         "task": "track",
         "condition": "blended",
         "stimulus": "track_b",
-        "correctAnswer": "0"
+        "correctAnswer": "0",
+        "correctSlice": "W4"
       },
       "description": "B/track — blended on track_b",
       "instruction": "The outlined group is shown in **W2**. Move to **W4** and **click the group that holds most of the same people.**",
@@ -428,6 +461,12 @@
         "answerMode": "community"
       },
       "response": [
+        {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**The dark ring marks the group in W2 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+        },
         {
           "id": "answer",
           "prompt": "Click a group in the picture",
@@ -462,7 +501,8 @@
         "task": "track",
         "condition": "size-only",
         "stimulus": "track_c",
-        "correctAnswer": "0"
+        "correctAnswer": "0",
+        "correctSlice": "W4"
       },
       "description": "B/track — size-only on track_c",
       "instruction": "The outlined group is shown in **W2**. Move to **W4** and **click the group that holds most of the same people.**",
@@ -485,6 +525,12 @@
         "answerMode": "community"
       },
       "response": [
+        {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**The dark ring marks the group in W2 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+        },
         {
           "id": "answer",
           "prompt": "Click a group in the picture",
@@ -519,7 +565,8 @@
         "task": "track",
         "condition": "size-only",
         "stimulus": "track_d",
-        "correctAnswer": "0"
+        "correctAnswer": "0",
+        "correctSlice": "W4"
       },
       "description": "B/track — size-only on track_d",
       "instruction": "The outlined group is shown in **W2**. Move to **W4** and **click the group that holds most of the same people.**",
@@ -542,6 +589,12 @@
         "answerMode": "community"
       },
       "response": [
+        {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**The dark ring marks the group in W2 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+        },
         {
           "id": "answer",
           "prompt": "Click a group in the picture",
@@ -576,7 +629,8 @@
         "task": "track",
         "condition": "slider",
         "stimulus": "track_e",
-        "correctAnswer": "0"
+        "correctAnswer": "0",
+        "correctSlice": "W4"
       },
       "description": "B/track — slider on track_e",
       "instruction": "The outlined group is shown in **W2**. Move to **W4** and **click the group that holds most of the same people.**",
@@ -599,6 +653,12 @@
         "answerMode": "community"
       },
       "response": [
+        {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**The dark ring marks the group in W2 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+        },
         {
           "id": "answer",
           "prompt": "Click a group in the picture",
@@ -633,7 +693,8 @@
         "task": "track",
         "condition": "slider",
         "stimulus": "track_f",
-        "correctAnswer": "0"
+        "correctAnswer": "0",
+        "correctSlice": "W4"
       },
       "description": "B/track — slider on track_f",
       "instruction": "The outlined group is shown in **W2**. Move to **W4** and **click the group that holds most of the same people.**",
@@ -656,6 +717,12 @@
         "answerMode": "community"
       },
       "response": [
+        {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**The dark ring marks the group in W2 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+        },
         {
           "id": "answer",
           "prompt": "Click a group in the picture",
@@ -690,7 +757,8 @@
         "task": "size",
         "condition": "blended",
         "stimulus": "track_g",
-        "correctAnswer": "5"
+        "correctAnswer": "5",
+        "correctSlice": "W3"
       },
       "description": "B/size — blended on track_g",
       "instruction": "**Which group is the largest** in the week shown?",
@@ -747,7 +815,8 @@
         "task": "size",
         "condition": "size-only",
         "stimulus": "track_h",
-        "correctAnswer": "1"
+        "correctAnswer": "1",
+        "correctSlice": "W3"
       },
       "description": "B/size — size-only on track_h",
       "instruction": "**Which group is the largest** in the week shown?",
@@ -804,7 +873,8 @@
         "task": "track-real",
         "condition": "blended",
         "stimulus": "un_voting@1976–80",
-        "correctAnswer": "3"
+        "correctAnswer": "3",
+        "correctSlice": "1986–90"
       },
       "description": "B/track-real — blended on un_voting@1976–80",
       "instruction": "The outlined group is a voting bloc in **1976–80**. Move to **1986–90** and **click the bloc that holds most of the same countries.**",
@@ -827,6 +897,12 @@
         "answerMode": "community"
       },
       "response": [
+        {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**The dark ring marks the group in 1976–80 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+        },
         {
           "id": "answer",
           "prompt": "Click a bloc in the picture",
@@ -861,7 +937,8 @@
         "task": "track-real",
         "condition": "size-only",
         "stimulus": "un_voting@1981–85",
-        "correctAnswer": "0"
+        "correctAnswer": "0",
+        "correctSlice": "1991–95"
       },
       "description": "B/track-real — size-only on un_voting@1981–85",
       "instruction": "The outlined group is a voting bloc in **1981–85**. Move to **1991–95** and **click the bloc that holds most of the same countries.**",
@@ -884,6 +961,12 @@
         "answerMode": "community"
       },
       "response": [
+        {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**The dark ring marks the group in 1981–85 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+        },
         {
           "id": "answer",
           "prompt": "Click a bloc in the picture",
@@ -938,12 +1021,17 @@
       },
       "response": [
         {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**What the four answers mean:**\n\n- **persisted** — most of these people are still together in one group.\n- **split** — they are now spread across two or more groups, each with a fair share of them.\n- **merged** — they are now inside a bigger group, alongside people who were not with them before.\n- **dissolved** — most of these people are no longer in the data at all.\n\nA group whose members all stay in the network but scatter has **split**, not dissolved.\n\n**The dark ring marks the group in W1 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+        },
+        {
           "id": "answer",
           "prompt": "Your answer:",
           "location": "sidebar",
           "type": "radio",
           "required": true,
-          "secondaryText": "persisted = most of these people are still together in one group.   split = they are now spread across two or more groups, each with a fair share.   merged = they are now inside a bigger group, alongside people who were not with them before.   dissolved = most of these people are no longer in the data at all.",
           "options": [
             "persisted",
             "split",
@@ -998,12 +1086,17 @@
       },
       "response": [
         {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**What the four answers mean:**\n\n- **persisted** — most of these people are still together in one group.\n- **split** — they are now spread across two or more groups, each with a fair share of them.\n- **merged** — they are now inside a bigger group, alongside people who were not with them before.\n- **dissolved** — most of these people are no longer in the data at all.\n\nA group whose members all stay in the network but scatter has **split**, not dissolved.\n\n**The dark ring marks the group in W1 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+        },
+        {
           "id": "answer",
           "prompt": "Your answer:",
           "location": "sidebar",
           "type": "radio",
           "required": true,
-          "secondaryText": "persisted = most of these people are still together in one group.   split = they are now spread across two or more groups, each with a fair share.   merged = they are now inside a bigger group, alongside people who were not with them before.   dissolved = most of these people are no longer in the data at all.",
           "options": [
             "persisted",
             "split",
@@ -1058,12 +1151,17 @@
       },
       "response": [
         {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**What the four answers mean:**\n\n- **persisted** — most of these people are still together in one group.\n- **split** — they are now spread across two or more groups, each with a fair share of them.\n- **merged** — they are now inside a bigger group, alongside people who were not with them before.\n- **dissolved** — most of these people are no longer in the data at all.\n\nA group whose members all stay in the network but scatter has **split**, not dissolved.\n\n**The dark ring marks the group in W1 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+        },
+        {
           "id": "answer",
           "prompt": "Your answer:",
           "location": "sidebar",
           "type": "radio",
           "required": true,
-          "secondaryText": "persisted = most of these people are still together in one group.   split = they are now spread across two or more groups, each with a fair share.   merged = they are now inside a bigger group, alongside people who were not with them before.   dissolved = most of these people are no longer in the data at all.",
           "options": [
             "persisted",
             "split",
@@ -1118,12 +1216,17 @@
       },
       "response": [
         {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**What the four answers mean:**\n\n- **persisted** — most of these people are still together in one group.\n- **split** — they are now spread across two or more groups, each with a fair share of them.\n- **merged** — they are now inside a bigger group, alongside people who were not with them before.\n- **dissolved** — most of these people are no longer in the data at all.\n\nA group whose members all stay in the network but scatter has **split**, not dissolved.\n\n**The dark ring marks the group in W1 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+        },
+        {
           "id": "answer",
           "prompt": "Your answer:",
           "location": "sidebar",
           "type": "radio",
           "required": true,
-          "secondaryText": "persisted = most of these people are still together in one group.   split = they are now spread across two or more groups, each with a fair share.   merged = they are now inside a bigger group, alongside people who were not with them before.   dissolved = most of these people are no longer in the data at all.",
           "options": [
             "persisted",
             "split",
@@ -1538,6 +1641,12 @@
       },
       "response": [
         {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**The dark ring marks the group in W3 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+        },
+        {
           "id": "answer",
           "prompt": "Your answer:",
           "location": "sidebar",
@@ -1596,6 +1705,12 @@
         "seedCohort": true
       },
       "response": [
+        {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**The dark ring marks the group in W4 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+        },
         {
           "id": "answer",
           "prompt": "Your answer:",
@@ -1656,6 +1771,12 @@
       },
       "response": [
         {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**The dark ring marks the group in W2 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+        },
+        {
           "id": "answer",
           "prompt": "Your answer:",
           "location": "sidebar",
@@ -1714,6 +1835,12 @@
         "seedCohort": false
       },
       "response": [
+        {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**The dark ring marks the group in W4 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+        },
         {
           "id": "answer",
           "prompt": "Your answer:",
@@ -1910,7 +2037,7 @@
       "type": "website",
       "path": "reading-change/assets/app/index.html",
       "description": "Practice — practice-a",
-      "instruction": "**Practice — not scored, and you cannot get it wrong.**\n\nEach **dot is one person** and each **spiral is a group** — the bigger the spiral, the more people in it. The buttons down the **left-hand side** are time periods, oldest at the top; click one to jump to it, and move back and forth as much as you like.\n\nThis is the Harry Potter character network, so each period is one book. Try stepping through all six, then answer:\n\n**In which book did the largest number of characters leave?**",
+      "instruction": "**Practice question.** You cannot get this one wrong.\n\nEach **dot is one person** and each **spiral is a group** — the bigger the spiral, the more people in it. The buttons down the **left-hand side** are time periods, oldest at the top; click one to jump to it, and move back and forth as much as you like.\n\nThis is the Harry Potter character network, so each period is one book. Try stepping through all six, then answer:\n\n**In which book did the largest number of characters leave?**",
       "instructionLocation": "sidebar",
       "nextButtonLocation": "sidebar",
       "parameters": {
@@ -1925,7 +2052,15 @@
         },
         "slice": "Book_1"
       },
-      "provideFeedback": false,
+      "correctAnswer": [
+        {
+          "id": "answer",
+          "answer": "Book_5"
+        }
+      ],
+      "provideFeedback": true,
+      "trainingAttempts": 1,
+      "allowFailedTraining": true,
       "nextButtonAutoAdvanceTime": 60000,
       "nextButtonAutoAdvanceWarningTime": 60000,
       "nextButtonAutoAdvanceWarningMessage": "Practice question — not evaluated. The answer follows in {seconds} {unit}.",
@@ -1951,7 +2086,7 @@
       "type": "website",
       "path": "reading-change/assets/app/index.html",
       "description": "Practice — practice-b",
-      "instruction": "**Practice — not scored.**\n\nThe dark ring marks one group in **Book 2**. Two things to notice before you move: **the ring marks it in Book 2 only** and will not follow it, and **how the spirals are arranged around the picture changes between tasks** — in some the arrangement carries information, in others it does not, and no question depends on knowing which. So a group will not always be where you last saw it.\n\nMove to **Book 4** and **click the group that holds most of the same characters.**",
+      "instruction": "**Practice question.**\n\nA dark ring marks one group in **Book 2**. Two things to know before you move:\n\n- The ring marks that group in **Book 2 only**. It will not follow the group.\n- **Where a group sits can change between periods.** It will not always be where you last saw it.\n\nNow move to **Book 4** and **click the group that holds most of the same characters.**",
       "instructionLocation": "sidebar",
       "nextButtonLocation": "sidebar",
       "parameters": {
@@ -1968,7 +2103,15 @@
         "highlightCommunity": 0,
         "answerMode": "community"
       },
-      "provideFeedback": false,
+      "correctAnswer": [
+        {
+          "id": "answer",
+          "answer": "0"
+        }
+      ],
+      "provideFeedback": true,
+      "trainingAttempts": 1,
+      "allowFailedTraining": true,
       "nextButtonAutoAdvanceTime": 60000,
       "nextButtonAutoAdvanceWarningTime": 60000,
       "nextButtonAutoAdvanceWarningMessage": "Practice question — not evaluated. The answer follows in {seconds} {unit}.",
@@ -1986,7 +2129,7 @@
       "type": "website",
       "path": "reading-change/assets/app/index.html",
       "description": "Practice — practice-c",
-      "instruction": "**Practice — not scored.**\n\nYou answer some questions by **clicking a group** in the picture on the right, rather than picking from a list. **Hover** a dot to see who it is; scroll to zoom and drag to pan if you want a closer look.\n\nMove to **Book 6** and **click the largest group.**",
+      "instruction": "**Practice question.**\n\nMove to **Book 6** and **click the largest group.**",
       "instructionLocation": "sidebar",
       "nextButtonLocation": "sidebar",
       "parameters": {
@@ -2002,7 +2145,15 @@
         "slice": "Book_1",
         "answerMode": "community"
       },
-      "provideFeedback": false,
+      "correctAnswer": [
+        {
+          "id": "answer",
+          "answer": "0"
+        }
+      ],
+      "provideFeedback": true,
+      "trainingAttempts": 1,
+      "allowFailedTraining": true,
       "nextButtonAutoAdvanceTime": 60000,
       "nextButtonAutoAdvanceWarningTime": 60000,
       "nextButtonAutoAdvanceWarningMessage": "Practice question — not evaluated. The answer follows in {seconds} {unit}.",

@@ -7,15 +7,31 @@ A spiral is used because it packs a group of any size into one compact shape, so
 a group of 12 and a group of 120 are drawn the same way and you can still see
 which is which.
 
-The network is shown **one time period at a time**, and the buttons down the
-left-hand side move between them.
+The network is shown **one time period at a time**. The buttons down the
+left-hand side move between periods.
+
+## How you answer
+
+Some questions give you a list to pick from. Others ask you to **click a group
+in the picture on the right**. Where a question asks you to click, the box on
+the left will say so.
+
+**Hover a dot to see who it is.** That works on the main picture, and also in
+the round overview if a question gives you one. Scroll to zoom and drag to pan
+if you want a closer look.
+
+## Two things people find surprising
 
 **The colour of a dot means different things in different tasks.** The legend on
 screen always names the scheme you are looking at, and where a question depends
 on the colours, the question itself explains them. None of the schemes is the
 "right" one — we are comparing them.
 
-You will not be told which scheme or which arrangement you have. That is
+**A group will not always be in the same place from one period to the next.**
+Sometimes it stays put, sometimes it moves. Neither is a fault, and neither is a
+hint.
+
+You will not be told which colour scheme or which arrangement you have. That is
 deliberate: we want your answers to reflect the picture in front of you rather
 than an expectation we planted.
 
