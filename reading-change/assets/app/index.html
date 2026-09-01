@@ -260,6 +260,12 @@
             </div>
             <div class="enc-divider"></div>
             <div class="enc-group">
+              <button class="seg-btn active" id="edgeToggle" type="button" aria-pressed="true"
+                      title="Show/hide the community-level edges. The layout does not use edges to place anything, so hiding them costs no positional information and makes individual nodes easier to resolve on dense slices."
+                      onclick="toggleEdges()">Edges</button>
+            </div>
+            <div class="enc-divider"></div>
+            <div class="enc-group">
               <button class="seg-btn" id="evoToggle" type="button"
                       title="Community Evolution overview: every community across every slice on one dial. Splits fan out, merges converge. Click a ring's year to open that slice; click a community to track it.">
                 <i class="bi bi-diagram-3"></i> Overview</button>
@@ -457,8 +463,11 @@
       <div class="study-toosmall">
       <button class="study-toosmall__close" type="button"
               aria-label="Dismiss">&times;</button>
-      <strong>Tip:</strong> a larger browser window gives the visualization more
-      room. You can carry on either way &mdash; nothing is blocked.
+      <strong>Your window is a little narrow.</strong> The panels are stacked, so
+      some of them &mdash; including any chart on the right &mdash; sit below the
+      picture and you may need to <strong>scroll down</strong> to see them.
+      Maximising the window puts everything on one screen. You can carry on
+      either way &mdash; nothing is blocked.
     </div>
   </body>
 </html>

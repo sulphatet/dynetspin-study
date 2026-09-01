@@ -28,9 +28,21 @@
   "use strict";
 
   const VB       = 800;
-  const R_INNER  = 122;
-  const R_OUTER  = 350;
-  const BAND_FRAC = 0.62;        // fraction of the inter-ring gap a glyph may fill
+  /* An equal-sized community subtends an angle inversely proportional to its
+     ring radius, so R_OUTER/R_INNER IS the inner-vs-outer angular distortion a
+     reader sees: 3.33x here. Shrinking the centre hole to give glyphs more room
+     makes that ratio worse, so these two are a trade, not free parameters.
+     Was 122/350 (2.87x, large hole); 92/368 reads better still but costs 4.00x. */
+  const R_INNER  = 110;
+  const R_OUTER  = 366;
+  /* Fraction of the inter-ring gap a glyph may fill. Few rings leave a wide gap,
+     so glyphs can take more of it and the dial stops looking mostly empty. Many
+     rings leave a narrow gap, and because a dot of radius dotR overhangs the band
+     on both sides, the same fraction there lets neighbouring rings collide -- so
+     the fraction tapers as ring count grows. */
+  function bandFrac(k) {
+    return Math.max(0.62, 0.78 - Math.max(0, k - 6) * (0.16 / 6));
+  }
   const GAP_ANG  = 0.012;        // minimum blank between neighbouring spirals
   const PACK     = 0.55;         // areal density of dots inside a spiral
   const DOT_MIN  = 0.5;
@@ -209,7 +221,7 @@
   function place(model) {
     const { rings, dicts, k } = model;
     const step = k > 1 ? (R_OUTER - R_INNER) / (k - 1) : (R_OUTER - R_INNER);
-    const band = step * BAND_FRAC;
+    const band = step * bandFrac(k);
     const radHalf = band / 2 * 0.92;
     const dotR = solveDotR(rings, k, band);
 

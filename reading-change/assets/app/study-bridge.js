@@ -30,12 +30,17 @@
   var root = document.documentElement;
   root.classList.add("study", "study-booting");
 
-  /* Advisory only — see study-mode.css. These are measured on the IFRAME, which
-     is already narrower than the browser window by reVISit's sidebar, so they
-     must be well below any window-level figure. Set low enough that a normal
-     laptop never sees the hint, and high enough that a genuinely cramped pane
-     still gets one. */
-  var HINT_W = 760, HINT_H = 480;
+  /* Advisory only — see study-mode.css. Measured on the IFRAME, which reVISit's
+     330px sidebar has already narrowed: an iframe of 992px is a browser window
+     of roughly 1322px. 992 is not a comfort figure — it is the app's OWN
+     breakpoint (design-system.css:207,381,611,867), below which the canvas
+     stops floating and stacks into a scrolling column. So the hint now fires
+     exactly when the layout changes shape, which is the only moment it tells a
+     participant anything actionable. The previous 760x480 sat far below that
+     line, so it never fired on the 1280x800 and 1366x768 laptops that are
+     precisely the ones affected. */
+  var HINT_W = 992, HINT_H = 640;
+  var STACK_W = 992;               // keep in step with study-mode.css's @media
   var SETTLE_MS = 120;             // let a render finish before we touch it again
 
   /* Pointer track. reVISit records mousemove itself (StepRenderer.tsx attaches
@@ -108,6 +113,12 @@
       alphaChanges: alphaVals.length,
       alphaSettled: alphaVals.length ? alphaVals[alphaVals.length - 1] : alphaNow,
       alphaMoved: alphaVals.length > 0,
+      /* Whether the widget panel this trial provides was ever opened, and
+         whether the prod is what opened it. A participant who leaves it shut
+         has effectively taken the WITHHELD condition (STUDY_DESIGN 2), so this
+         is the field that keeps that identifiable rather than silent. */
+      panelExpanded: panelExpanded,
+      prodClicks: prodClicks,
       alphaPath: alphaVals,
       durationMs: Date.now() - t0,
       // [ms since trial start, x, y] inside the stimulus frame
@@ -202,6 +213,23 @@
     var done = onSliceLoaded();
     hit.dispatch("click");
     return done;
+  }
+
+  /* The vertical rail is a 240px window over its content. On un_voting that is
+     694px of 14 periods, and it opens at scrollTop 0 -- so B-real (1976-80) and
+     C-wedge (1981-85) both load with the ACTIVE period outside the rail
+     viewport and outside the window entirely. The participant sees 1946-50
+     through 1966-70 with nothing highlighted, and has to discover the rail
+     scrolls before the trial makes any sense. Six-slice datasets never showed
+     this because the whole rail fits. */
+  function revealActiveSlice() {
+    var btn = document.querySelector("#year-buttons .ts-btn.active");
+    if (!btn || !btn.scrollIntoView) return;
+    try {
+      btn.scrollIntoView({ block: "center", inline: "nearest" });
+    } catch (e) {
+      btn.scrollIntoView(false);
+    }
   }
 
   function selectSlice(dirOrLabel) {
@@ -425,10 +453,11 @@
           try {
             snap(null, { nodeIds: ids, id: cfg.highlightCommunity,
                          label: "Tracked group" });
-            // snapshotCommunityCohort expands the panel itself, but only if it
-            // is present when it runs; assert the end state rather than trust it
-            var cf = document.getElementById("cohortFloat");
-            if (cf) cf.classList.remove("collapsed");
+            // snapshotCommunityCohort expands the panel itself. We no longer
+            // assert that: installProd() runs later and owns the panel's final
+            // open/closed state, because an EXPANDED Cohort Tracker is 328x584
+            // sitting over the left of the canvas -- measured, it covered all
+            // 64 members of the group Block E's question is about.
             document.body.classList.add("cohorts-active");
             window.__studyCohortSeeded =
               document.querySelectorAll("#communitySideContainer > *").length;
@@ -492,7 +521,17 @@
       stripTimeRailCues();
       if (!applied) return;                       // ignore the boot sequence
       evt("slice_change", ev.detail && ev.detail.label);
-      clearHighlight();                           // highlight is slice-local
+      /* A COMMUNITY highlight is the answer to Blocks B and C, so it stays
+         slice-local — see applyHighlight's note. A NODE highlight is not: in
+         Block D it marks WHICH PERSON the question is about, and the answer is
+         a degree count. The task requires stepping through all six weeks, and
+         the halo was being destroyed on the first step, leaving a 2px ring on
+         one r=2 dot among 600 impossible to relocate — in the no-ego arm there
+         is no widget to fall back on, so those two trials were unanswerable
+         rather than merely hard. Re-applying it leaks nothing and is identical
+         in both arms. */
+      if (cfg && cfg.highlightNodes && cfg.highlightNodes.length) applyHighlight();
+      else clearHighlight();                      // community mark IS the answer
     });
 
     var slider = document.getElementById("AlphaSlider");
@@ -566,6 +605,30 @@
       lastPt = now;
       pointer.push([now - t0, Math.round(e.clientX), Math.round(e.clientY)]);
     }, { passive: true });
+
+    /* Wheel over the chart zooms, and d3.zoom calls preventDefault() on every
+       wheel event. In the STACKED layout that is a trap: the inspector sits
+       ~276px below the fold inside `main`, our own advisory banner tells the
+       participant to scroll down, and the obvious place to put the cursor is
+       the chart, which fills the top 46vh. Measured at 950x800: one wheel
+       gesture zoomed the spiral out 43% (k 0.95 -> 0.54) and scrolled the page
+       by exactly 0px. So below STACK_W we take the wheel back and scroll `main`
+       with it. Capture phase, because d3's own handler is on the SVG and would
+       otherwise consume it first.
+
+       Above STACK_W nothing changes: there is nothing to scroll and wheel-zoom
+       is a real affordance of the tool. The zoom buttons (#mainZoomUI) remain
+       the way to zoom in either layout. */
+    document.addEventListener("wheel", function (e) {
+      if (window.innerWidth >= STACK_W) return;
+      var chart = document.getElementById("chart");
+      if (!chart || !chart.contains(e.target)) return;
+      var main = document.querySelector("main");
+      if (!main || main.scrollHeight <= main.clientHeight) return;
+      e.stopPropagation();
+      e.preventDefault();
+      main.scrollTop += e.deltaY;
+    }, { capture: true, passive: false });
 
     // Shift-click a slice button enters presence-partition compare mode
     // (BarChartPopulator.js:301). That silently changes the visualization
@@ -646,6 +709,143 @@
     evt("viewport", window.innerWidth + "x" + window.innerHeight);
   }
 
+  /* ── collapsed widget panels, and the prod that points at them ─────────── */
+  /* Two measured problems, one fix.
+     - The Cohort Tracker is the LEFT floaty column, 328x584. Seeding it makes
+       the app expand it (fitting_data_to_spiral3.js:1261), and in Block E the
+       expanded panel lands on top of the outlined group: all 64 members return
+       a non-chart element from elementFromPoint, so the participant cannot see
+       the thing the question is about.
+     - The Ego Spiral lives in the RIGHT inspector, which falls below the fold
+       whenever the iframe is under 992px -- a browser under about 1322px.
+
+     Starting the panel collapsed clears the chart in both cases, and the prod
+     is what stops "collapsed" turning into "never found". STUDY_DESIGN 2's
+     rule still holds -- available is not the same as active, and a participant
+     who never opens the panel has taken the withheld condition -- so this
+     records `panelExpanded` and `prodClicks` per trial, which makes those
+     participants identifiable in analysis instead of silent.
+
+     Placement is computed from the panel's live bounding box rather than
+     hard-coded, so it follows the panel between the floating and stacked
+     layouts without a second set of rules. */
+  var prodEl = null, prodClicks = 0, panelExpanded = false;
+
+  function widgetPanel() {
+    if (!cfg || !cfg.widgets) return null;
+    /* Not on the insight step. That component turns every widget on and is
+       deliberately unstructured -- "explore freely, there is nothing to get
+       right" -- so pointing a callout at one specific panel would steer what
+       gets explored, which is the one thing that arm must not do. helpBubbles
+       is the insight-only opt-in, the same gate study-mode.css uses. */
+    if (cfg.helpBubbles) return null;
+    if (cfg.widgets.cohort) return document.getElementById("cohortFloat");
+    if (cfg.widgets.ego || cfg.widgets.inspector)
+      return document.getElementById("inspectorFloat");
+    return null;
+  }
+
+  function placeProd(panel) {
+    if (!prodEl || !panel) return;
+    var r = panel.getBoundingClientRect();
+    var vw = window.innerWidth, vh = window.innerHeight;
+    var offscreen = r.top > vh - 40 || r.bottom < 40;
+    prodEl.classList.toggle("study-prod--below", offscreen);
+    if (offscreen) {                       // stacked: pin low, point down
+      prodEl.style.left = "50%";
+      prodEl.style.top = "";
+      prodEl.style.bottom = "16px";
+      prodEl.style.transform = "translateX(-50%)";
+      return;
+    }
+    prodEl.style.bottom = "";
+    prodEl.style.right = "";
+
+    /* Beside the panel only if there is actually room beside it. In the
+       stacked layout the floaties go full-width, so "which side is the panel
+       on" stops meaning anything -- measured at 950x800 the right-hand branch
+       put the prod at x = -115, entirely off-screen. Fall back to sitting just
+       ABOVE the panel and pointing down at it. */
+    var NEED = 190;
+    var roomLeft = r.left, roomRight = vw - r.right;
+    var top = Math.max(8, Math.min(vh - 90, r.top + 6));
+
+    if (roomRight >= NEED || roomLeft >= NEED) {
+      var toRight = roomRight >= NEED && roomRight >= roomLeft;
+      prodEl.classList.toggle("study-prod--points-left", toRight);
+      prodEl.classList.toggle("study-prod--points-right", !toRight);
+      prodEl.classList.remove("study-prod--below");
+      prodEl.style.top = top + "px";
+      prodEl.style.transform = "";
+      prodEl.style.left = Math.round(toRight ? r.right + 12
+                                             : Math.max(8, r.left - 12 - 300)) + "px";
+      return;
+    }
+    prodEl.classList.remove("study-prod--points-left", "study-prod--points-right");
+    prodEl.classList.add("study-prod--below");
+    prodEl.style.top = Math.max(8, r.top - 52) + "px";
+    prodEl.style.left = Math.round((r.left + r.right) / 2) + "px";
+    prodEl.style.transform = "translateX(-50%)";
+  }
+
+  function openPanel(panel, viaProd) {
+    if (!panel) return;
+    panel.classList.remove("collapsed");
+    panelExpanded = true;
+    if (viaProd) { prodClicks++; evt("prod_click", cfg && cfg.dataset); }
+    evt("panel_expand", viaProd ? "prod" : "self");
+    if (prodEl) { prodEl.remove(); prodEl = null; }
+    try {
+      panel.scrollIntoView({ block: "nearest", inline: "nearest" });
+    } catch (e) { /* older engines: the panel is on screen anyway */ }
+    pushMeasures(true);
+  }
+
+  function installProd(panel, label) {
+    if (!panel) return;
+    panel.classList.add("collapsed");
+    prodEl = document.createElement("button");
+    prodEl.type = "button";
+    prodEl.className = "study-prod";
+    prodEl.innerHTML = '<span class="study-prod__arrow" aria-hidden="true"></span>' +
+                       '<span class="study-prod__text"></span>';
+    prodEl.querySelector(".study-prod__text").textContent = label;
+    prodEl.addEventListener("click", function () { openPanel(panel, true); });
+    document.body.appendChild(prodEl);
+    /* The header is the panel's own affordance; opening it that way must count
+       as opened and must dismiss the prod, or the prod outlives its purpose. */
+    var hdr = panel.querySelector(".floaty__header");
+    if (hdr) hdr.addEventListener("click", function () {
+      setTimeout(function () {
+        if (!panel.classList.contains("collapsed")) openPanel(panel, false);
+      }, 0);
+    });
+    placeProd(panel);
+    window.addEventListener("resize", function () { placeProd(panel); });
+    var main = document.querySelector("main");
+    if (main) main.addEventListener("scroll", function () { placeProd(panel); },
+                                    { passive: true });
+    /* The panel's box moves for reasons other than resize and scroll -- the
+       app expands it when a cohort is snapshotted, and the collapsed header is
+       164px wide against 328 expanded. Placing once left the prod sitting on
+       top of the panel it was pointing at.
+
+       The same observer re-asserts the collapse. snapshotCommunityCohort()
+       expands the Cohort Tracker itself, asynchronously and after we have
+       already collapsed it, so a one-shot collapse simply loses the race. Held
+       shut only until the PARTICIPANT opens it -- after that `panelExpanded` is
+       true and we never touch it again, so this cannot fight a real click. */
+    var hold = function () {
+      if (!panelExpanded && !panel.classList.contains("collapsed")) {
+        panel.classList.add("collapsed");
+      }
+      placeProd(panel);
+    };
+    if (window.ResizeObserver) new ResizeObserver(hold).observe(panel);
+    setTimeout(hold, SETTLE_MS);
+    setTimeout(hold, SETTLE_MS * 6);
+  }
+
   /* ── apply the condition ───────────────────────────────────────────────── */
 
   async function applyCondition() {
@@ -655,6 +855,7 @@
     try {
       await selectDataset(cfg.dataset);
       await selectSlice(cfg.slice);
+      revealActiveSlice();
 
       if (cfg.labels) root.classList.add("study-labels");
     // A colour ramp with no key is unreadable, and even the categorical scheme
@@ -671,6 +872,14 @@
     // in it is an IV, so only the open-ended insight step asks for it.
     if (cfg.dashboardSidebar) root.classList.add("study-dashboard");
       applyWidgets(cfg.widgets);
+      /* After applyWidgets, because seeding the cohort is what makes the app
+         expand that panel in the first place. */
+      var panel = widgetPanel();
+      if (panel) {
+        installProd(panel, cfg.widgets && cfg.widgets.cohort
+          ? "Open the Cohort Tracker — it follows the outlined group"
+          : "Open the Ego Network panel — it shows this person's connections");
+      }
       if (cfg.encoding) applyEncoding(cfg.encoding);
       applyAlpha(cfg.alpha);
 
@@ -706,6 +915,8 @@
     t0 = Date.now();                                  // time on task starts now
     log = [];
     pointer = [];
+    prodClicks = 0;
+    panelExpanded = false;
     lastAnswer = {};                                  // never carry across trials
     answerSurface = null;
     /* Everything above happened during setup and must not be counted as
@@ -716,6 +927,7 @@
       overviewAutoOpened: !!cfg.openOverview,
       overviewHighlighted: window.__studyEvoHighlighted || 0,
       cohortSeeded: !!cfg.seedCohort,
+      panelStartCollapsed: !!widgetPanel(),
       egoAutoOpened: !!cfg.openEgo,
       egoMarksDrawn: window.__studyEgoOpened || 0,
       cohortRows: window.__studyCohortSeeded || 0,
@@ -726,7 +938,14 @@
       alphaMode: (cfg.alpha && cfg.alpha.mode) || "default",
       widgets: cfg.widgets || {},
       encoding: cfg.encoding || null,
-      viewport: [window.innerWidth, window.innerHeight]
+      viewport: [window.innerWidth, window.innerHeight],
+      /* Which layout the participant actually got. Below STACK_W the app stacks
+         into a scrolling column and the inspector sits below the fold until you
+         scroll for it, so a trial rendered that way is not comparable to one
+         rendered in the floating-panel layout. Recorded per trial so it can be
+         filtered at analysis time instead of reconstructed from viewport
+         arithmetic months later. */
+      stacked: window.innerWidth < STACK_W
     };
     evt("trial_start", cfg.dataset + "/" + (cfg.slice || "?"));
 
