@@ -662,8 +662,20 @@
   function captureReactiveAnswer(d) {
     if (!cfg || !cfg.answerMode) return;
     if (cfg.answerMode === "community") {
-      evt("answer_submit", d.community);
-      postAnswer({ answer: String(d.community) });
+      /* The SLICE has to travel with the id. Community ids are per-slice under
+         Louvain, so "community 0" names a different group in every period --
+         and on the B/track stimuli the outlined group is c0 on the start slice
+         while the correct answer is also c0 on the target slice. Posting the id
+         alone made all six of those trials answerable by clicking the group
+         already outlined in front of you, without ever touching the time rail:
+         the id matched, nothing recorded that you had not moved, and the
+         scorer marked it right. That is the entire tracking manipulation
+         defeated by inaction. */
+      var at = window.currentYearRange;
+      evt("answer_submit", (at ? at + "#" : "") + d.community);
+      var out = { answer: String(d.community) };
+      if (at) out.answerSlice = String(at);
+      postAnswer(out);
     } else if (cfg.answerMode === "node") {
       evt("answer_submit", d.node);
       postAnswer({ answer: String(d.node) });
