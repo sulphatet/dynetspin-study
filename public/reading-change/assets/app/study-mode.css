@@ -52,6 +52,20 @@ html.study.study-dashboard #dataset-options { display: none !important; }
    every stimulus needs, because a colour ramp with no key is unreadable. */
 html.study:not(.study-legend) #statusFloat { display: none !important; }
 
+/* ...but the card's meta row must go in every case. `#nodeCount` is a LIVE
+   count of the nodes in the slice on screen, and a planted event removes ~28
+   people for exactly one slice — so across the six weeks the counts read
+   600/593/593/572/593/600 and "find the smallest, answer the week before it"
+   is correct on all three A1 stimuli. It needs no reading of any encoding,
+   which means it works identically in the two arms whose encoding carries no
+   week-varying signal at all. study-mode.css and stripTimeRailCues() already
+   suppress the time rail's churn bars, hot dot and titles for precisely this
+   reason; leaving the same number in the legend card undoes that work and
+   collapses the encoding main effect Block A exists to measure. */
+html.study .floaty__meta { display: none !important; }
+
+
+
 /* The encoding bar holds four groups: colour, alpha, labels, overview toggle.
    Two of them are legitimate per-condition controls (alpha in Block B, the
    overview toggle in Block C), so the bar cannot simply be hidden — doing that
@@ -234,4 +248,120 @@ html.study .study-toosmall__close {
   float: right; margin-left: 0.75rem;
   border: 0; background: none; cursor: pointer;
   font-size: 15px; line-height: 1; color: #8a7530;
+}
+
+/* ── stacked layout: below the app's own 992px breakpoint ────────────────── */
+/* reVISit renders this app in an iframe already narrowed by `sidebarWidth: 330`,
+   so a browser window under ~1322px puts the IFRAME under 992px — and 992px is
+   the app's only breakpoint (design-system.css:207,381,611,867). Below it the
+   whole canvas switches from absolutely-positioned floating panels to a normal-
+   flow flex COLUMN (design-system.css:381-404): #chart, the floaties, the time
+   rail and the inspector all stack.
+
+   The two rules above then fight that: `.stage` is pinned to exactly 100vh
+   while its stacked children need considerably more, and `body` cannot scroll.
+   `.stage` keeps `overflow: visible` from the mobile query, so the overflow is
+   not clipped — it is simply below the fold with nothing able to scroll to it.
+   That is why #egoSpiralSection and #communityEvolution "disappear" on a 13-14"
+   laptop: they are rendered, they are just unreachable.
+
+   Released here rather than by weakening the rules above, because the desktop
+   path (iframe >= 992px, which is what every pilot participant ran) depends on
+   the 100vh pin and must not change. */
+@media (max-width: 991.98px) {
+  /* NOT `overflow-y: auto` on html/body: `main` is position:fixed
+     (design-system.css:196-204) so the document never grows past the viewport
+     and scrolling it is a no-op — measured, max document scroll is 12px at
+     every width. What actually reaches the panel is releasing the .stage pin
+     below: .stage then measures ~1076px inside `main`, and `main` already
+     carries `overflow-y: auto` from the app's own mobile query
+     (design-system.css:382), which yields ~276px of real scroll. */
+  html.study .stage {
+    height: auto !important;
+    min-height: 100vh;
+  }
+  /* #egoSpiral is `width:100%; height:auto` (design-system.css:1054-1055), so in
+     a full-width stacked column it renders at its viewBox aspect ratio and can
+     run several hundred pixels tall on its own. Cap it, and cap the chart, so
+     the inspector is reachable with one short scroll rather than three. */
+  html.study #chart { height: 46vh !important; }
+  html.study #egoSpiral,
+  html.study .ego-svg { max-height: 40vh; }
+  html.study .floaty--inspector { max-height: none !important; }
+  html.study .study-toosmall {
+    top: 8px;
+    bottom: auto;
+    max-width: min(420px, 88vw);
+  }
+}
+
+/* ── the widget prod ─────────────────────────────────────────────────────── */
+/* A callout pointing at the collapsed widget panel this trial provides. Its
+   POSITION is set by study-bridge.js from the panel's live bounding box, so it
+   follows the panel between the floating and stacked layouts; only the arrow
+   direction and the styling live here.
+
+   Three states, one per side the panel can be on:
+     .study-prod--points-left   panel is left of centre  (Cohort Tracker)
+     .study-prod--points-right  panel is right of centre (Ego / inspector)
+     .study-prod--below         panel is off-screen below the fold (stacked) */
+html.study .study-prod {
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: min(300px, 62vw);
+  padding: 0.5rem 0.75rem;
+  border: 0;
+  border-radius: 8px;
+  background: #1d4ed8;
+  color: #fff;
+  cursor: pointer;
+  text-align: left;
+  font: 500 12.5px/1.35 system-ui, -apple-system, "Segoe UI", sans-serif;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, .22);
+  animation: study-prod-pulse 2.2s ease-in-out infinite;
+}
+html.study .study-prod:hover  { background: #1e40af; }
+html.study .study-prod:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }
+
+/* The arrow is a CSS triangle on the edge facing the panel. */
+html.study .study-prod__arrow {
+  flex: 0 0 auto;
+  width: 0; height: 0;
+  border: 6px solid transparent;
+}
+html.study .study-prod--points-left  .study-prod__arrow { border-right-color: #fff; margin-left: -2px; }
+html.study .study-prod--points-right .study-prod__arrow { border-left-color: #fff; order: 2; margin-right: -2px; }
+html.study .study-prod--below        .study-prod__arrow { border-top-color: #fff; order: 2; }
+
+@keyframes study-prod-pulse {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-3px); }
+}
+/* The pulse must not fight the translateX(-50%) centring the bridge applies in
+   the below-the-fold state, and must not run at all for reduced-motion. */
+html.study .study-prod--below { animation: none; }
+@media (prefers-reduced-motion: reduce) {
+  html.study .study-prod { animation: none; }
+}
+
+/* Stacked layout: the advisory banner already owns the bottom edge, so lift
+   the prod clear of it. */
+@media (max-width: 991.98px) {
+  html.study .study-prod--below { bottom: 64px; }
+}
+
+/* A collapsed Cohort Tracker must actually shrink. `.floaty--cohort.collapsed`
+   sets `flex: 0 0 auto` (design-system.css:320) but
+   `body.cohorts-active .floaty--cohort` sets `flex: 1 1 auto` (:792) and wins
+   on specificity — 0,2,1 against 0,2,0. Seeding the cohort adds
+   `cohorts-active`, so in Block E the collapsed panel kept its full height with
+   its body hidden: a 328x632 invisible blocker over the left of the canvas.
+   Measured, it occluded all 64 members of the group the question is about —
+   elementFromPoint returned ASIDE#cohortFloat for every one of them. */
+html.study body.cohorts-active .floaty--cohort.collapsed {
+  flex: 0 0 auto !important;
+  overflow: visible !important;
 }

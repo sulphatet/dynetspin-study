@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/revisit-studies/study/v2.4.3/src/parser/StudyConfigSchema.json",
   "studyMetadata": {
     "title": "Reading change in evolving networks",
-    "version": "pilot",
+    "version": "1.0.0",
     "authors": [
       "DyNetSpin authors"
     ],
@@ -75,6 +75,7 @@
           "location": "sidebar",
           "type": "radio",
           "required": true,
+          "secondaryText": "The colour of a dot means one of three things, and the legend on screen names which one you have.   FOUR COLOURS = where that person sits in time around the period shown: blue = just arrived (Incoming); orange = about to leave (Outgoing); purple = passing through, in and out within this period (Transient); grey = staying (Stable).   A RED-TO-BLUE RAMP (the legend calls it Volatility) = how much turnover that person had across the whole six weeks: red is the most, blue the least, yellow in between.   A RED-TO-BLUE RAMP LABELLED DEGREE = how many connections that person has in the period shown, on the same red-to-blue scale.",
           "options": [
             "W1",
             "W2",
@@ -134,6 +135,7 @@
           "location": "sidebar",
           "type": "radio",
           "required": true,
+          "secondaryText": "The colour of a dot means one of three things, and the legend on screen names which one you have.   FOUR COLOURS = where that person sits in time around the period shown: blue = just arrived (Incoming); orange = about to leave (Outgoing); purple = passing through, in and out within this period (Transient); grey = staying (Stable).   A RED-TO-BLUE RAMP (the legend calls it Volatility) = how much turnover that person had across the whole six weeks: red is the most, blue the least, yellow in between.   A RED-TO-BLUE RAMP LABELLED DEGREE = how many connections that person has in the period shown, on the same red-to-blue scale.",
           "options": [
             "W1",
             "W2",
@@ -193,6 +195,7 @@
           "location": "sidebar",
           "type": "radio",
           "required": true,
+          "secondaryText": "The colour of a dot means one of three things, and the legend on screen names which one you have.   FOUR COLOURS = where that person sits in time around the period shown: blue = just arrived (Incoming); orange = about to leave (Outgoing); purple = passing through, in and out within this period (Transient); grey = staying (Stable).   A RED-TO-BLUE RAMP (the legend calls it Volatility) = how much turnover that person had across the whole six weeks: red is the most, blue the least, yellow in between.   A RED-TO-BLUE RAMP LABELLED DEGREE = how many connections that person has in the period shown, on the same red-to-blue scale.",
           "options": [
             "W1",
             "W2",
@@ -252,6 +255,7 @@
           "location": "sidebar",
           "type": "radio",
           "required": true,
+          "secondaryText": "The colour of a dot means one of three things, and the legend on screen names which one you have.   FOUR COLOURS = where that person sits in time around the period shown: blue = just arrived (Incoming); orange = about to leave (Outgoing); purple = passing through, in and out within this period (Transient); grey = staying (Stable).   A RED-TO-BLUE RAMP (the legend calls it Volatility) = how much turnover that person had across the whole six weeks: red is the most, blue the least, yellow in between.   A RED-TO-BLUE RAMP LABELLED DEGREE = how many connections that person has in the period shown, on the same red-to-blue scale.",
           "options": [
             "Team_02",
             "Team_04",
@@ -309,6 +313,7 @@
           "location": "sidebar",
           "type": "radio",
           "required": true,
+          "secondaryText": "The colour of a dot means one of three things, and the legend on screen names which one you have.   FOUR COLOURS = where that person sits in time around the period shown: blue = just arrived (Incoming); orange = about to leave (Outgoing); purple = passing through, in and out within this period (Transient); grey = staying (Stable).   A RED-TO-BLUE RAMP (the legend calls it Volatility) = how much turnover that person had across the whole six weeks: red is the most, blue the least, yellow in between.   A RED-TO-BLUE RAMP LABELLED DEGREE = how many connections that person has in the period shown, on the same red-to-blue scale.",
           "options": [
             "Team_02",
             "Team_05",
@@ -1258,10 +1263,10 @@
         "block": "D",
         "task": "busiest",
         "condition": "ego",
-        "stimulus": "planted_a@463",
+        "stimulus": "planted_a@185",
         "correctAnswer": "W3"
       },
-      "description": "D/busiest — ego on planted_a@463",
+      "description": "D/busiest — ego on planted_a@185",
       "instruction": "The outlined person is highlighted. **In which week were they connected to the most people?**",
       "parameters": {
         "labels": false,
@@ -1275,7 +1280,7 @@
         "slice": "s00",
         "encoding": "local",
         "highlightNodes": [
-          463
+          185
         ],
         "openEgo": true
       },
@@ -1321,10 +1326,10 @@
         "block": "D",
         "task": "busiest",
         "condition": "ego",
-        "stimulus": "planted_b@25",
+        "stimulus": "planted_b@87",
         "correctAnswer": "W5"
       },
-      "description": "D/busiest — ego on planted_b@25",
+      "description": "D/busiest — ego on planted_b@87",
       "instruction": "The outlined person is highlighted. **In which week were they connected to the most people?**",
       "parameters": {
         "labels": false,
@@ -1338,7 +1343,7 @@
         "slice": "s00",
         "encoding": "local",
         "highlightNodes": [
-          25
+          87
         ],
         "openEgo": true
       },
@@ -1384,10 +1389,10 @@
         "block": "D",
         "task": "busiest",
         "condition": "no-ego",
-        "stimulus": "planted_c@552",
+        "stimulus": "planted_c@509",
         "correctAnswer": "W3"
       },
-      "description": "D/busiest — no-ego on planted_c@552",
+      "description": "D/busiest — no-ego on planted_c@509",
       "instruction": "The outlined person is highlighted. **In which week were they connected to the most people?**",
       "parameters": {
         "labels": false,
@@ -1401,7 +1406,7 @@
         "slice": "s00",
         "encoding": "local",
         "highlightNodes": [
-          552
+          509
         ],
         "openEgo": false
       },
@@ -1447,10 +1452,10 @@
         "block": "D",
         "task": "busiest",
         "condition": "no-ego",
-        "stimulus": "planted_d@313",
+        "stimulus": "planted_d@22",
         "correctAnswer": "W5"
       },
-      "description": "D/busiest — no-ego on planted_d@313",
+      "description": "D/busiest — no-ego on planted_d@22",
       "instruction": "The outlined person is highlighted. **In which week were they connected to the most people?**",
       "parameters": {
         "labels": false,
@@ -1464,7 +1469,7 @@
         "slice": "s00",
         "encoding": "local",
         "highlightNodes": [
-          313
+          22
         ],
         "openEgo": false
       },
@@ -1511,7 +1516,7 @@
         "task": "survive",
         "condition": "cohort",
         "stimulus": "planted_h@2",
-        "correctAnswer": "17–32 of 64"
+        "correctAnswer": "9–26 of 64"
       },
       "description": "E/survive — cohort on planted_h@2",
       "instruction": "The outlined group has **64 members** in **W3**. Move to **W4**. **How many of them are still present?**",
@@ -1537,10 +1542,10 @@
           "type": "radio",
           "required": true,
           "options": [
-            "0–16 of 64",
-            "17–32 of 64",
-            "33–48 of 64",
-            "49–64 of 64"
+            "0–8 of 64",
+            "9–26 of 64",
+            "27–45 of 64",
+            "46–64 of 64"
           ]
         },
         {
@@ -1570,7 +1575,7 @@
         "task": "survive",
         "condition": "cohort",
         "stimulus": "planted_i@0",
-        "correctAnswer": "47–62 of 62"
+        "correctAnswer": "44–62 of 62"
       },
       "description": "E/survive — cohort on planted_i@0",
       "instruction": "The outlined group has **62 members** in **W4**. Move to **W5**. **How many of them are still present?**",
@@ -1596,10 +1601,10 @@
           "type": "radio",
           "required": true,
           "options": [
-            "0–16 of 62",
-            "17–31 of 62",
-            "32–46 of 62",
-            "47–62 of 62"
+            "0–8 of 62",
+            "9–25 of 62",
+            "26–43 of 62",
+            "44–62 of 62"
           ]
         },
         {
@@ -1629,7 +1634,7 @@
         "task": "survive",
         "condition": "no-cohort",
         "stimulus": "planted_j@2",
-        "correctAnswer": "15–28 of 56"
+        "correctAnswer": "8–22 of 56"
       },
       "description": "E/survive — no-cohort on planted_j@2",
       "instruction": "The outlined group has **56 members** in **W2**. Move to **W3**. **How many of them are still present?**",
@@ -1655,10 +1660,10 @@
           "type": "radio",
           "required": true,
           "options": [
-            "0–14 of 56",
-            "15–28 of 56",
-            "29–42 of 56",
-            "43–56 of 56"
+            "0–7 of 56",
+            "8–22 of 56",
+            "23–39 of 56",
+            "40–56 of 56"
           ]
         },
         {
@@ -1688,7 +1693,7 @@
         "task": "survive",
         "condition": "no-cohort",
         "stimulus": "planted_l@0",
-        "correctAnswer": "47–61 of 61"
+        "correctAnswer": "44–61 of 61"
       },
       "description": "E/survive — no-cohort on planted_l@0",
       "instruction": "The outlined group has **61 members** in **W4**. Move to **W5**. **How many of them are still present?**",
@@ -1714,10 +1719,10 @@
           "type": "radio",
           "required": true,
           "options": [
-            "0–15 of 61",
-            "16–30 of 61",
-            "31–46 of 61",
-            "47–61 of 61"
+            "0–8 of 61",
+            "9–24 of 61",
+            "25–43 of 61",
+            "44–61 of 61"
           ]
         },
         {
@@ -1849,25 +1854,15 @@
         }
       ]
     },
-    "training-spiral": {
+    "training-basics": {
       "type": "markdown",
-      "path": "reading-change/assets/training-spiral.md",
-      "response": []
-    },
-    "training-time": {
-      "type": "markdown",
-      "path": "reading-change/assets/training-time.md",
-      "response": []
-    },
-    "training-colour": {
-      "type": "markdown",
-      "path": "reading-change/assets/training-colour.md",
+      "path": "reading-change/assets/training-basics.md",
       "response": []
     },
     "training-check": {
       "type": "website",
       "path": "reading-change/assets/app/index.html",
-      "instruction": "Before we start: **which timeslice is currently shown?** Use the time rail on the left. This dataset is the Harry Potter character network, so each timeslice is one book in the series.",
+      "instruction": "Before we start: **which time period is currently shown?** Use the time rail on the left. This dataset is the Harry Potter character network, so each timeslice is one book in the series.",
       "instructionLocation": "sidebar",
       "nextButtonLocation": "sidebar",
       "parameters": {
@@ -1893,7 +1888,7 @@
       "response": [
         {
           "id": "answer",
-          "prompt": "Which timeslice is shown?",
+          "prompt": "Which time period is shown?",
           "location": "sidebar",
           "type": "dropdown",
           "required": true,
@@ -1904,6 +1899,148 @@
             "Book_4",
             "Book_5",
             "Book_6"
+          ]
+        }
+      ]
+    },
+    "practice-a": {
+      "type": "website",
+      "path": "reading-change/assets/app/index.html",
+      "description": "Practice — practice-a",
+      "instruction": "**Practice — not scored, and you cannot get it wrong.**\n\nEach **dot is one person** and each **spiral is a group** — the bigger the spiral, the more people in it. The buttons down the **left-hand side** are time periods, oldest at the top; click one to jump to it, and move back and forth as much as you like.\n\nThis is the Harry Potter character network, so each period is one book. Try stepping through all six, then answer:\n\n**In which book did the largest number of characters leave?**",
+      "instructionLocation": "sidebar",
+      "nextButtonLocation": "sidebar",
+      "parameters": {
+        "dataset": "harry_potter",
+        "encoding": "local",
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "slice": "Book_1"
+      },
+      "provideFeedback": false,
+      "nextButtonAutoAdvanceTime": 60000,
+      "nextButtonAutoAdvanceWarningTime": 15000,
+      "nextButtonAutoAdvanceWarningMessage": "Showing the answer in {seconds} {unit} — this one is not scored.",
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Your answer:",
+          "location": "sidebar",
+          "type": "radio",
+          "required": false,
+          "options": [
+            "Book_1",
+            "Book_2",
+            "Book_3",
+            "Book_4",
+            "Book_5",
+            "Book_6"
+          ]
+        }
+      ]
+    },
+    "practice-b": {
+      "type": "website",
+      "path": "reading-change/assets/app/index.html",
+      "description": "Practice — practice-b",
+      "instruction": "**Practice — not scored.**\n\nThe dark ring marks one group in **Book 2**. Two things to notice before you move: **the ring marks it in Book 2 only** and will not follow it, and **how the spirals are arranged around the picture changes between tasks** — in some the arrangement carries information, in others it does not, and no question depends on knowing which. So a group will not always be where you last saw it.\n\nMove to **Book 4** and **click the group that holds most of the same characters.**",
+      "instructionLocation": "sidebar",
+      "nextButtonLocation": "sidebar",
+      "parameters": {
+        "dataset": "harry_potter",
+        "encoding": "local",
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "slice": "Book_2",
+        "highlightCommunity": 0,
+        "answerMode": "community"
+      },
+      "provideFeedback": false,
+      "nextButtonAutoAdvanceTime": 60000,
+      "nextButtonAutoAdvanceWarningTime": 15000,
+      "nextButtonAutoAdvanceWarningMessage": "Showing the answer in {seconds} {unit} — this one is not scored.",
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Click a group in the visualization",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        }
+      ]
+    },
+    "practice-c": {
+      "type": "website",
+      "path": "reading-change/assets/app/index.html",
+      "description": "Practice — practice-c",
+      "instruction": "**Practice — not scored.**\n\nYou answer some questions by **clicking a group** in the picture rather than picking from a list. **Hover** a dot to see who it is; scroll to zoom and drag to pan if you want a closer look.\n\nMove to **Book 6** and **click the largest group.**",
+      "instructionLocation": "sidebar",
+      "nextButtonLocation": "sidebar",
+      "parameters": {
+        "dataset": "harry_potter",
+        "encoding": "local",
+        "labels": false,
+        "widgets": {
+          "overview": false,
+          "cohort": false,
+          "ego": false,
+          "inspector": false
+        },
+        "slice": "Book_1",
+        "answerMode": "community"
+      },
+      "provideFeedback": false,
+      "nextButtonAutoAdvanceTime": 60000,
+      "nextButtonAutoAdvanceWarningTime": 15000,
+      "nextButtonAutoAdvanceWarningMessage": "Showing the answer in {seconds} {unit} — this one is not scored.",
+      "response": [
+        {
+          "id": "answer",
+          "prompt": "Click a group in the visualization",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        }
+      ]
+    },
+    "reveal-a": {
+      "type": "markdown",
+      "path": "reading-change/assets/practice-reveal-a.md",
+      "response": []
+    },
+    "reveal-b": {
+      "type": "markdown",
+      "path": "reading-change/assets/practice-reveal-b.md",
+      "response": []
+    },
+    "reveal-c": {
+      "type": "markdown",
+      "path": "reading-change/assets/practice-reveal-c.md",
+      "response": []
+    },
+    "optional-gate": {
+      "type": "markdown",
+      "path": "reading-change/assets/optional-gate.md",
+      "response": [
+        {
+          "id": "continue",
+          "prompt": "Would you like to continue?",
+          "location": "belowStimulus",
+          "type": "radio",
+          "required": true,
+          "options": [
+            "Continue with the optional questions",
+            "Finish now"
           ]
         }
       ]
@@ -1993,10 +2130,11 @@
           "type": "radio",
           "required": true,
           "options": [
-            "The four-colour scheme (grey / blue / orange / purple)",
+            "The four-colour scheme (blue / orange / purple / grey)",
             "The single-colour intensity scale",
             "The connection-count scale",
-            "No difference"
+            "No difference",
+            "I don't remember seeing all of these"
           ]
         },
         {
@@ -2006,10 +2144,11 @@
           "type": "radio",
           "required": true,
           "options": [
-            "The four-colour scheme (grey / blue / orange / purple)",
+            "The four-colour scheme (blue / orange / purple / grey)",
             "The single-colour intensity scale",
             "The connection-count scale",
-            "No difference"
+            "No difference",
+            "I don't remember seeing all of these"
           ]
         },
         {
@@ -2040,72 +2179,103 @@
       "introduction",
       "consent",
       "background",
-      "training-spiral",
-      "training-time",
-      "training-colour",
+      "training-basics",
       "training-check",
       {
         "order": "latinSquare",
         "components": [
           {
-            "order": "latinSquare",
+            "order": "fixed",
             "components": [
-              "A1-local-1",
-              "A1-global-1",
-              "A1-degree-1",
-              "A2-local-1",
-              "A2-global-1"
+              "practice-a",
+              "reveal-a",
+              {
+                "order": "latinSquare",
+                "components": [
+                  "A1-local-1",
+                  "A1-global-1"
+                ]
+              }
             ]
           },
           {
-            "order": "latinSquare",
+            "order": "fixed",
             "components": [
-              "B-track-blended-1",
-              "B-track-blended-2",
-              "B-track-size-only-1",
-              "B-track-size-only-2",
-              "B-track-slider-1",
-              "B-track-slider-2",
-              "B-size-blended",
-              "B-size-size-only",
-              "B-real-blended",
-              "B-real-size-only"
+              "practice-b",
+              "reveal-b",
+              {
+                "order": "latinSquare",
+                "components": [
+                  "B-track-blended-1",
+                  "B-track-size-only-1",
+                  "B-size-blended",
+                  "B-size-size-only",
+                  "B-real-blended",
+                  "B-real-size-only"
+                ]
+              }
             ]
           },
           {
-            "order": "latinSquare",
+            "order": "fixed",
             "components": [
-              "C-fate-overview-1",
-              "C-fate-overview-2",
-              "C-fate-no-overview-1",
-              "C-fate-no-overview-2",
-              "C-wedge-overview",
-              "C-wedge-no-overview"
-            ]
-          },
-          {
-            "order": "latinSquare",
-            "components": [
-              "D-busiest-ego-1",
-              "D-busiest-ego-2",
-              "D-busiest-no-ego-1",
-              "D-busiest-no-ego-2"
-            ]
-          },
-          {
-            "order": "latinSquare",
-            "components": [
-              "E-survive-cohort-1",
-              "E-survive-cohort-2",
-              "E-survive-no-cohort-1",
-              "E-survive-no-cohort-2"
+              "practice-c",
+              "reveal-c",
+              {
+                "order": "latinSquare",
+                "components": [
+                  "C-fate-overview-1",
+                  "C-fate-overview-2",
+                  "C-fate-no-overview-1",
+                  "C-fate-no-overview-2",
+                  "C-wedge-overview",
+                  "C-wedge-no-overview"
+                ]
+              }
             ]
           }
         ]
       },
       "$smeq.components.smeq",
-      "insight-intro",
-      "insight",
+      {
+        "id": "optional-block",
+        "order": "fixed",
+        "components": [
+          "optional-gate",
+          {
+            "order": "latinSquare",
+            "components": [
+              "A1-degree-1",
+              "A2-local-1",
+              "A2-global-1",
+              "B-track-blended-2",
+              "B-track-size-only-2",
+              "B-track-slider-1",
+              "B-track-slider-2",
+              "D-busiest-ego-1",
+              "D-busiest-ego-2",
+              "D-busiest-no-ego-1",
+              "D-busiest-no-ego-2",
+              "E-survive-cohort-1",
+              "E-survive-cohort-2",
+              "E-survive-no-cohort-1",
+              "E-survive-no-cohort-2"
+            ]
+          },
+          "insight-intro",
+          "insight"
+        ],
+        "skip": [
+          {
+            "name": "optional-gate",
+            "check": "response",
+            "responseId": "continue",
+            "value": "Finish now",
+            "comparison": "equal",
+            "to": "preference"
+          }
+        ]
+      },
       "preference",
       "debrief"
     ]

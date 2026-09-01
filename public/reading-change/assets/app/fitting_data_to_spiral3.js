@@ -1090,6 +1090,20 @@ window.emphasiseCommunityEdges = emphasiseCommunityEdges;
 window.getEdgesHidden = () => edgesHidden;
 window.setEdgesHidden = (on) => { edgesHidden = !!on; resetEdgeOpacity(); };
 
+/* Edges answer a different question from the spiral itself: the layout never
+   reads them, so hiding them removes ink without removing information the
+   positions carry. At several thousand nodes the link layer is what stops a
+   reader resolving individual dots, which is exactly what the spiral exists to
+   let them do -- so this is a first-class control, not a debug hook. */
+window.toggleEdges = function () {
+  window.setEdgesHidden(!edgesHidden);
+  const btn = document.getElementById("edgeToggle");
+  if (btn) {
+    btn.classList.toggle("active", !edgesHidden);
+    btn.setAttribute("aria-pressed", String(!edgesHidden));
+  }
+};
+
 /* One slot per EGO, not per wedge.
 
    The Tracker holds three snapshots, and Kale et al. 2023 (Table 2, Individual

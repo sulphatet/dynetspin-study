@@ -2,9 +2,10 @@
 
 That is everything.
 
-**What this was about.** You saw three ways of colouring the same network and
-two ways of arranging it, plus a few optional interface features. We are
-measuring which combinations help people answer which kinds of question —
+**What this was about.** Across the study there are three ways of colouring
+these networks and two ways of arranging them, plus a few optional interface
+features — depending on where you stopped, you may not have met all of them. We
+are measuring which combinations help people answer which kinds of question:
 specifically, questions about *when* something changed versus *how much* changed
 overall. We expect different schemes to win different questions, which is why
 you saw the same kind of question more than once.
