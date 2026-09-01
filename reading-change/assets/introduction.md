@@ -13,10 +13,10 @@ something is unclear or unreadable, that is a finding we want.
 - **About 25 minutes.** An optional extra section afterwards adds roughly
   fifteen more; you will be asked, and stopping before it costs you nothing.
 - Consent, a few background questions, then one short page about the picture.
-- Then three sets of tasks. Each set opens with one **practice question** that
-  is **not scored** — you are shown the answer and why, either way.
-- Each scored task shows a picture and asks one question. Give your best answer
-  and move on — a quick honest guess is more useful than a long deliberation.
+- Then three sets of tasks. Each set opens with one **practice question**, where
+  you are shown the answer and why, either way.
+- Each task shows a picture and asks one question. Give your best answer and move
+  on — a quick honest guess is more useful than a long deliberation.
 - The picture changes between tasks, so please read each question carefully.
 
 **Before you start**

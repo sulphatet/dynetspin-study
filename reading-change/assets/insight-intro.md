@@ -1,6 +1,6 @@
 # One last part — and this one is open-ended
 
-The tasks are over. Nothing from here on is scored as right or wrong.
+The tasks are over. There are no right answers from here on.
 
 Next you will see **real data**: how countries voted together at the United
 Nations between 1946 and 2015. Each dot is a country, and the groups are

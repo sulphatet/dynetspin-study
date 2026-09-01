@@ -55,7 +55,7 @@
         "correctAnswer": "W3"
       },
       "description": "A/when — local on planted_k",
-      "instruction": "Step through the weeks using the time rail on the left. **In which week did the largest number of people leave?**",
+      "instruction": "Step through the weeks using the time rail on the left. **After which week did the largest number of people leave?** Pick the last week they were still there.",
       "parameters": {
         "labels": false,
         "widgets": {
@@ -75,7 +75,7 @@
           "location": "sidebar",
           "type": "radio",
           "required": true,
-          "secondaryText": "The colour of a dot means one of three things, and the legend on screen names which one you have.   FOUR COLOURS = where that person sits in time around the period shown: blue = just arrived (Incoming); orange = about to leave (Outgoing); purple = passing through, in and out within this period (Transient); grey = staying (Stable).   A RED-TO-BLUE RAMP (the legend calls it Volatility) = how much turnover that person had across the whole six weeks: red is the most, blue the least, yellow in between.   A RED-TO-BLUE RAMP LABELLED DEGREE = how many connections that person has in the period shown, on the same red-to-blue scale.",
+          "secondaryText": "The colour of a dot means one of three things. The legend on screen names which one you have.\n\n**Four colours** — where that person sits in time around the period shown:\n· blue = just arrived (*Incoming*)\n· orange = about to leave (*Outgoing*)\n· purple = passing through, in and out within this period (*Transient*)\n· grey = staying (*Stable*)\n\n**A red-to-blue ramp** labelled *Volatility* — how much turnover that person had across the whole six weeks. Red is the most, blue the least, yellow in between.\n\n**The same ramp labelled *Degree*** — how many connections that person has in the period shown, red most to blue least.",
           "options": [
             "W1",
             "W2",
@@ -115,7 +115,7 @@
         "correctAnswer": "W2"
       },
       "description": "A/when — global on planted_g",
-      "instruction": "Step through the weeks using the time rail on the left. **In which week did the largest number of people leave?**",
+      "instruction": "Step through the weeks using the time rail on the left. **After which week did the largest number of people leave?** Pick the last week they were still there.",
       "parameters": {
         "labels": false,
         "widgets": {
@@ -135,7 +135,7 @@
           "location": "sidebar",
           "type": "radio",
           "required": true,
-          "secondaryText": "The colour of a dot means one of three things, and the legend on screen names which one you have.   FOUR COLOURS = where that person sits in time around the period shown: blue = just arrived (Incoming); orange = about to leave (Outgoing); purple = passing through, in and out within this period (Transient); grey = staying (Stable).   A RED-TO-BLUE RAMP (the legend calls it Volatility) = how much turnover that person had across the whole six weeks: red is the most, blue the least, yellow in between.   A RED-TO-BLUE RAMP LABELLED DEGREE = how many connections that person has in the period shown, on the same red-to-blue scale.",
+          "secondaryText": "The colour of a dot means one of three things. The legend on screen names which one you have.\n\n**Four colours** — where that person sits in time around the period shown:\n· blue = just arrived (*Incoming*)\n· orange = about to leave (*Outgoing*)\n· purple = passing through, in and out within this period (*Transient*)\n· grey = staying (*Stable*)\n\n**A red-to-blue ramp** labelled *Volatility* — how much turnover that person had across the whole six weeks. Red is the most, blue the least, yellow in between.\n\n**The same ramp labelled *Degree*** — how many connections that person has in the period shown, red most to blue least.",
           "options": [
             "W1",
             "W2",
@@ -175,7 +175,7 @@
         "correctAnswer": "W4"
       },
       "description": "A/when — degree on planted_f",
-      "instruction": "Step through the weeks using the time rail on the left. **In which week did the largest number of people leave?**",
+      "instruction": "Step through the weeks using the time rail on the left. **After which week did the largest number of people leave?** Pick the last week they were still there.",
       "parameters": {
         "labels": false,
         "widgets": {
@@ -195,7 +195,7 @@
           "location": "sidebar",
           "type": "radio",
           "required": true,
-          "secondaryText": "The colour of a dot means one of three things, and the legend on screen names which one you have.   FOUR COLOURS = where that person sits in time around the period shown: blue = just arrived (Incoming); orange = about to leave (Outgoing); purple = passing through, in and out within this period (Transient); grey = staying (Stable).   A RED-TO-BLUE RAMP (the legend calls it Volatility) = how much turnover that person had across the whole six weeks: red is the most, blue the least, yellow in between.   A RED-TO-BLUE RAMP LABELLED DEGREE = how many connections that person has in the period shown, on the same red-to-blue scale.",
+          "secondaryText": "The colour of a dot means one of three things. The legend on screen names which one you have.\n\n**Four colours** — where that person sits in time around the period shown:\n· blue = just arrived (*Incoming*)\n· orange = about to leave (*Outgoing*)\n· purple = passing through, in and out within this period (*Transient*)\n· grey = staying (*Stable*)\n\n**A red-to-blue ramp** labelled *Volatility* — how much turnover that person had across the whole six weeks. Red is the most, blue the least, yellow in between.\n\n**The same ramp labelled *Degree*** — how many connections that person has in the period shown, red most to blue least.",
           "options": [
             "W1",
             "W2",
@@ -255,7 +255,7 @@
           "location": "sidebar",
           "type": "radio",
           "required": true,
-          "secondaryText": "The colour of a dot means one of three things, and the legend on screen names which one you have.   FOUR COLOURS = where that person sits in time around the period shown: blue = just arrived (Incoming); orange = about to leave (Outgoing); purple = passing through, in and out within this period (Transient); grey = staying (Stable).   A RED-TO-BLUE RAMP (the legend calls it Volatility) = how much turnover that person had across the whole six weeks: red is the most, blue the least, yellow in between.   A RED-TO-BLUE RAMP LABELLED DEGREE = how many connections that person has in the period shown, on the same red-to-blue scale.",
+          "secondaryText": "The colour of a dot means one of three things. The legend on screen names which one you have.\n\n**Four colours** — where that person sits in time around the period shown:\n· blue = just arrived (*Incoming*)\n· orange = about to leave (*Outgoing*)\n· purple = passing through, in and out within this period (*Transient*)\n· grey = staying (*Stable*)\n\n**A red-to-blue ramp** labelled *Volatility* — how much turnover that person had across the whole six weeks. Red is the most, blue the least, yellow in between.\n\n**The same ramp labelled *Degree*** — how many connections that person has in the period shown, red most to blue least.",
           "options": [
             "Team_02",
             "Team_04",
@@ -313,7 +313,7 @@
           "location": "sidebar",
           "type": "radio",
           "required": true,
-          "secondaryText": "The colour of a dot means one of three things, and the legend on screen names which one you have.   FOUR COLOURS = where that person sits in time around the period shown: blue = just arrived (Incoming); orange = about to leave (Outgoing); purple = passing through, in and out within this period (Transient); grey = staying (Stable).   A RED-TO-BLUE RAMP (the legend calls it Volatility) = how much turnover that person had across the whole six weeks: red is the most, blue the least, yellow in between.   A RED-TO-BLUE RAMP LABELLED DEGREE = how many connections that person has in the period shown, on the same red-to-blue scale.",
+          "secondaryText": "The colour of a dot means one of three things. The legend on screen names which one you have.\n\n**Four colours** — where that person sits in time around the period shown:\n· blue = just arrived (*Incoming*)\n· orange = about to leave (*Outgoing*)\n· purple = passing through, in and out within this period (*Transient*)\n· grey = staying (*Stable*)\n\n**A red-to-blue ramp** labelled *Volatility* — how much turnover that person had across the whole six weeks. Red is the most, blue the least, yellow in between.\n\n**The same ramp labelled *Degree*** — how many connections that person has in the period shown, red most to blue least.",
           "options": [
             "Team_02",
             "Team_05",
@@ -373,7 +373,7 @@
       "response": [
         {
           "id": "answer",
-          "prompt": "Click a group in the visualization",
+          "prompt": "Click a group in the picture on the right",
           "location": "sidebar",
           "type": "reactive",
           "required": true
@@ -430,7 +430,7 @@
       "response": [
         {
           "id": "answer",
-          "prompt": "Click a group in the visualization",
+          "prompt": "Click a group in the picture on the right",
           "location": "sidebar",
           "type": "reactive",
           "required": true
@@ -487,7 +487,7 @@
       "response": [
         {
           "id": "answer",
-          "prompt": "Click a group in the visualization",
+          "prompt": "Click a group in the picture on the right",
           "location": "sidebar",
           "type": "reactive",
           "required": true
@@ -544,7 +544,7 @@
       "response": [
         {
           "id": "answer",
-          "prompt": "Click a group in the visualization",
+          "prompt": "Click a group in the picture on the right",
           "location": "sidebar",
           "type": "reactive",
           "required": true
@@ -601,7 +601,7 @@
       "response": [
         {
           "id": "answer",
-          "prompt": "Click a group in the visualization",
+          "prompt": "Click a group in the picture on the right",
           "location": "sidebar",
           "type": "reactive",
           "required": true
@@ -658,7 +658,7 @@
       "response": [
         {
           "id": "answer",
-          "prompt": "Click a group in the visualization",
+          "prompt": "Click a group in the picture on the right",
           "location": "sidebar",
           "type": "reactive",
           "required": true
@@ -709,12 +709,13 @@
           "mode": "pinned",
           "value": 0.5
         },
-        "answerMode": "community"
+        "answerMode": "community",
+        "lockSlice": true
       },
       "response": [
         {
           "id": "answer",
-          "prompt": "Click the largest group",
+          "prompt": "Click the largest group in the picture on the right",
           "location": "sidebar",
           "type": "reactive",
           "required": true
@@ -765,12 +766,13 @@
           "mode": "pinned",
           "value": 1.0
         },
-        "answerMode": "community"
+        "answerMode": "community",
+        "lockSlice": true
       },
       "response": [
         {
           "id": "answer",
-          "prompt": "Click the largest group",
+          "prompt": "Click the largest group in the picture on the right",
           "location": "sidebar",
           "type": "reactive",
           "required": true
@@ -827,7 +829,7 @@
       "response": [
         {
           "id": "answer",
-          "prompt": "Click a bloc in the visualization",
+          "prompt": "Click a bloc in the picture on the right",
           "location": "sidebar",
           "type": "reactive",
           "required": true
@@ -884,7 +886,7 @@
       "response": [
         {
           "id": "answer",
-          "prompt": "Click a bloc in the visualization",
+          "prompt": "Click a bloc in the picture on the right",
           "location": "sidebar",
           "type": "reactive",
           "required": true
@@ -1870,6 +1872,7 @@
         "slice": "Book_3",
         "encoding": "local",
         "labels": true,
+        "lockSlice": true,
         "widgets": {
           "overview": false,
           "cohort": false,
@@ -1924,8 +1927,8 @@
       },
       "provideFeedback": false,
       "nextButtonAutoAdvanceTime": 60000,
-      "nextButtonAutoAdvanceWarningTime": 15000,
-      "nextButtonAutoAdvanceWarningMessage": "Showing the answer in {seconds} {unit} — this one is not scored.",
+      "nextButtonAutoAdvanceWarningTime": 60000,
+      "nextButtonAutoAdvanceWarningMessage": "Practice question — not evaluated. The answer follows in {seconds} {unit}.",
       "response": [
         {
           "id": "answer",
@@ -1967,12 +1970,12 @@
       },
       "provideFeedback": false,
       "nextButtonAutoAdvanceTime": 60000,
-      "nextButtonAutoAdvanceWarningTime": 15000,
-      "nextButtonAutoAdvanceWarningMessage": "Showing the answer in {seconds} {unit} — this one is not scored.",
+      "nextButtonAutoAdvanceWarningTime": 60000,
+      "nextButtonAutoAdvanceWarningMessage": "Practice question — not evaluated. The answer follows in {seconds} {unit}.",
       "response": [
         {
           "id": "answer",
-          "prompt": "Click a group in the visualization",
+          "prompt": "Click a group in the picture on the right",
           "location": "sidebar",
           "type": "reactive",
           "required": false
@@ -2001,12 +2004,12 @@
       },
       "provideFeedback": false,
       "nextButtonAutoAdvanceTime": 60000,
-      "nextButtonAutoAdvanceWarningTime": 15000,
-      "nextButtonAutoAdvanceWarningMessage": "Showing the answer in {seconds} {unit} — this one is not scored.",
+      "nextButtonAutoAdvanceWarningTime": 60000,
+      "nextButtonAutoAdvanceWarningMessage": "Practice question — not evaluated. The answer follows in {seconds} {unit}.",
       "response": [
         {
           "id": "answer",
-          "prompt": "Click a group in the visualization",
+          "prompt": "Click a group in the picture on the right",
           "location": "sidebar",
           "type": "reactive",
           "required": false
@@ -2261,9 +2264,7 @@
               "E-survive-no-cohort-1",
               "E-survive-no-cohort-2"
             ]
-          },
-          "insight-intro",
-          "insight"
+          }
         ],
         "skip": [
           {
@@ -2272,10 +2273,12 @@
             "responseId": "continue",
             "value": "Finish now",
             "comparison": "equal",
-            "to": "preference"
+            "to": "insight-intro"
           }
         ]
       },
+      "insight-intro",
+      "insight",
       "preference",
       "debrief"
     ]

@@ -365,3 +365,18 @@ html.study body.cohorts-active .floaty--cohort.collapsed {
   flex: 0 0 auto !important;
   overflow: visible !important;
 }
+
+/* ── locked time rail ────────────────────────────────────────────────────── */
+/* Set by `lockSlice` on trials whose question names the period. The rail stays
+   legible -- the participant can still see which period they are on, which the
+   training promises -- but the buttons do not respond, because navigating away
+   can only make the question unanswerable. The ACTIVE button keeps full
+   contrast so it still reads as the current period. */
+html.study.study-lock-slice #year-buttons .ts-btn {
+  pointer-events: none;
+  cursor: default;
+}
+html.study.study-lock-slice #year-buttons .ts-btn:not(.active) {
+  opacity: 0.42;
+}
+html.study.study-lock-slice #year-buttons .ts-back { display: none !important; }

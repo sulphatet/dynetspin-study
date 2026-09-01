@@ -871,6 +871,27 @@
     // The dashboard's own sidebar (datasets, ranking, filters) — every control
     // in it is an IV, so only the open-ended insight step asks for it.
     if (cfg.dashboardSidebar) root.classList.add("study-dashboard");
+    /* Where the QUESTION names the period -- training-check's "which time
+       period is shown", B-size's "in the week shown" -- moving the rail can
+       only make the question unanswerable. The buttons stay visible so the
+       participant still sees where they are in time; they just do not respond.
+       Not hidden: a rail that vanishes on some trials is its own confusion. */
+    if (cfg.lockSlice) {
+      root.classList.add("study-lock-slice");
+      /* CSS `pointer-events: none` stops the mouse and nothing else -- a rail
+         button reached by Tab and fired with Enter still navigates, and so does
+         any programmatic .click(). Disable them properly, and drop them out of
+         the tab order so keyboard users are not sent to controls that do
+         nothing. The ACTIVE button is left alone: it is the current period and
+         should still read as such. */
+      var rail = document.querySelectorAll("#year-buttons .ts-btn");
+      for (var i = 0; i < rail.length; i++) {
+        if (rail[i].classList.contains("active")) continue;
+        rail[i].setAttribute("aria-disabled", "true");
+        rail[i].setAttribute("tabindex", "-1");
+        if ("disabled" in rail[i]) rail[i].disabled = true;
+      }
+    }
       applyWidgets(cfg.widgets);
       /* After applyWidgets, because seeding the cohort is what makes the app
          expand that panel in the first place. */
