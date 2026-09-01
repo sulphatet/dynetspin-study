@@ -401,7 +401,7 @@
           "id": "note",
           "type": "textOnly",
           "location": "sidebar",
-          "prompt": "**The dark ring marks the group in W2 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+          "prompt": "**To choose a group, click any one of its dots.** You do not have to find the middle of it.\n\n**The dark ring marks the group in W2 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
         },
         {
           "id": "answer",
@@ -465,7 +465,7 @@
           "id": "note",
           "type": "textOnly",
           "location": "sidebar",
-          "prompt": "**The dark ring marks the group in W2 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+          "prompt": "**To choose a group, click any one of its dots.** You do not have to find the middle of it.\n\n**The dark ring marks the group in W2 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
         },
         {
           "id": "answer",
@@ -529,7 +529,7 @@
           "id": "note",
           "type": "textOnly",
           "location": "sidebar",
-          "prompt": "**The dark ring marks the group in W2 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+          "prompt": "**To choose a group, click any one of its dots.** You do not have to find the middle of it.\n\n**The dark ring marks the group in W2 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
         },
         {
           "id": "answer",
@@ -593,7 +593,7 @@
           "id": "note",
           "type": "textOnly",
           "location": "sidebar",
-          "prompt": "**The dark ring marks the group in W2 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+          "prompt": "**To choose a group, click any one of its dots.** You do not have to find the middle of it.\n\n**The dark ring marks the group in W2 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
         },
         {
           "id": "answer",
@@ -657,7 +657,7 @@
           "id": "note",
           "type": "textOnly",
           "location": "sidebar",
-          "prompt": "**The dark ring marks the group in W2 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+          "prompt": "**To choose a group, click any one of its dots.** You do not have to find the middle of it.\n\n**The dark ring marks the group in W2 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
         },
         {
           "id": "answer",
@@ -721,7 +721,7 @@
           "id": "note",
           "type": "textOnly",
           "location": "sidebar",
-          "prompt": "**The dark ring marks the group in W2 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+          "prompt": "**To choose a group, click any one of its dots.** You do not have to find the middle of it.\n\n**The dark ring marks the group in W2 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
         },
         {
           "id": "answer",
@@ -782,6 +782,12 @@
       },
       "response": [
         {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**To choose a group, click any one of its dots.** You do not have to find the middle of it."
+        },
+        {
           "id": "answer",
           "prompt": "Click the largest group",
           "location": "sidebar",
@@ -839,6 +845,12 @@
         "lockSlice": true
       },
       "response": [
+        {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**To choose a group, click any one of its dots.** You do not have to find the middle of it."
+        },
         {
           "id": "answer",
           "prompt": "Click the largest group",
@@ -901,7 +913,7 @@
           "id": "note",
           "type": "textOnly",
           "location": "sidebar",
-          "prompt": "**The dark ring marks the group in 1976–80 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+          "prompt": "**To choose a group, click any one of its dots.** You do not have to find the middle of it.\n\n**The dark ring marks the group in 1976–80 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
         },
         {
           "id": "answer",
@@ -965,7 +977,7 @@
           "id": "note",
           "type": "textOnly",
           "location": "sidebar",
-          "prompt": "**The dark ring marks the group in 1981–85 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+          "prompt": "**To choose a group, click any one of its dots.** You do not have to find the middle of it.\n\n**The dark ring marks the group in 1981–85 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
         },
         {
           "id": "answer",
@@ -1024,7 +1036,7 @@
           "id": "note",
           "type": "textOnly",
           "location": "sidebar",
-          "prompt": "**What the four answers mean:**\n\n- **persisted** — most of these people are still together in one group.\n- **split** — they are now spread across two or more groups, each with a fair share of them.\n- **merged** — they are now inside a bigger group, alongside people who were not with them before.\n- **dissolved** — most of these people are no longer in the data at all.\n\nA group whose members all stay in the network but scatter has **split**, not dissolved.\n\n**The dark ring marks the group in W1 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+          "prompt": "**What the four answers mean.** Think about the people who were in the outlined group:\n\n- **persisted** — most of them are still together, in one group.\n- **split** — they are now in two or more different groups.\n- **merged** — they are now in one group, but it also contains a lot of people who were not with them before.\n- **dissolved** — most of them have left the data altogether.\n\nThe one to watch: if the people are still around but no longer together, that is **split**. **dissolved** means the people themselves are gone.\n\n**The dark ring marks the group in W1 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
         },
         {
           "id": "answer",
@@ -1089,7 +1101,7 @@
           "id": "note",
           "type": "textOnly",
           "location": "sidebar",
-          "prompt": "**What the four answers mean:**\n\n- **persisted** — most of these people are still together in one group.\n- **split** — they are now spread across two or more groups, each with a fair share of them.\n- **merged** — they are now inside a bigger group, alongside people who were not with them before.\n- **dissolved** — most of these people are no longer in the data at all.\n\nA group whose members all stay in the network but scatter has **split**, not dissolved.\n\n**The dark ring marks the group in W1 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+          "prompt": "**What the four answers mean.** Think about the people who were in the outlined group:\n\n- **persisted** — most of them are still together, in one group.\n- **split** — they are now in two or more different groups.\n- **merged** — they are now in one group, but it also contains a lot of people who were not with them before.\n- **dissolved** — most of them have left the data altogether.\n\nThe one to watch: if the people are still around but no longer together, that is **split**. **dissolved** means the people themselves are gone.\n\n**The dark ring marks the group in W1 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
         },
         {
           "id": "answer",
@@ -1154,7 +1166,7 @@
           "id": "note",
           "type": "textOnly",
           "location": "sidebar",
-          "prompt": "**What the four answers mean:**\n\n- **persisted** — most of these people are still together in one group.\n- **split** — they are now spread across two or more groups, each with a fair share of them.\n- **merged** — they are now inside a bigger group, alongside people who were not with them before.\n- **dissolved** — most of these people are no longer in the data at all.\n\nA group whose members all stay in the network but scatter has **split**, not dissolved.\n\n**The dark ring marks the group in W1 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+          "prompt": "**What the four answers mean.** Think about the people who were in the outlined group:\n\n- **persisted** — most of them are still together, in one group.\n- **split** — they are now in two or more different groups.\n- **merged** — they are now in one group, but it also contains a lot of people who were not with them before.\n- **dissolved** — most of them have left the data altogether.\n\nThe one to watch: if the people are still around but no longer together, that is **split**. **dissolved** means the people themselves are gone.\n\n**The dark ring marks the group in W1 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
         },
         {
           "id": "answer",
@@ -1219,7 +1231,7 @@
           "id": "note",
           "type": "textOnly",
           "location": "sidebar",
-          "prompt": "**What the four answers mean:**\n\n- **persisted** — most of these people are still together in one group.\n- **split** — they are now spread across two or more groups, each with a fair share of them.\n- **merged** — they are now inside a bigger group, alongside people who were not with them before.\n- **dissolved** — most of these people are no longer in the data at all.\n\nA group whose members all stay in the network but scatter has **split**, not dissolved.\n\n**The dark ring marks the group in W1 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
+          "prompt": "**What the four answers mean.** Think about the people who were in the outlined group:\n\n- **persisted** — most of them are still together, in one group.\n- **split** — they are now in two or more different groups.\n- **merged** — they are now in one group, but it also contains a lot of people who were not with them before.\n- **dissolved** — most of them have left the data altogether.\n\nThe one to watch: if the people are still around but no longer together, that is **split**. **dissolved** means the people themselves are gone.\n\n**The dark ring marks the group in W1 only.** It will not follow the group when you move to another period, so make a note of which group it is before you move on."
         },
         {
           "id": "answer",
@@ -1282,6 +1294,12 @@
       },
       "response": [
         {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**To choose a group, click any one of its dots.** You do not have to find the middle of it.\n\n**Hover a group to see its name.** That works on the picture, and in the round overview if this question gives you one."
+        },
+        {
           "id": "answer",
           "prompt": "Click the bloc — either in the overview, or in the picture behind it",
           "location": "sidebar",
@@ -1335,6 +1353,12 @@
         "answerMode": "community"
       },
       "response": [
+        {
+          "id": "note",
+          "type": "textOnly",
+          "location": "sidebar",
+          "prompt": "**To choose a group, click any one of its dots.** You do not have to find the middle of it.\n\n**Hover a group to see its name.** That works on the picture, and in the round overview if this question gives you one."
+        },
         {
           "id": "answer",
           "prompt": "Click the bloc in the picture",
