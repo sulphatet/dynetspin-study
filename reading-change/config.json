@@ -1180,7 +1180,7 @@
       "response": [
         {
           "id": "answer",
-          "prompt": "Click the bloc — in the overview or on the chart",
+          "prompt": "Click the bloc — in the overview, or on the picture on the right",
           "location": "sidebar",
           "type": "reactive",
           "required": true
@@ -1234,7 +1234,7 @@
       "response": [
         {
           "id": "answer",
-          "prompt": "Click the bloc",
+          "prompt": "Click the bloc in the picture on the right",
           "location": "sidebar",
           "type": "reactive",
           "required": true
