@@ -183,11 +183,6 @@ html.study:not(.study-labels) .community-label { display: none !important; }
 /* ── highlight for "this group" / "this person" prompts ──────────────────── */
 /* Deliberately NOT the Cohort Tracker: that persists across slices and would
    hand Block B its answer. This is a plain stroke, cleared on slice change. */
-html.study circle.study-highlight {
-  stroke: #111 !important;
-  stroke-width: 2px !important;
-  paint-order: stroke;
-}
 html.study circle.study-highlight-dim { opacity: 0.25 !important; }
 
 /* One outlined PERSON among ~600 dots. A 2px stroke is enough to confirm a dot
@@ -380,3 +375,18 @@ html.study.study-lock-slice #year-buttons .ts-btn:not(.active) {
   opacity: 0.42;
 }
 html.study.study-lock-slice #year-buttons .ts-back { display: none !important; }
+
+/* The lasso around a marked group. Drawn by study-bridge.js as a hull over the
+   members' dots, behind them so it frames rather than covers. Non-scaling
+   stroke so it stays a hairline at any zoom, and pointer-events off so it can
+   never intercept the click that answers the trial. */
+html.study path.study-lasso,
+html.study path.study-lasso-evo {
+  fill: rgba(17, 17, 17, 0.05);
+  stroke: #111;
+  stroke-width: 2px;
+  stroke-dasharray: 6 4;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}

@@ -478,12 +478,55 @@
     if (comm === undefined && !ids) return;
 
     var wanted = ids ? new Set(ids.map(Number)) : null;
+    var pts = [], host = null;
     d3.selectAll("circle.happy").each(function (d) {
       if (!d) return;
       var hit = wanted ? wanted.has(+d.node) : (+d.community === +comm);
       this.classList.toggle("study-highlight", hit);
       if (cfg.dimOthers) this.classList.toggle("study-highlight-dim", !hit);
+      if (hit && !wanted) {
+        host = host || this.parentNode;
+        pts.push([+this.getAttribute("cx"), +this.getAttribute("cy")]);
+      }
     });
+    drawLasso(host, pts);
+  }
+
+  /* A ring on each member's dot is not what "the outlined group" makes anyone
+     look for. Participants reported hunting for a boundary around the spiral,
+     which did not exist -- the mark was a 2px stroke per dot, and on a small
+     dot that reads as "slightly darker", not as "these ones". So draw the
+     boundary they are looking for: a hull around the marked members.
+
+     Only for a COMMUNITY highlight. A single-node prompt already gets a halo
+     (study-single-target), and a hull round one point is meaningless.
+
+     It marks the group the question is ABOUT, on the slice it starts on -- not
+     the answer, which lives in another period -- and it is drawn identically in
+     every arm. So it removes noise at the identify step without touching the
+     contrast any block measures. */
+  function drawLasso(host, pts, cls) {
+    cls = cls || "study-lasso";
+    var old = document.querySelector("path." + cls);
+    if (old) old.remove();
+    if (!host || pts.length < 3 || !d3.polygonHull) return;
+    var hull = d3.polygonHull(pts);
+    if (!hull || hull.length < 3) return;
+    var cx = d3.mean(hull, function (p) { return p[0]; });
+    var cy = d3.mean(hull, function (p) { return p[1]; });
+    var PAD = 9;
+    var out = hull.map(function (p) {
+      var dx = p[0] - cx, dy = p[1] - cy;
+      var L = Math.sqrt(dx * dx + dy * dy) || 1;
+      return [p[0] + dx / L * PAD, p[1] + dy / L * PAD];
+    });
+    var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("class", cls);
+    path.setAttribute("d", "M" + out.map(function (p) {
+      return p[0].toFixed(1) + "," + p[1].toFixed(1);
+    }).join("L") + "Z");
+    // Behind the dots, so it frames them rather than covering them.
+    host.insertBefore(path, host.firstChild);
   }
   /* The overview draws its own dots, so the stroke put on `circle.happy` never
      reaches it — a participant told to follow "the outlined group" opened the
@@ -498,11 +541,24 @@
       if (d && +d.community === +cfg.highlightCommunity) members[+d.node] = 1;
     });
     var dots = document.querySelectorAll("#communityEvolution .evo-dot");
-    var n = 0;
+    var n = 0, ring0 = [], host = null;
     for (var i = 0; i < dots.length; i++) {
       var id = +dots[i].getAttribute("data-node");
-      if (members[id]) { dots[i].classList.add("study-evo-highlight"); n++; }
+      if (!members[id]) continue;
+      dots[i].classList.add("study-evo-highlight");
+      n++;
+      /* data-cell is "<ringIndex>:<community>" (communityEvolution.js:359), and
+         ring 0 is the innermost = the FIRST period. Only that ring gets the
+         lasso: it is the group the question names. A lasso on the LAST ring
+         would answer C/fate outright — drawing one boundary round the members
+         at W6 asserts they are still one group, which rules out `split` and
+         `dissolved` before the participant has looked. */
+      if ((dots[i].getAttribute("data-cell") || "").split(":")[0] === "0") {
+        host = host || dots[i].parentNode;
+        ring0.push([+dots[i].getAttribute("cx"), +dots[i].getAttribute("cy")]);
+      }
     }
+    drawLasso(host, ring0, "study-lasso-evo");
     return n;
   }
 
@@ -510,6 +566,8 @@
     d3.selectAll("circle.happy").each(function () {
       this.classList.remove("study-highlight", "study-highlight-dim");
     });
+    var l = document.querySelector("path.study-lasso");
+    if (l) l.remove();
   }
 
   /* ── instrumentation ───────────────────────────────────────────────────── */
