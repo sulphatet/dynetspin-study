@@ -1,6 +1,6 @@
 # Practice — the answer
 
-**The right group was the large one on the left.** Eight of the outlined group's
+**The right group was the large one on the left.** Eight of the circled group's
 fifteen characters had moved into it by Book 4.
 
 Two things this small practice network could not show you.
@@ -14,7 +14,7 @@ sometimes small. Picking the biggest will not work.
 at all by Book 4. The question asks which group holds most of the *same people*,
 not which group is closest in size to the one you started with.
 
-So before you move, note where the outlined group sits and roughly how big it
+So before you move, note where the circled group sits and roughly how big it
 is. Then look for it again in the later period.
 
 That was a practice question. The real ones start next.

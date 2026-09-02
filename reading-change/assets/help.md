@@ -25,8 +25,9 @@ on screen always names whichever one you are looking at. There are three:
 None of the three is the "right" one, and no question depends on knowing which
 you have.
 
-**If a task mentions an outlined group**, that group is drawn with a dark ring
-around each of its members in the period you start on.
+**If a task mentions a circled group**, that group is drawn with a dashed circle
+around it, in the period you start on. The circle does not follow the group when
+you move to another period.
 
 **Stuck?** Give your best answer and continue — a wrong answer is far more
 useful to us than a long pause. There is no penalty.
